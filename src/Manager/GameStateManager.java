@@ -7,6 +7,7 @@ import GameState.IntroState;
 import GameState.MenuState;
 import GameState.PauseState;
 import GameState.PlayState;
+import application.Main;
 import javafx.scene.canvas.GraphicsContext;
 
 
@@ -32,6 +33,7 @@ import javafx.scene.canvas.GraphicsContext;
 			pauseState = new PauseState(this);
 			
 			gameStates = new GameState[NUM_STATES];
+			//System.out.println("...........");
 			setState(INTRO);
 			
 		}
@@ -82,6 +84,12 @@ import javafx.scene.canvas.GraphicsContext;
 			else if(gameStates[currentState] != null) {
 				gameStates[currentState].draw();
 			}
+			System.out.println("Check");
 		}
+
+		public GameState getCurrentState() {
+			return gameStates[currentState];
+		}
+		
 	}
 

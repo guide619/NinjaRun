@@ -7,9 +7,9 @@ import Manager.Keys;
 
 public class GamePanel extends Canvas implements Runnable {
 	
-	public static final int WIDTH = 600;
+	public static final int WIDTH = 500;
 	public static final int HEIGHT = 175;
-	public static final int SCALE = 3;
+	public static final int SCALE = 2;
 	
 	// game loop stuff
 	private Thread thread;
@@ -20,10 +20,14 @@ public class GamePanel extends Canvas implements Runnable {
 	// game state manager
 	private GameStateManager gsm;
 	
+	
 	// constructor
 	public GamePanel() {
 		super(WIDTH*SCALE,HEIGHT*SCALE);
 		requestFocus();
+		startAnimation();
+		//System.out.println("kuy");
+		
 	}
 	
 	public void startAnimation() {
@@ -38,7 +42,7 @@ public class GamePanel extends Canvas implements Runnable {
 
 	// run new thread
 	public void run() {
-		
+		//System.out.println("kuy");
 		init();
 		
 		long start;
@@ -49,9 +53,9 @@ public class GamePanel extends Canvas implements Runnable {
 		while(running) {
 			
 			start = System.nanoTime();
-			
 			update();
 			draw();
+			
 			
 			elapsed = System.nanoTime() - start;
 			
@@ -93,6 +97,10 @@ public class GamePanel extends Canvas implements Runnable {
 	}
 	public void keyReleased(KeyEvent key) {
 		Keys.keySet(key, false);
+	}
+	public GameStateManager getGameStateManager() {
+		return gsm;
+		
 	}
 	
 }

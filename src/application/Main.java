@@ -1,27 +1,23 @@
 package application;
 
-import GameState.IntroState;
-import Manager.GameStateManager;
 import javafx.application.Application;
-import javafx.stage.Stage;
-
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	private static Scene gm = new Scene(new Pane (new GamePanel()));
-
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		primaryStage.setScene(gm);
-		primaryStage.show();
-	}
-	public static void main(String[] args) {
-		launch(args);
+	public void start(Stage primaryStage) {
+		try {
+			SceneManager.initialize(primaryStage);
+			SceneManager.gotoMainMenu();
+			primaryStage.setTitle("NINJA RUN");
+			primaryStage.centerOnScreen();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
