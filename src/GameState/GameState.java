@@ -4,8 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import Manager.GameStateManager;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
-public abstract class GameState {
+public abstract class GameState extends Canvas {
 	
 	protected GameStateManager gsm;
 	
@@ -15,7 +17,8 @@ public abstract class GameState {
 	
 	public abstract void init();
 	public abstract void update();
-	public abstract void draw(Graphics2D g);
+	public abstract void draw(GraphicsContext g);
+	public abstract void addKeyEventHandler();
 	
 
 

@@ -8,6 +8,7 @@ import GameState.IntroState;
 import GameState.MenuState;
 import GameState.PauseState;
 import GameState.PlayState;
+import javafx.scene.canvas.GraphicsContext;
 
 
 	public class GameStateManager {
@@ -75,7 +76,7 @@ import GameState.PlayState;
 			}
 		}
 		
-		public void draw(Graphics2D g) {
+		public void draw(GraphicsContext g) {
 			if(paused) {
 				pauseState.draw(g);
 			}
