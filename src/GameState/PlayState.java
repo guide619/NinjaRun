@@ -4,9 +4,9 @@ import java.awt.Graphics2D;
 
 import Manager.GameStateManager;
 
-public class MenuState extends GameState {
+public class PlayState extends GameState {
 
-	public MenuState(GameStateManager gsm) {
+	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
 	}
@@ -14,26 +14,25 @@ public class MenuState extends GameState {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void draw(Graphics2D g) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void handleInput() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
 
 }
