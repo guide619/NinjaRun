@@ -34,10 +34,6 @@ public class MenuState extends GameState {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void keyPressed(java.awt.event.KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 }
