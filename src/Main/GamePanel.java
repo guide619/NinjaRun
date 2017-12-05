@@ -7,7 +7,7 @@ import javafx.scene.input.KeyEvent;
 import Manager.GameStateManager;
 import Manager.Keys;
 
-public class GamePanel extends Canvas {
+public class GamePanel extends Canvas implements Runnable {
 	
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 175;
@@ -21,7 +21,6 @@ public class GamePanel extends Canvas {
 	
 	// drawing stuff
 	private Canvas display;
-	private GraphicsContext gc;
 	
 	// game state manager
 	private GameStateManager gsm;
@@ -30,6 +29,16 @@ public class GamePanel extends Canvas {
 	public GamePanel() {
 		super(WIDTH*SCALE,HEIGHT*SCALE);
 		requestFocus();
+	}
+	
+	public void startAnimation() {
+		thread = new Thread(this::run, "Game Animation Thread");
+		running = true;
+		thread.start();
+	}
+
+	public void stopAnimation() {
+		running = false;
 	}
 
 	// run new thread
@@ -69,7 +78,6 @@ public class GamePanel extends Canvas {
 	private void init() {
 		running = true;
 		display = new Canvas(WIDTH,HEIGHT);
-		gc = display.getGraphicsContext2D();
 		gsm = new GameStateManager();
 	}
 	

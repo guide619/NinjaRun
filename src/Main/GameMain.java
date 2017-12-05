@@ -1,16 +1,11 @@
-package application;
-
-import GameState.IntroState;
-import Manager.GameStateManager;
-import javafx.application.Application;
-import javafx.stage.Stage;
+package Main;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class GameMain extends Application {
 	private static Scene gm = new Scene(new Pane (new GamePanel()));
 
 	@Override

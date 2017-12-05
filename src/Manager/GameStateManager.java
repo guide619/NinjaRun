@@ -1,6 +1,5 @@
 package Manager;
 
-import java.awt.Graphics2D;
 
 import GameState.GameOverState;
 import GameState.GameState;
@@ -76,12 +75,12 @@ import javafx.scene.canvas.GraphicsContext;
 			}
 		}
 		
-		public void draw(GraphicsContext g) {
+		public void draw() {
 			if(paused) {
-				pauseState.draw(g);
+				pauseState.draw();
 			}
 			else if(gameStates[currentState] != null) {
-				gameStates[currentState].draw(g);
+				gameStates[currentState].draw();
 			}
 		}
 	}

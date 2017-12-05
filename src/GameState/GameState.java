@@ -17,7 +17,7 @@ public abstract class GameState extends Canvas {
 	
 	public abstract void init();
 	public abstract void update();
-	public abstract void draw(GraphicsContext g);
+	public abstract void draw();
 	public abstract void addKeyEventHandler();
 	
 
