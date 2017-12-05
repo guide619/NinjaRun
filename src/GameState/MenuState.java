@@ -2,7 +2,13 @@ package GameState;
 
 import java.awt.Graphics2D;
 
+
 import Manager.GameStateManager;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.Node;
 
 public class MenuState extends GameState {
 
@@ -30,10 +36,8 @@ public class MenuState extends GameState {
 	}
 
 	@Override
-	public void handleInput() {
+	public void keyPressed(java.awt.event.KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-
 }
