@@ -19,10 +19,7 @@ public class MenuState extends GameState {
 	boolean isKeyPressed;
 	static Image bg ;
 	private int currentOption = 0;
-	private String[] options = {
-			"START",
-			"QUIT"
-		};
+	private String[] options = {"START","QUIT"};
 	
 	private static final Font TEXT_FONT = new Font("Fipps", 80);
 	public MenuState(GameStateManager gsm) {
@@ -54,13 +51,15 @@ public class MenuState extends GameState {
 		
 	}
 	public void addKeyEventHandler() {
-		if(Keys.isPressed(Keys.DOWN) && currentOption < options.length - 1) {
+		if(Keys.isPressed(Keys.DOWN) ) {
 			//JukeBox.play("menuoption");
 			currentOption++;
+			currentOption= currentOption%options.length;
 		}
-		if(Keys.isPressed(Keys.UP) && currentOption > 0) {
+		if(Keys.isPressed(Keys.UP)) {
 			//JukeBox.play("menuoption");
 			currentOption--;
+			currentOption= (-1)*(currentOption%options.length);
 		}
 		if(Keys.isPressed(Keys.ENTER)) {
 			//JukeBox.play("collect");
@@ -72,7 +71,7 @@ public class MenuState extends GameState {
 	protected void selectOption() {
 		// TODO Auto-generated method stub
 		if(currentOption == 0) {
-			gsm.setState(GameStateManager.PLAY);
+			gsm.setPaused(true);;
 		}
 		if(currentOption ==1) {
 			Platform.exit();
