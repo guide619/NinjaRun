@@ -11,21 +11,22 @@ import application.Main;
 import application.SceneManager;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 
 	public class IntroState extends GameState {
   
 	private Image logo;
-	public static final int INTRO_WIDTH = 128;
-	public static final int INTRO_HEIGHT = 144;
   
-	private int alpha;
+	private double alpha;
 	private int ticks;
   
 	private final int FADE_IN = 60;
@@ -39,7 +40,6 @@ import javafx.scene.paint.Color;
 	public void init() {
 		ticks = 0;
 		try {
-    //logo = new Image(ClassLoader.getSystemResourceAsStream("GT.png").toString());
 			String image_path = "file:Resources/Logo/GT.png";
 			logo = new Image(image_path);
 		}
@@ -52,27 +52,25 @@ import javafx.scene.paint.Color;
 		ticks++;
 		addKeyEventHandler();
 		if(ticks < FADE_IN) {
-			alpha = (int) (255 - 255 * (1.0 * ticks / FADE_IN));
+			alpha = (double) (1 -  (1.0 * ticks / FADE_IN));
 			if(alpha < 0) alpha = 0;
 		}
 		if(ticks > FADE_IN + LENGTH) {
-			alpha = (int) (255 * (1.0 * ticks - FADE_IN - LENGTH) / FADE_OUT);
-			if(alpha > 255) alpha = 255;
+			alpha = (double) (1.0 * ticks - FADE_IN - LENGTH) / FADE_OUT;
+			if(alpha > 1) alpha = 1;
 		}
 		if(ticks > FADE_IN + LENGTH + FADE_OUT) {
 			gsm.setState(GameStateManager.MENU);
 		}
 	}
   
-	public void draw() {
-		GraphicsContext g = this.getGraphicsContext2D();
-		//g.setFill(Color.BLACK);
-		//g.fillRect(0, 0, this.INTRO_WIDTH,this.INTRO_HEIGHT);
-		g.drawImage(logo,0, 0, this.INTRO_WIDTH, this.INTRO_HEIGHT);
-		//g.setFill((new Color(0, 0, 0, alpha)));
-		//g.fillRect(0, 0, this.INTRO_WIDTH, this.INTRO_HEIGHT);
-		SceneManager.gotoSceneOf(this);
-		System.out.println(ticks);
+	public void draw(Canvas game) {
+		GraphicsContext g = game.getGraphicsContext2D();
+		g.setFill(Color.WHITE);
+		g.fillRect(0, 0, GamePanel.WIDTH,GamePanel.HEIGHT);
+		g.drawImage(logo,0,0);
+		g.setFill((new Color(0, 0, 0, alpha)));
+		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		
 	}
 		

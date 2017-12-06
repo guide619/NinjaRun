@@ -1,19 +1,26 @@
 package application;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import Manager.GameStateManager;
 import Manager.Keys;
 
 public class GamePanel extends Canvas implements Runnable {
 	
-	public static final int WIDTH = 500;
-	public static final int HEIGHT = 175;
+	private static Stage primaryStage;
+	public static final int WIDTH = 500*2;
+	public static final int HEIGHT = 175*2;
 	public static final int SCALE = 2;
 	
 	// game loop stuff
 	private Thread thread;
-	private boolean running;
+	private static boolean running;
 	private final int FPS = 30;
 	private final int TARGET_TIME = 1000 / FPS;
 	
@@ -23,7 +30,7 @@ public class GamePanel extends Canvas implements Runnable {
 	
 	// constructor
 	public GamePanel() {
-		super(WIDTH*SCALE,HEIGHT*SCALE);
+		super(WIDTH,HEIGHT);
 		requestFocus();
 		startAnimation();
 		//System.out.println("kuy");
@@ -36,7 +43,7 @@ public class GamePanel extends Canvas implements Runnable {
 		thread.start();
 	}
 
-	public void stopAnimation() {
+	public static void stopAnimation() {
 		running = false;
 	}
 
@@ -55,6 +62,7 @@ public class GamePanel extends Canvas implements Runnable {
 			start = System.nanoTime();
 			update();
 			draw();
+			
 			
 			
 			elapsed = System.nanoTime() - start;
@@ -87,20 +95,26 @@ public class GamePanel extends Canvas implements Runnable {
 	
 	// draws game
 	private void draw() {
-		gsm.draw();
+		gsm.draw(this);
+		
+		
+		
 	}
 	
 	// key event
-	public void keyTyped(KeyEvent key) {}
-	public void keyPressed(KeyEvent key) {
-		Keys.keySet(key, true);
-	}
-	public void keyReleased(KeyEvent key) {
-		Keys.keySet(key, false);
-	}
-	public GameStateManager getGameStateManager() {
-		return gsm;
-		
-	}
+	
+	/*private void addKeyEventHandler() {
+		this.setOnKeyPressed(new EventHandler<KeyEvent>(){
+			public void handle(KeyEvent key) {
+				System.out.println("v");
+				Keys.keySet(key, true);
+			}
+		});
+		this.setOnKeyReleased(new EventHandler<KeyEvent>(){
+			public void handle(KeyEvent key) {
+				Keys.keySet(key, false);
+			}
+		});
+	}*/
 	
 }

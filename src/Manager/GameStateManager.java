@@ -8,7 +8,9 @@ import GameState.MenuState;
 import GameState.PauseState;
 import GameState.PlayState;
 import application.Main;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.stage.Stage;
 
 
 	public class GameStateManager {
@@ -16,7 +18,7 @@ import javafx.scene.canvas.GraphicsContext;
 		private boolean paused;
 		private PauseState pauseState;
 		
-		private GameState[] gameStates;
+		private static GameState[] gameStates;
 		private int currentState;
 		private int previousState;
 		
@@ -77,14 +79,13 @@ import javafx.scene.canvas.GraphicsContext;
 			}
 		}
 		
-		public void draw() {
+		public void draw(Canvas game) {
 			if(paused) {
-				pauseState.draw();
+				pauseState.draw(game);
 			}
 			else if(gameStates[currentState] != null) {
-				gameStates[currentState].draw();
+				gameStates[currentState].draw(game);
 			}
-			System.out.println("Check");
 		}
 
 		public GameState getCurrentState() {
