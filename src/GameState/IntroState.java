@@ -8,7 +8,6 @@ import Manager.GameStateManager;
 import Manager.Keys;
 import application.GamePanel;
 import application.Main;
-import application.SceneManager;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

@@ -14,9 +14,8 @@ import Manager.Keys;
 public class GamePanel extends Canvas implements Runnable {
 	
 	private static Stage primaryStage;
-	public static final int WIDTH = 500*2;
-	public static final int HEIGHT = 175*2;
-	public static final int SCALE = 2;
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 350;
 	
 	// game loop stuff
 	private Thread thread;
@@ -49,7 +48,6 @@ public class GamePanel extends Canvas implements Runnable {
 
 	// run new thread
 	public void run() {
-		//System.out.println("kuy");
 		init();
 		
 		long start;
