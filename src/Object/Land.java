@@ -11,7 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Land {
-	public static final int LAND_POSY = 0;
+	public static final int LAND_POSY = 300;
 	final int speed = 15;
 	
 	private static List<ImageLand> listLand;
@@ -25,6 +25,7 @@ public class Land {
 	private Image land8;
 	private Image land9;
 	private Image land0;
+	private int type =1;
 	
 	public Land(int width) {
 		land1 = RenderableHolder.land1;
@@ -78,52 +79,26 @@ public class Land {
 		int typeLand = getTypeOfLand();
 		//System.out.println(typeLand);
 		switch(typeLand) {
-		case 1:
+		case 0:
 			imgLand.image = land1;
 			imgLand.type = 1;
 			break;
-		case 2:
+		case 1:
 			imgLand.image = land2;
 			imgLand.type = 2;
 			break;
-		case 3 :
+		case 2:
 			imgLand.image = land3;
 			imgLand.type = 3;
 			break;
-		case 4:
-			imgLand.image = land4;
-			imgLand.type = 4;
-			break;
-		case 5:
-			imgLand.image = land5;
-			imgLand.type = 5;
-			break;
-		case 6:
-			imgLand.image = land6;
-			imgLand.type = 6;
-			break;
-		case 7:
-			imgLand.image = land7;
-			imgLand.type = 7;
-			break;
-		case 8:
-			imgLand.image = land8;
-			imgLand.type = 8;
-			break;
-		case 9:
-			imgLand.image = land9;
-			imgLand.type = 9;
-			break;
-		case 0:
-			imgLand.image = land0;
-			imgLand.type = 0;
-			break;
+		
 		}
 	}
 	private int getTypeOfLand() {
-		Random rand = new Random();
-		int type = rand.nextInt(10);
-		return type;
+		//Random rand = new Random();
+		//int type = rand.nextInt(1);
+		type = (type+1)%2;
+		return 0;
 	}
 	private static void printList() {
 		System.out.print("[");

@@ -40,14 +40,14 @@ public class MenuState extends GameState {
 		//Draw Background and Options
 		GraphicsContext gc = g.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.bgs, 0, 0);
-		gc.setFill(Color.BLACK);
+		gc.setFill(Color.WHITE);
 		gc.setFont(TEXT_FONT);
 		gc.fillText(options[0], 300, 125);
 		gc.fillText(options[1], 300, 225);
 		
 		//Draw Pointer in front of options
-		if(currentOption == 0) gc.fillText("-",250,125);
-		else if(currentOption == 1) gc.fillText("-", 250,225);
+		if(currentOption == 0) gc.drawImage(RenderableHolder.Shuriken, 180, 50); 
+		else if(currentOption == 1) gc.drawImage(RenderableHolder.Shuriken, 180, 150); 
 		
 	}
 	public void addKeyEventHandler() {

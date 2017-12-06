@@ -2,6 +2,7 @@ package GameState;
 
 
 import Object.Ninja;
+import Object.EnemiesManager;
 
 import java.awt.event.KeyEvent;
 
@@ -14,6 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import Object.Land;
 
 public class PlayState extends GameState{
@@ -24,7 +26,8 @@ public class PlayState extends GameState{
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
 	private int gameState = GAME_PLAYING_STATE;
-
+	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
+	private EnemiesManager enemiesManager;
 	int i = 0;
 
 
@@ -34,6 +37,7 @@ public class PlayState extends GameState{
 		land = new Land(GamePanel.WIDTH);
 		ninja = new Ninja();
 		ninja.setSpeedX(4);
+		enemiesManager = new EnemiesManager(ninja);
 		
 	}
 
@@ -48,6 +52,12 @@ public class PlayState extends GameState{
 		addKeyEventHandler();
 		land.update();
 		ninja.update();
+		enemiesManager.update();
+		//if (enemiesManager.isCollision()) {
+			//mainCharacter.playDeadSound();
+		//	gameState = GAME_OVER_STATE;
+		//	ninja.dead(true);
+		//}
 		
 		
 	}
@@ -55,18 +65,21 @@ public class PlayState extends GameState{
 	@Override
 	public void draw(Canvas game) {
 		// TODO Auto-generated method stub
-		land.draw(game);
 		GraphicsContext gc = game.getGraphicsContext2D();
+		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
-		gc.fillText("HI " + ninja.score, 800, 200);
+		gc.drawImage(RenderableHolder.bgplay, 0, 0);
+		gc.fillText("Scroe " + ninja.score, 850, 40);
+		land.draw(game);
 		switch (gameState) {
 		case GAME_PLAYING_STATE:
 			ninja.draw(game);
+			enemiesManager.draw(game);
 			break;
 		case GAME_OVER_STATE:
 			//clouds.draw(g);
 			//land.draw(g);
-			//enemiesManager.draw(g);
+			//enemiesManager.draw(this);
 			ninja.draw(this);
 			
 			//g.setColor(Color.BLACK);
@@ -80,7 +93,7 @@ public class PlayState extends GameState{
 		
 	}
 	private void resetGame() {
-		//enemiesManager.reset();
+		enemiesManager.reset();
 		ninja.dead(false);
 		ninja.reset();
 	}
