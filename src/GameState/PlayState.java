@@ -11,8 +11,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class PlayState extends GameState {
+
 	int dx ;
 	ninja ninja ;
+
+
+
+	int i = 0;
+
+
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
@@ -31,7 +38,12 @@ public class PlayState extends GameState {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+
 		addKeyEventHandler();
+
+		addKeyEventHandler();
+		i++;
+
 		
 	}
 
@@ -41,12 +53,14 @@ public class PlayState extends GameState {
 		GraphicsContext gc = game.getGraphicsContext2D();
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bg1, 0, 0,1000,350);
+		System.out.println(i);
 		
 	}
 
 	@Override
 	public void addKeyEventHandler() {
 		// TODO Auto-generated method stub
+
 		if(Keys.isPressed(Keys.ESCAPE)) {
 			gsm.setPaused(true);
 		}
@@ -56,6 +70,8 @@ public class PlayState extends GameState {
 			ninja.jump();;
 		}
 	
+		if (Keys.isPressed(Keys.ESCAPE)) gsm.setPaused(true);
+
 		
 	}
 
