@@ -18,6 +18,8 @@ public class RenderableHolder {
 	public static Image logo;
 	public static Image bg1;
 	public static Image bg2;
+	public static Image spite;
+	public static Image spite1;
 	public static AudioClip  explosionSound;
 
 	static {
@@ -42,10 +44,14 @@ public class RenderableHolder {
 		String BGscroll = "file:Resources/Menu/BG.jpg";
 		String BG1 = "file:Resources/bg/bg1.jpg";
 		String BG2 = "file:Resources/bg/bg2.jpg";
+		String sprite = "file:Resources/spite/sprite.png";
+		String sprite1 = "file:Resources/spite/sprite1.png";
 		logo = new Image(Logo);
 		bgs = new Image(BGscroll);
 		bg1 = new Image(BG1);
 		bg2 = new Image(BG2);
+		spite = new Image(sprite);
+		spite1 = new Image(sprite1);
 		
 		
 		
