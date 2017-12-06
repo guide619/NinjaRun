@@ -105,28 +105,17 @@ public class PlayState extends GameState implements Runnable {
 	public void addKeyEventHandler() {
 		// TODO Auto-generated method stub
 		System.out.println(this.isKeyPressed);
-		if(!this.isKeyPressed) {
-			this.isKeyPressed = true;
 			
-		switch (gameState) {
-		case GAME_PLAYING_STATE:
+		
 		if(Keys.isPressed(Keys.ESCAPE)) {
 			gsm.setPaused(true);
 		}
 		if (Keys.isPressed(Keys.SPACE)) {
 			System.out.println("1111111");
-			ninja.jump();}
+			ninja.jump();
+			System.out.println("22222");
+		}
 		
-		case GAME_OVER_STATE:
-		if(Keys.isPressed(Keys.SPACE)) {
-			gameState = GAME_PLAYING_STATE;
-			resetGame();
-		}
-		}	
-		}
-		if(this.isKeyPressed) {
-			this.isKeyPressed =false;
-		}
 	}
 	@Override
 	public void run() {
