@@ -38,29 +38,9 @@ public class ninja {
 			
 			
 	 }
-	 public void move() {
+	 public void jump() {
 		 posX+=dx;
 		 
 	 }
-	 public void addKeyEventHandler() {
-			// TODO Auto-generated method stub
-			
-			if(Keys.isDown(Keys.LEFT) ) {
-				//JukeBox.play("menuoption");
-				dx=-1;
-			}
-			if(Keys.isDown(Keys.RIGHT) ) {
-				//JukeBox.play("menuoption");
-				dx=1;
-				
-			}
-			if(!Keys.isDown(Keys.LEFT)) {
-				dx=0;
-			}
-			if(!Keys.isDown(Keys.RIGHT)) {
-				dx=0;
-			}
-			
-			
-		}
+
 }

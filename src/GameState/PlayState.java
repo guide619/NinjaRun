@@ -1,8 +1,9 @@
 package GameState;
 
 
-
+import Object.ninja;
 import Manager.GameStateManager;
+import Manager.Keys;
 import SharedObject.RenderableHolder;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
@@ -10,15 +11,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class PlayState extends GameState {
-
+	int dx ;
+	ninja ninja ;
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
-		AnimationTimer animation = new AnimationTimer() {
-			public void handle(long now) {
-				
-			}
-		};
+		ninja = new ninja();
 		
 	}
 
@@ -33,6 +31,7 @@ public class PlayState extends GameState {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+		addKeyEventHandler();
 		
 	}
 
@@ -48,6 +47,15 @@ public class PlayState extends GameState {
 	@Override
 	public void addKeyEventHandler() {
 		// TODO Auto-generated method stub
+		if(Keys.isPressed(Keys.ESCAPE)) {
+			gsm.setPaused(true);
+		}
+	
+		if(Keys.isDown(Keys.SPACE) ) {
+			//JukeBox.play("menuoption");
+			ninja.jump();;
+		}
+	
 		
 	}
 
