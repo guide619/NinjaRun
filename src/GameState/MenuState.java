@@ -71,7 +71,7 @@ public class MenuState extends GameState {
 	protected void selectOption() {
 		// TODO Auto-generated method stub
 		if(currentOption == 0) {
-			gsm.setPaused(true);;
+			gsm.setState(GameStateManager.PLAY);
 		}
 		if(currentOption ==1) {
 			Platform.exit();
