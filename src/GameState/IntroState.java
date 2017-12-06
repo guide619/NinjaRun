@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 
 import Manager.GameStateManager;
 import Manager.Keys;
+import SharedObject.RenderableHolder;
 import application.GamePanel;
 import application.Main;
 import javafx.application.Platform;
@@ -23,7 +24,6 @@ import javafx.stage.Stage;
 
 	public class IntroState extends GameState {
   
-	private Image logo;
   
 	private double alpha;
 	private int ticks;
@@ -37,14 +37,7 @@ import javafx.stage.Stage;
 	}
   
 	public void init() {
-		ticks = 0;
-		try {
-			String image_path = "file:Resources/Logo/GT.png";
-			logo = new Image(image_path);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		ticks=0;
 	}
   
 	public void update() {
@@ -67,7 +60,7 @@ import javafx.stage.Stage;
 		GraphicsContext g = game.getGraphicsContext2D();
 		g.setFill(Color.WHITE);
 		g.fillRect(0, 0, GamePanel.WIDTH,GamePanel.HEIGHT);
-		g.drawImage(logo,0,0);
+		g.drawImage(RenderableHolder.logo,0,0);
 		g.setFill((new Color(0, 0, 0, alpha)));
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		

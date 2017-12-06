@@ -13,6 +13,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import Manager.Keys;
+import SharedObject.RenderableHolder;
+
 import java.io.*;
 
 public class MenuState extends GameState {
@@ -30,8 +32,6 @@ public class MenuState extends GameState {
 	}
 
 	public void init() {
-		String image_path = "file:Resources/Menu/BG.jpg";
-		bg = new Image(image_path);
 		
 	}
 
@@ -42,7 +42,7 @@ public class MenuState extends GameState {
 	public void draw(Canvas g) {
 		//Draw Background and Options
 		GraphicsContext gc = g.getGraphicsContext2D();
-		gc.drawImage(bg, 0, 0);
+		gc.drawImage(RenderableHolder.bgs, 0, 0);
 		gc.setFill(Color.BLACK);
 		gc.setFont(TEXT_FONT);
 		gc.fillText(options[0], 300, 125);
@@ -73,6 +73,7 @@ public class MenuState extends GameState {
 		// TODO Auto-generated method stub
 		if(currentOption == 0) {
 			gsm.setState(GameStateManager.PLAY);
+			//System.out.println("play");
 		}
 		if(currentOption ==1) {
 			Platform.exit();
