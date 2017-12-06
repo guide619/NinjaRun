@@ -18,6 +18,11 @@ public class RenderableHolder {
 	public static Image logo;
 	public static Image bg1;
 	public static Image bg2;
+	public static Image spite;
+	public static Image spite1;
+	public static Image spite2;
+	public static Image spite3;
+	public static Image spite4;
 	public static AudioClip  explosionSound;
 	public static Image land1;
 	public static Image land2;
@@ -48,6 +53,7 @@ public class RenderableHolder {
 		return instance;
 	}
 
+	
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGscroll = "file:Resources/Menu/BG.jpg";
@@ -63,6 +69,11 @@ public class RenderableHolder {
 		String Land8 = "file:Resources/Map/test8.png";
 		String Land9 = "file:Resources/Map/test9.png";
 		String Land0 = "file:Resources/Map/test0.png";
+		String sprite = "file:Resources/spite/sprite.png";
+		String sprite1 = "file:Resources/spite/sprite1.png";
+		String sprite2 = "file:Resources/spite/sprite2.png";
+		String sprite3 = "file:Resources/spite/sprite3.png";
+		String sprite4 = "file:Resources/spite/sprite4.png";
 		logo = new Image(Logo);
 		bgs = new Image(BGscroll);
 		bg1 = new Image(BG1);
@@ -77,7 +88,11 @@ public class RenderableHolder {
 		land8 = new Image(Land8);
 		land9 = new Image(Land9);
 		land0 = new Image(Land0);
-		
+		spite = new Image(sprite);
+		spite1 = new Image(sprite1);
+		spite2 = new Image(sprite2);
+		spite3 = new Image(sprite3);
+		spite4 = new Image(sprite4);
 		
 		
 		

@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 
 public class Land {
 	public static final int LAND_POSY = 0;
-	final int speed = 100;
+	final int speed = 15;
 	
 	private static List<ImageLand> listLand;
 	private Image land1;
