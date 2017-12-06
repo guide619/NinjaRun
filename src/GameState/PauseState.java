@@ -64,6 +64,9 @@ public class PauseState extends GameState {
 			//JukeBox.play("collect");
 			//System.out.println(currentOption);
 			selectOption();
+		}if(Keys.isPressed(Keys.ESCAPE)) {
+			gsm.setPaused(false);
+			
 		}
 		
 	}

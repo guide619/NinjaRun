@@ -3,6 +3,7 @@ package GameState;
 import java.awt.Graphics2D;
 
 import Manager.GameStateManager;
+import Manager.Keys;
 import application.GamePanel;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -25,6 +26,7 @@ public class GameOverState extends GameState {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
+		this.addKeyEventHandler();
 
 	}
 
@@ -40,7 +42,7 @@ public class GameOverState extends GameState {
 	@Override
 	public void addKeyEventHandler() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }
