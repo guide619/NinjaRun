@@ -41,10 +41,10 @@ public class Clouds {
 		public void update(){
 			Iterator<ImageCloud> itr = listCloud.iterator();
 			ImageCloud firstElement = itr.next();
-			firstElement.posX -= ninja.getSpeedX();
+			firstElement.posX -= ninja.getSpeedX()/4;
 			while(itr.hasNext()) {
 				ImageCloud element = itr.next();
-				element.posX -= ninja.getSpeedX();
+				element.posX -= ninja.getSpeedX()/4;
 			}
 			if(firstElement.posX < -cloud1.getWidth()) {
 				listCloud.remove(firstElement);

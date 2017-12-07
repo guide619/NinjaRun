@@ -40,7 +40,12 @@ public class RenderableHolder {
 	public static Image Cloud3;
 	public static Image Cloud4;
 
+	public static AudioClip gameplay;
+	public static AudioClip collect;
+	public static AudioClip Select;
 	public static Image bgplay;
+
+	
 	
 
 	static {
@@ -82,6 +87,9 @@ public class RenderableHolder {
 		String cloud2 = "file:Resources/cloud/cloud2.png";
 		String cloud3 = "file:Resources/cloud/cloud3.png";
 		String cloud4 = "file:Resources/cloud/cloud4.png";
+		String gamePlay = "file:Resources/sound/gameplay.mp3";
+		String Collect = "file:Resources/sound/collect.wav";
+		String select = "file:Resources/sound/tilechange.wav";
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
 		bg1 = new Image(BG1);
@@ -106,7 +114,9 @@ public class RenderableHolder {
 		
 		
 		
-		//explosionSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
+		gameplay = new AudioClip(gamePlay);
+		collect = new AudioClip(Collect);
+		Select = new AudioClip(select);
 	}
 
 	public void add(IRenderable entity) {

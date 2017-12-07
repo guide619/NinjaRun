@@ -10,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import Manager.Keys;
@@ -53,11 +54,12 @@ public class MenuState extends GameState {
 	public void addKeyEventHandler() {
 		if(Keys.isPressed(Keys.DOWN) ) {
 			//JukeBox.play("menuoption");
+			RenderableHolder.collect.play();
 			currentOption++;
 			currentOption= currentOption%options.length;
 		}
 		if(Keys.isPressed(Keys.UP)) {
-			//JukeBox.play("menuoption");
+			RenderableHolder.collect.play();
 			currentOption--;
 			currentOption= (-1)*(currentOption%options.length);
 		}
@@ -71,10 +73,12 @@ public class MenuState extends GameState {
 	protected void selectOption() {
 		// TODO Auto-generated method stub
 		if(currentOption == 0) {
+			RenderableHolder.Select.play();
 			gsm.setState(GameStateManager.PLAY);
 			//System.out.println("play");
 		}
 		if(currentOption ==1) {
+			RenderableHolder.Select.play();
 			Platform.exit();
 		}
 		
