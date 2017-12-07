@@ -18,6 +18,7 @@ public class EnemiesManager {
 	
 	private int NumberOfEnemy;
 	private int wait;
+	private int wave;
 	
 	private List<Character> enemies;
 	private Ninja ninja;
@@ -37,7 +38,7 @@ public class EnemiesManager {
 		
 	}
 	
-	public void update(int wave) {
+	public void update() {
 		//System.out.println(wave);
 		for(Character e : enemies) {
 			e.update();
@@ -54,9 +55,8 @@ public class EnemiesManager {
 			count=0;
 			NumberOfEnemy=0;
 			if(wait == 10) {
-				wave++;
-				int j = wave+rand.nextInt(wave);
-				System.out.println(j);
+				increaseWave();
+				int j = wave+rand.nextInt(3);
 				for(int i =0 ;i<j;i++) {
 					enemies.add(createEnemy(i));
 					NumberOfEnemy++;
@@ -97,6 +97,14 @@ public class EnemiesManager {
 	public void reset() {
 		enemies.clear();
 		enemies.add(createEnemy(0));
+	}
+
+	public int getWave() {
+		return wave;
+	}
+
+	public void increaseWave() {
+		wave++;
 	}
 	
 }

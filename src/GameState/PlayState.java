@@ -30,8 +30,6 @@ public class PlayState extends GameState{
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	private Clouds clouds;
-	
-	public static int wave;
 
 	BackgroundItem bgi;
 
@@ -39,7 +37,6 @@ public class PlayState extends GameState{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
-		wave = 1;
 		ninja = new Ninja();
 		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
@@ -63,12 +60,14 @@ public class PlayState extends GameState{
 			clouds.update();
 			land.update();
 			ninja.update();
-			enemiesManager.update(wave);
+			enemiesManager.update();
 			bgi.update();
-		}if (wave >= 5) {
+		}if (enemiesManager.getWave() >= 5) {
 			ninja.setSpeedX(15);
+		}if(enemiesManager.isCollision()) {
+			ninja.takeDamage();;
 		}
-		if (enemiesManager.isCollision()) {
+		if (ninja.getHealth()<=0) {
 			System.out.println("BOOM");
 			gameState = GAME_OVER_STATE;
 			ninja.dead(true);
@@ -88,6 +87,7 @@ public class PlayState extends GameState{
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
 		gc.fillText("Score " + ninja.score, 850, 40);
+		gc.fillText("Health"+ninja.getHealth(),850 , 80);
 		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		clouds.draw(game);
 		bgi.draw(game);

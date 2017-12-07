@@ -20,9 +20,12 @@ public class RenderableHolder {
 	public static Image bg2;
 	public static Image spite;
 	public static Image spite1;
+	public static Image spite1_blink;
 	public static Image spite2;
 	public static Image spite3;
+	public static Image spite3_blink;
 	public static Image spite4;
+	public static Image spite5_blink;
 	public static AudioClip  explosionSound;
 	public static Image land1;
 	public static Image land2;
@@ -94,6 +97,9 @@ public class RenderableHolder {
 		String sprite2 = "file:Resources/spite/sprite2.png";
 		String sprite3 = "file:Resources/spite/sprite3.png";
 		String sprite4 = "file:Resources/spite/sprite4.png";
+		String sprite1_blink = "file:Resources/spite/sprite1_blink.png";
+		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
+		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		
@@ -127,6 +133,9 @@ public class RenderableHolder {
 		spite2 = new Image(sprite2);
 		spite3 = new Image(sprite3);
 		spite4 = new Image(sprite4);
+		spite1_blink = new Image(sprite1_blink);
+		spite3_blink = new Image(sprite3_blink);
+		spite5_blink = new Image(sprite5_blink);
 		Shuriken = new Image(shuriken);
 		
 		Cloud1 = new Image(cloud1);
