@@ -6,8 +6,6 @@ import Object.Clouds;
 import Object.EnemiesManager;
 import Object.backgroundItem;
 
-import java.awt.event.KeyEvent;
-
 import Manager.GameStateManager;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
@@ -25,24 +23,24 @@ public class PlayState extends GameState{
 	private static Land land;
 	int dx ;
 	Ninja ninja ;
+	private static final int START_GAME_STATE =0;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
 	private int gameState = START_GAME_STATE;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
-	int i = 0;
 	private Clouds clouds;
+
 	backgroundItem bgi;
-	private static final int START_GAME_STATE =0;
 
 
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
-		land = new Land(GamePanel.WIDTH);
 		ninja = new Ninja();
+		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
-		ninja.setSpeedX(4);
+		ninja.setSpeedX(10);
 		bgi = new backgroundItem(1000,ninja);
 		enemiesManager = new EnemiesManager(ninja);
 	}
@@ -63,11 +61,11 @@ public class PlayState extends GameState{
 		ninja.update();
 		enemiesManager.update();
 		bgi.update();
-		//if (enemiesManager.isCollision()) {
-			//mainCharacter.playDeadSound();
-		//	gameState = GAME_OVER_STATE;
-		//	ninja.dead(true);
-		//}
+		if (enemiesManager.isCollision()) {
+			System.out.println("BOOM");
+			gameState = GAME_OVER_STATE;
+			ninja.dead(true);
+		}
 		
 		
 	}
@@ -83,7 +81,7 @@ public class PlayState extends GameState{
 		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		switch (gameState) {
 		case START_GAME_STATE:
-			gc.drawImage(RenderableHolder.spite, 300, 220);
+			gc.drawImage(RenderableHolder.spite, 250, 220);
 			gc.drawImage(RenderableHolder.land1, 0, 300);
 			break;
 		case GAME_PLAYING_STATE:
@@ -98,15 +96,6 @@ public class PlayState extends GameState{
 		case GAME_OVER_STATE:
 			RenderableHolder.gameplay.stop();
 			gsm.setState(GameStateManager.GAMEOVER);
-			//clouds.draw(g);
-			//land.draw(g);
-			//enemiesManager.draw(this);
-			//g.setColor(Color.BLACK);
-			//if (gameState == GAME_OVER_STATE) {
-			//	g.drawImage(gameOverButtonImage, 200, 30, null);
-			//	g.drawImage(replayButtonImage, 283, 50, null);
-				
-			//}
 			break;
 		}
 		
@@ -124,6 +113,8 @@ public class PlayState extends GameState{
 		case START_GAME_STATE :
 			if (Keys.isPressed(Keys.SPACE)) {
 				gameState = GAME_PLAYING_STATE;
+				ninja.jump();
+				ninja.isStart = true;
 			}
 			break;
 		

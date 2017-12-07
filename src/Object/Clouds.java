@@ -87,11 +87,12 @@ public class Clouds {
 		public void update(){
 			Iterator<ImageCloud> itr = listCloud.iterator();
 			ImageCloud firstElement = itr.next();
-			firstElement.posX -= ninja.getSpeedX();
+			firstElement.posX -= ninja.getSpeedX()/8;
 			while(itr.hasNext()) {
 				ImageCloud element = itr.next();
-				element.posX -= ninja.getSpeedX();
+				element.posX -= ninja.getSpeedX()/8;
 			}
+
 			if(firstElement.posX < -cloud2.getWidth()) {
 				listCloud.remove(firstElement);
 				firstElement.posX = 1000;
@@ -99,13 +100,16 @@ public class Clouds {
 			}
 		
 		}
-		
-		
+
 		public void draw(Canvas game) {
 			GraphicsContext g = game.getGraphicsContext2D();
 			for(ImageCloud imgLand : listCloud) {
+
 				//System.out.println("11111111");
 				g.drawImage(cloud2, (int) imgLand.posX, imgLand.posY);
+				System.out.println("11111111");
+				g.drawImage(imgLand.image, (int) imgLand.posX, imgLand.posY);
+
 			}
 		}
 		

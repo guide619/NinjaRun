@@ -13,52 +13,57 @@ public class EnemiesManager {
 	
 	private Image enemy1;
 	private Image enemy2;
+	private Image enemy3;
 	private Random rand;
 	
-	private List<Enemy> enemies;
+	private List<Character> enemies;
 	private Ninja ninja;
 	
 	public EnemiesManager(Ninja	ninja) {
 		rand = new Random();
-		enemy1 = RenderableHolder.spite1;
-		enemy2 = RenderableHolder.spite;
+		enemy1 = RenderableHolder.Mark;
+		enemy2 = RenderableHolder.Guide;
+		enemy3 = RenderableHolder.Tan;
 		
-		enemies = new ArrayList<Enemy>();
+		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
 		enemies.add(createEnemy());
+		
 	}
 	
 	public void update() {
-		for(Enemy e : enemies) {
+		
+		for(Character e : enemies) {
 			e.update();
 		}
-		Enemy enemy = enemies.get(0);
-		//if(enemy.isOutOfScreen()) {
-		//	ninja.upScore();
-		//	enemies.clear();
-		//	enemies.add(createEnemy());
-		//}
+		Character enemy = enemies.get(0);
+		if(enemy.isOutOfScreen()) {
+			ninja.upScore();
+			enemies.clear();
+			enemies.add(createEnemy());
+		}
 	}
 	
 	public void draw(Canvas game) {
-		for(Enemy e : enemies) {
+		for(Character e : enemies) {
 			e.draw(game);
 		}
 	}
 	
-	private Enemy createEnemy() {
-		// if (enemyType = getRandom)
-		int type = rand.nextInt(2);
+	private Character createEnemy() {
+		int type = rand.nextInt(3);
 		if(type == 0) {
-			return new Enemy(ninja, 800, enemy1.getWidth() - 10, enemy1.getHeight() - 10, enemy1);
-		} else {
-			return new Enemy(ninja, 800, enemy2.getWidth() - 10, enemy2.getHeight() - 10, enemy2);
+			return new obstruct(ninja, 1100, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
+		} else if (type ==1) {
+			return new obstruct(ninja, 1100, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
+		}else {
+			return new obstruct(ninja, 1100, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
 		}
 	}
 	
 	public boolean isCollision() {
-		for(Enemy e : enemies) {
-			if (ninja.getBound().intersects(e.getBound())) {
+		for(Character e : enemies) {
+			if (ninja.getBound().intersects(e.getBound().getBoundsInLocal())) {
 				return true;
 			}
 		}

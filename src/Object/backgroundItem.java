@@ -43,10 +43,10 @@ public class backgroundItem {
 	public  void update(){
 		Iterator<Imageitem> itr = listitem.iterator();
 		Imageitem firstElement = itr.next();
-		firstElement.posX -= 2*ninja.getSpeedX();
+		firstElement.posX -= ninja.getSpeedX()/4;
 		while(itr.hasNext()) {
 			Imageitem element = itr.next();
-			element.posX -= 2*ninja.getSpeedX();
+			element.posX -= ninja.getSpeedX()/4;
 		}
 		if(firstElement.posX < -firstElement.image.getWidth()) {
 			listitem.remove(firstElement);
