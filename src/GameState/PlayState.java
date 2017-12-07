@@ -53,10 +53,12 @@ public class PlayState extends GameState{
 	public void update() {
 		// TODO Auto-generated method stub
 		addKeyEventHandler();
-		clouds.update();
-		land.update();
-		ninja.update();
-		enemiesManager.update();
+		if(gameState== this.GAME_PLAYING_STATE) {
+			clouds.update();
+			land.update();
+			ninja.update();
+			enemiesManager.update();
+		}
 		if (enemiesManager.isCollision()) {
 			System.out.println("BOOM");
 			//mainCharacter.playDeadSound();
@@ -76,10 +78,11 @@ public class PlayState extends GameState{
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
 		gc.fillText("Score " + ninja.score, 850, 40);
 		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
+		land.draw(game);
+		clouds.draw(game);
+		ninja.draw(game);
 		switch (gameState) {
 		case START_GAME_STATE:
-			gc.drawImage(RenderableHolder.spite, 250, 220);
-			gc.drawImage(RenderableHolder.land1, 0, 300);
 			break;
 		case GAME_PLAYING_STATE:
 			clouds.draw(game);
