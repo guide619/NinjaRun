@@ -33,11 +33,11 @@ public class EnemiesManager {
 			e.update();
 		}
 		Enemy enemy = enemies.get(0);
-		if(enemy.isOutOfScreen()) {
-			ninja.upScore();
-			enemies.clear();
-			enemies.add(createEnemy());
-		}
+		//if(enemy.isOutOfScreen()) {
+		//	ninja.upScore();
+		//	enemies.clear();
+		//	enemies.add(createEnemy());
+		//}
 	}
 	
 	public void draw(Canvas game) {

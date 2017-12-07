@@ -35,6 +35,10 @@ public class RenderableHolder {
 	public static Image land9;
 	public static Image land0;
 	public static Image Shuriken;
+	public static Image Cloud1;
+	public static Image Cloud2;
+	public static Image Cloud3;
+	public static Image Cloud4;
 
 	public static Image bgplay;
 	
@@ -73,6 +77,11 @@ public class RenderableHolder {
 		String sprite4 = "file:Resources/spite/sprite4.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
+		
+		String cloud1 = "file:Resources/cloud/cloud1.png";
+		String cloud2 = "file:Resources/cloud/cloud2.png";
+		String cloud3 = "file:Resources/cloud/cloud3.png";
+		String cloud4 = "file:Resources/cloud/cloud4.png";
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
 		bg1 = new Image(BG1);
@@ -89,6 +98,11 @@ public class RenderableHolder {
 		spite3 = new Image(sprite3);
 		spite4 = new Image(sprite4);
 		Shuriken = new Image(shuriken);
+		
+		Cloud1 = new Image(cloud1);
+		Cloud2 = new Image(cloud2);
+		Cloud3 = new Image(cloud3);
+		Cloud4 = new Image(cloud4);
 		
 		
 		

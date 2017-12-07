@@ -2,6 +2,7 @@ package GameState;
 
 
 import Object.Ninja;
+import Object.Clouds;
 import Object.EnemiesManager;
 
 import java.awt.event.KeyEvent;
@@ -29,6 +30,7 @@ public class PlayState extends GameState{
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	int i = 0;
+	private Clouds clouds;
 
 
 	public PlayState(GameStateManager gsm) {
@@ -36,6 +38,7 @@ public class PlayState extends GameState{
 		// TODO Auto-generated constructor stub
 		land = new Land(GamePanel.WIDTH);
 		ninja = new Ninja();
+		clouds = new Clouds(1000,ninja);
 		ninja.setSpeedX(4);
 		enemiesManager = new EnemiesManager(ninja);
 		
@@ -50,6 +53,7 @@ public class PlayState extends GameState{
 	public void update() {
 		// TODO Auto-generated method stub
 		addKeyEventHandler();
+		clouds.update();
 		land.update();
 		ninja.update();
 		enemiesManager.update();
@@ -70,18 +74,20 @@ public class PlayState extends GameState{
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
 		gc.fillText("Scroe " + ninja.score, 850, 40);
-		land.draw(game);
+		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		switch (gameState) {
 		case GAME_PLAYING_STATE:
-			ninja.draw(game);
+			clouds.draw(game);
+			land.draw(game);
 			enemiesManager.draw(game);
+			ninja.draw(game);
+			
 			break;
 		case GAME_OVER_STATE:
+			gsm.setState(GameStateManager.GAMEOVER);
 			//clouds.draw(g);
 			//land.draw(g);
 			//enemiesManager.draw(this);
-			ninja.draw(this);
-			
 			//g.setColor(Color.BLACK);
 			//if (gameState == GAME_OVER_STATE) {
 			//	g.drawImage(gameOverButtonImage, 200, 30, null);

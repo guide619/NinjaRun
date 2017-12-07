@@ -76,30 +76,12 @@ public class Land {
 	}
 	
 	private void setImageLand(ImageLand imgLand) {
-		int typeLand = getTypeOfLand();
-		//System.out.println(typeLand);
-		switch(typeLand) {
-		case 0:
 			imgLand.image = land1;
 			imgLand.type = 1;
-			break;
-		case 1:
-			imgLand.image = land2;
-			imgLand.type = 2;
-			break;
-		case 2:
-			imgLand.image = land3;
-			imgLand.type = 3;
-			break;
 		
-		}
+		
 	}
-	private int getTypeOfLand() {
-		//Random rand = new Random();
-		//int type = rand.nextInt(1);
-		type = (type+1)%2;
-		return 0;
-	}
+
 	private static void printList() {
 		System.out.print("[");
 		for (ImageLand l : listLand) {
