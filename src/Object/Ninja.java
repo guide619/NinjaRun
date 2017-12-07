@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 
 public class Ninja {
 
-	public static final int LAND_POSY = 250;
+	public static final int LAND_POSY = 220;
 	public static final float GRAVITY = 0.4f;
 
 	private static final int NORMAL_RUN = 0;
@@ -36,7 +36,7 @@ public class Ninja {
 	private Image deathImage;
 	
 	 public Ninja() {
-		posX = 50;
+		posX = 300;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		normalRunAnim = new Animation(90);

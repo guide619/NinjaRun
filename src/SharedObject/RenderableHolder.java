@@ -34,6 +34,13 @@ public class RenderableHolder {
 	public static Image land8;
 	public static Image land9;
 	public static Image land0;
+	public static Image Shuriken;
+	public static Image Cloud1;
+	public static Image Cloud2;
+	public static Image Cloud3;
+	public static Image Cloud4;
+
+	public static Image bgplay;
 	
 
 	static {
@@ -57,42 +64,45 @@ public class RenderableHolder {
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGscroll = "file:Resources/Menu/BG.jpg";
-		String BG1 = "file:Resources/bg/bg1.jpg";
+		String BG1 = "file:Resources/bg/bg1.png";
 		String BG2 = "file:Resources/bg/bg2.jpg";
-		String Land1 = "file:Resources/Map/test1.png";
-		String Land2 = "file:Resources/Map/test2.png";
-		String Land3 = "file:Resources/Map/test3.png";
-		String Land4 = "file:Resources/Map/test4.png";
-		String Land5 = "file:Resources/Map/test5.png";
-		String Land6 = "file:Resources/Map/test6.png";
-		String Land7 = "file:Resources/Map/test7.png";
-		String Land8 = "file:Resources/Map/test8.png";
-		String Land9 = "file:Resources/Map/test9.png";
-		String Land0 = "file:Resources/Map/test0.png";
+		String BG3 = "file:Resources/Map/bgplay.jpg";
+		
+		
+		
 		String sprite = "file:Resources/spite/sprite.png";
 		String sprite1 = "file:Resources/spite/sprite1.png";
 		String sprite2 = "file:Resources/spite/sprite2.png";
 		String sprite3 = "file:Resources/spite/sprite3.png";
 		String sprite4 = "file:Resources/spite/sprite4.png";
+		
+		String shuriken = "file:Resources/spite/shuriken.png";
+		
+		String cloud1 = "file:Resources/cloud/cloud1.png";
+		String cloud2 = "file:Resources/cloud/cloud2.png";
+		String cloud3 = "file:Resources/cloud/cloud3.png";
+		String cloud4 = "file:Resources/cloud/cloud4.png";
 		logo = new Image(Logo);
-		bgs = new Image(BGscroll);
+		bgs = new Image(BG2);
 		bg1 = new Image(BG1);
 		bg2 = new Image(BG2);
-		land1 = new Image(Land1);
-		land2 = new Image(Land2);
-		land3 = new Image(Land3);
-		land4 = new Image(Land4);
-		land5 = new Image(Land5);
-		land6 = new Image(Land6);
-		land7 = new Image(Land7);
-		land8 = new Image(Land8);
-		land9 = new Image(Land9);
-		land0 = new Image(Land0);
+		land1 = new Image(BG1);
+		land2 = new Image(BG2);
+		bgplay = new Image(BG3);
+		
+		
+		
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);
 		spite2 = new Image(sprite2);
 		spite3 = new Image(sprite3);
 		spite4 = new Image(sprite4);
+		Shuriken = new Image(shuriken);
+		
+		Cloud1 = new Image(cloud1);
+		Cloud2 = new Image(cloud2);
+		Cloud3 = new Image(cloud3);
+		Cloud4 = new Image(cloud4);
 		
 		
 		

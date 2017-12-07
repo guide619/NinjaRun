@@ -2,6 +2,8 @@ package GameState;
 
 
 import Object.Ninja;
+import Object.Clouds;
+import Object.EnemiesManager;
 
 import java.awt.event.KeyEvent;
 
@@ -14,6 +16,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import Object.Land;
 
 public class PlayState extends GameState{
@@ -24,8 +27,10 @@ public class PlayState extends GameState{
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
 	private int gameState = GAME_PLAYING_STATE;
-
+	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
+	private EnemiesManager enemiesManager;
 	int i = 0;
+	private Clouds clouds;
 
 
 	public PlayState(GameStateManager gsm) {
@@ -33,7 +38,9 @@ public class PlayState extends GameState{
 		// TODO Auto-generated constructor stub
 		land = new Land(GamePanel.WIDTH);
 		ninja = new Ninja();
+		clouds = new Clouds(1000,ninja);
 		ninja.setSpeedX(4);
+		enemiesManager = new EnemiesManager(ninja);
 		
 	}
 
@@ -46,8 +53,15 @@ public class PlayState extends GameState{
 	public void update() {
 		// TODO Auto-generated method stub
 		addKeyEventHandler();
+		clouds.update();
 		land.update();
 		ninja.update();
+		enemiesManager.update();
+		//if (enemiesManager.isCollision()) {
+			//mainCharacter.playDeadSound();
+		//	gameState = GAME_OVER_STATE;
+		//	ninja.dead(true);
+		//}
 		
 		
 	}
@@ -55,20 +69,25 @@ public class PlayState extends GameState{
 	@Override
 	public void draw(Canvas game) {
 		// TODO Auto-generated method stub
-		land.draw(game);
 		GraphicsContext gc = game.getGraphicsContext2D();
+		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
-		gc.fillText("HI " + ninja.score, 800, 200);
+		gc.drawImage(RenderableHolder.bgplay, 0, 0);
+		gc.fillText("Scroe " + ninja.score, 850, 40);
+		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		switch (gameState) {
 		case GAME_PLAYING_STATE:
+			clouds.draw(game);
+			land.draw(game);
+			enemiesManager.draw(game);
 			ninja.draw(game);
+			
 			break;
 		case GAME_OVER_STATE:
+			gsm.setState(GameStateManager.GAMEOVER);
 			//clouds.draw(g);
 			//land.draw(g);
-			//enemiesManager.draw(g);
-			ninja.draw(this);
-			
+			//enemiesManager.draw(this);
 			//g.setColor(Color.BLACK);
 			//if (gameState == GAME_OVER_STATE) {
 			//	g.drawImage(gameOverButtonImage, 200, 30, null);
@@ -80,7 +99,7 @@ public class PlayState extends GameState{
 		
 	}
 	private void resetGame() {
-		//enemiesManager.reset();
+		enemiesManager.reset();
 		ninja.dead(false);
 		ninja.reset();
 	}
