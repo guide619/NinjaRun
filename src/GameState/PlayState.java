@@ -2,6 +2,7 @@ package GameState;
 
 
 import Object.Ninja;
+import Object.Special;
 import Object.Clouds;
 import Object.EnemiesManager;
 import Object.BackgroundItem;
@@ -43,11 +44,13 @@ public class PlayState extends GameState{
 		ninja.setSpeedX(10);
 		bgi = new BackgroundItem(1000,ninja);
 		enemiesManager = new EnemiesManager(ninja);
+		
 	}
 
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
+		RenderableHolder.gameplay.play();
 		
 		
 	}
@@ -65,7 +68,11 @@ public class PlayState extends GameState{
 		}if (enemiesManager.getWave() >= 5) {
 			ninja.setSpeedX(15);
 		}if(enemiesManager.isCollision()) {
-			ninja.takeDamage();;
+			ninja.takeDamage();
+		}
+		if (enemiesManager.isSpCollision()) {
+			System.out.println("BOOMmmmmmmmmmm");
+			ninja.increaseHealth();
 		}
 		if (ninja.getHealth()<=0) {
 			System.out.println("BOOM");
@@ -94,22 +101,6 @@ public class PlayState extends GameState{
 		land.draw(game);
 		enemiesManager.draw(game);
 		ninja.draw(game);
-		//switch (gameState) {
-		/*case START_GAME_STATE:
-			break;
-		case GAME_PLAYING_STATE:
-			clouds.draw(game);
-			bgi.draw(game);
-			land.draw(game);
-			enemiesManager.draw(game);
-			ninja.draw(game);
-			break;
-		case GAME_OVER_STATE:
-			RenderableHolder.gameplay.stop();
-			gsm.setState(GameStateManager.GAMEOVER,ninja.score);
-			break;*/
-		//}
-		
 	}
 	private void resetGame() {
 		enemiesManager.reset();

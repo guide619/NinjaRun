@@ -62,6 +62,8 @@ public class RenderableHolder {
 	public static Image Mark;
 	public static Image Guide;
 	public static Image Tan;
+	public static Image pichu;
+	public static Image fire;
 
 	
 
@@ -100,6 +102,7 @@ public class RenderableHolder {
 		String sprite1_blink = "file:Resources/spite/sprite1_blink.png";
 		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
 		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
+		String Pichu = "file:Resources/spite/pichu.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		
@@ -117,6 +120,7 @@ public class RenderableHolder {
 		String mark = "file:Resources/spite/Mark.png";
 		String guide = "file:Resources/spite/Guide.png";
 		String tan = "file:Resources/spite/Tan.png";
+		String onfire = "file:Resources/spite/fire.png";
 
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
@@ -125,6 +129,7 @@ public class RenderableHolder {
 		land1 = new Image(BG1);
 		land2 = new Image(BG2);
 		bgplay = new Image(BG3);
+		fire = new Image(onfire);
 		
 		
 		
@@ -136,6 +141,9 @@ public class RenderableHolder {
 		spite1_blink = new Image(sprite1_blink);
 		spite3_blink = new Image(sprite3_blink);
 		spite5_blink = new Image(sprite5_blink);
+
+
+		pichu = new Image(Pichu);
 		Shuriken = new Image(shuriken);
 		
 		Cloud1 = new Image(cloud1);
