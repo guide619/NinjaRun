@@ -7,6 +7,7 @@ import GameState.IntroState;
 import GameState.MenuState;
 import GameState.PauseState;
 import GameState.PlayState;
+import Object.Ninja;
 import SharedObject.RenderableHolder;
 import application.Main;
 import javafx.scene.canvas.Canvas;
@@ -56,11 +57,17 @@ import javafx.stage.Stage;
 			else if(i == PLAY) {
 				gameStates[i] = new PlayState(this);
 				gameStates[i].init();
-			}
-			else if(i == GAMEOVER) {
+			}else if (i== GAMEOVER) {
 				gameStates[i] = new GameOverState(this);
 				gameStates[i].init();
 			}
+		}
+		public void setState(int i,int score) {
+			previousState = currentState;
+			unloadState(previousState);
+			currentState = i;
+			gameStates[i] = new GameOverState(this,score);
+			gameStates[i].init();
 		}
 		
 		public void unloadState(int i) {

@@ -29,6 +29,7 @@ public class Special extends Character  {
 	public void update() {
 		// TODO Auto-generated method stub
 		posX -= ninja.getSpeedX()*2;
+		isOutOfScreen();
 	}
 
 	public void draw(Canvas game) {
@@ -52,6 +53,7 @@ public class Special extends Character  {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 				if(posX < -image.getWidth()) {
+					reset();
 					return true;
 				}
 				return false;

@@ -37,7 +37,7 @@ public class Bird extends Character {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		posX -= ninja.getSpeedX();
+		posX -= ninja.getSpeedX()+5;
 		
 	}
 

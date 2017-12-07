@@ -60,6 +60,7 @@ public class RenderableHolder {
 	public static Image Guide;
 	public static Image Tan;
 	public static Image pichu;
+	public static Image fire;
 
 	
 
@@ -113,6 +114,7 @@ public class RenderableHolder {
 		String mark = "file:Resources/spite/Mark.png";
 		String guide = "file:Resources/spite/Guide.png";
 		String tan = "file:Resources/spite/Tan.png";
+		String onfire = "file:Resources/spite/fire.png";
 
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
@@ -121,6 +123,7 @@ public class RenderableHolder {
 		land1 = new Image(BG1);
 		land2 = new Image(BG2);
 		bgplay = new Image(BG3);
+		fire = new Image(onfire);
 		
 		
 		

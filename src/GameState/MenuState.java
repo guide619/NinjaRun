@@ -63,7 +63,7 @@ public class MenuState extends GameState {
 			currentOption--;
 			currentOption= (-1)*(currentOption%options.length);
 		}
-		if(Keys.isPressed(Keys.ENTER)) {
+		if(Keys.isPressed(Keys.ENTER) || Keys.isPressed(Keys.SPACE)) {
 			//JukeBox.play("collect");
 			selectOption();
 		}

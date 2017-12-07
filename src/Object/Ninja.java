@@ -25,6 +25,7 @@ public class Ninja {
 	private float speedX;
 	private float speedY;
 	private Rectangle rectBound;
+	private int jumpcount;
 	
 	private Animation normalRunAnim;
 	private Image jumping;
@@ -47,7 +48,7 @@ public class Ninja {
 		normalRunAnim.addFrame(RenderableHolder.spite4);
 		jumping = RenderableHolder.spite;
 		isStart = false;
-			
+		jumpcount = 0;
 			
 	 }
 	 public float getSpeedX() {
@@ -78,6 +79,7 @@ public class Ninja {
 		}
 		if(posY >= LAND_POSY) {
 			posY = LAND_POSY;
+			jumpcount = 0;
 			if(state != DOWN_RUN) {
 				state = NORMAL_RUN;
 			}
@@ -87,15 +89,21 @@ public class Ninja {
 		}
 	}
 	 public void jump() {
-			if(posY >= LAND_POSY) {
+			if(jumpcount <= 1) {
 				/*if(jumpSound != null) {
 					jumpSound.play();
 				}*/
+				jumpcount++;
 				speedY = -25f;
 				posY += speedY;
 				state = JUMPING;
 			}
 		}
+	 public void down() {
+		 if (speedY >= 0) {
+			 posY+=speedY+10;
+		 }
+	 }
 	 
 	 public Rectangle getBound() {
 			rectBound = new Rectangle();
