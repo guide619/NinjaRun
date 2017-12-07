@@ -2,6 +2,7 @@ package GameState;
 
 
 import Object.Ninja;
+import Object.Special;
 import Object.Clouds;
 import Object.EnemiesManager;
 import Object.BackgroundItem;
@@ -30,7 +31,7 @@ public class PlayState extends GameState{
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	private Clouds clouds;
-
+	Special sp;
 	BackgroundItem bgi;
 
 
@@ -43,6 +44,7 @@ public class PlayState extends GameState{
 		ninja.setSpeedX(10);
 		bgi = new BackgroundItem(1000,ninja);
 		enemiesManager = new EnemiesManager(ninja);
+		
 	}
 
 	@Override
@@ -62,6 +64,9 @@ public class PlayState extends GameState{
 			ninja.update();
 			enemiesManager.update();
 			bgi.update();
+		}
+		if (enemiesManager.isSpCollision()) {
+			System.out.println("BOOMmmmmmmmmmm");
 		}
 		if (enemiesManager.isCollision()) {
 			System.out.println("BOOM");
@@ -84,7 +89,6 @@ public class PlayState extends GameState{
 		land.draw(game);
 		clouds.draw(game);
 		ninja.draw(game);
-		bgi.draw(game);
 		switch (gameState) {
 		case START_GAME_STATE:
 			break;

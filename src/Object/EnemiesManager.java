@@ -3,6 +3,8 @@ package Object;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import Object.Bird;
+import Object.Enemy;
 
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
@@ -14,6 +16,7 @@ public class EnemiesManager {
 	private Image enemy1;
 	private Image enemy2;
 	private Image enemy3;
+	private Image special;
 	private Random rand;
 	
 	private int wave;
@@ -23,12 +26,14 @@ public class EnemiesManager {
 	private List<Character> enemies;
 	private Ninja ninja;
 	private int count;
+	private Special Special;
 	
 	public EnemiesManager(Ninja	ninja) {
 		rand = new Random();
 		enemy1 = RenderableHolder.Mark;
 		enemy2 = RenderableHolder.Guide;
 		enemy3 = RenderableHolder.Tan;
+		special = RenderableHolder.pichu;
 		int count = 0;
 		wave = 1;
 		enemies = new ArrayList<Character>();
@@ -36,13 +41,16 @@ public class EnemiesManager {
 		enemies.add(createEnemy());
 		NumberOfEnemy = 1;
 		wait=0;
+		Special = new Special(ninja,1000,(int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, special);
 		
 	}
 	
 	public void update() {
+		Special.update();;
 		for(Character e : enemies) {
 			e.update();
 		}
+		
 		if (count< this.NumberOfEnemy) {
 			Character enemy = enemies.get(0);
 			if(enemy.isOutOfScreen()) {
@@ -66,6 +74,7 @@ public class EnemiesManager {
 	}
 	
 	public void draw(Canvas game) {
+		Special.draw(game);
 		for(Character e : enemies) {
 			e.draw(game);
 		}
@@ -88,6 +97,16 @@ public class EnemiesManager {
 			if (ninja.getBound().intersects(e.getBound().getBoundsInLocal())) {
 				return true;
 			}
+		}
+		return false;
+	}
+	public boolean isSpCollision() {
+			if (ninja.getBound().intersects(Special.getBound().getBoundsInLocal())) {
+				System.out.println("YEAHHHHH");
+				Special.reset();
+				reset();
+				
+				return true;
 		}
 		return false;
 	}

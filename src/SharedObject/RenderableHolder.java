@@ -59,6 +59,7 @@ public class RenderableHolder {
 	public static Image Mark;
 	public static Image Guide;
 	public static Image Tan;
+	public static Image pichu;
 
 	
 
@@ -94,6 +95,7 @@ public class RenderableHolder {
 		String sprite2 = "file:Resources/spite/sprite2.png";
 		String sprite3 = "file:Resources/spite/sprite3.png";
 		String sprite4 = "file:Resources/spite/sprite4.png";
+		String sprite5 = "file:Resources/spite/pichu.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		
@@ -127,6 +129,7 @@ public class RenderableHolder {
 		spite2 = new Image(sprite2);
 		spite3 = new Image(sprite3);
 		spite4 = new Image(sprite4);
+		pichu = new Image(sprite5);
 		Shuriken = new Image(shuriken);
 		
 		Cloud1 = new Image(cloud1);
