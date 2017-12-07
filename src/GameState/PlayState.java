@@ -113,7 +113,7 @@ public class PlayState extends GameState{
 		// TODO Auto-generated method stub
 		switch (gameState) {
 		case START_GAME_STATE :
-			if (Keys.isPressed(Keys.SPACE)) {
+			if (Keys.isPressed(Keys.SPACE)||Keys.isPressed(Keys.UP)) {
 				gameState = GAME_PLAYING_STATE;
 				ninja.jump();
 				ninja.isStart = true;

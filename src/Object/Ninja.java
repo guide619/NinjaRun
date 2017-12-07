@@ -15,6 +15,7 @@ public class Ninja {
 	public static final float GRAVITY = 0.98f;
 	public static final int MAX_HEALTH = 3;
 	public static final int HIT_COOL_DOWN = 20;
+	public static final int WARP_COOL_DOWN = 10;
 	public static final int WARP_TIME = 25;
 
 	private static final int NORMAL_RUN = 0;
@@ -27,6 +28,7 @@ public class Ninja {
 	
 	public boolean isStart;
 	public int coolDown;
+	public int warpCoolDown;
 	public int timewarp;
 	private float posY;
 	private float posX;
@@ -50,6 +52,7 @@ public class Ninja {
 	private Image deathImage;
 	
 	 public Ninja() {
+		 
 		posX = 250;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
@@ -80,9 +83,9 @@ public class Ninja {
 		warpAnim.addFrame(RenderableHolder.Smoke4);
 		warpAnim.addFrame(RenderableHolder.Smoke4);
 		warpAnim.addFrame(RenderableHolder.Smoke4);
-		warpAnim.addFrame(RenderableHolder.Smoke3);
-		warpAnim.addFrame(RenderableHolder.Smoke2);
 		warpAnim.addFrame(RenderableHolder.Smoke1);
+		warpAnim.addFrame(RenderableHolder.Smoke2);
+		warpAnim.addFrame(RenderableHolder.Smoke3);
 		warpAnim.addFrame(RenderableHolder.spite1);
 		
 		
@@ -92,6 +95,7 @@ public class Ninja {
 		health = this.MAX_HEALTH;
 		timewarp = this.WARP_TIME;
 		coolDown = 0;
+		warpCoolDown = 0;
 			
 	 }
 	 public float getSpeedX() {
@@ -127,16 +131,12 @@ public class Ninja {
 				break;
 		}
 	 }
+	 
 	 public void update() {
-		normalRunAnim.updateFrame();
-		cooldownRunAnim.updateFrame();
-		cooldownJumpAnim.updateFrame();
-		if(state== DOWN_RUN) speedX=(float) (normalspeedX*1.5);
+		updateScore();
+		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
-		if(isStart) {
-			count++;
-			if(count>=10) {score++;count=0;}
-		}if(state == WARP) {
+		if(state == WARP) {
 			if(timewarp>0) {
 				timewarp--;
 				warpAnim.updateFrame();
@@ -147,20 +147,25 @@ public class Ninja {
 				warpAnim.resetFrame();
 			}
 		}
-		else if(posY >= LAND_POSY) {
-			posY = LAND_POSY;
-			jumpcount = 0;
-			if (coolDown>0) {
-				state = COOLDOWN_RUN;
-				coolDown--;
-			}else state = NORMAL_RUN;
-		} else {
-			speedY += 2*GRAVITY;
-			posY += speedY;
-			if (coolDown>0) {
-				state = COOLDOWN_JUMP;
-				coolDown--;
-			}else state = JUMPING;
+		else {
+			if(posY >= LAND_POSY) {
+				posY = LAND_POSY;
+				normalRunAnim.updateFrame();
+				cooldownRunAnim.updateFrame();
+				jumpcount = 0;
+				if (coolDown>0) {
+					setState(this.COOLDOWN_RUN);
+					coolDown--;
+				}else setState(this.NORMAL_RUN);
+			} else {
+				speedY += 1.8*GRAVITY;
+				posY += speedY;
+				cooldownJumpAnim.updateFrame();
+				if (coolDown>0) {
+					setState(this.COOLDOWN_JUMP);
+					coolDown--;
+				}else this.setState(this.JUMPING);}
+			warpCoolDown--;
 		}
 	}
 	 public void jump() {
@@ -180,10 +185,14 @@ public class Ninja {
 				 posY+=speedY+10;
 		 
 			 }
-		 }else state = DOWN_RUN;
+		 }else if(state == this.NORMAL_RUN)
+			 setState(DOWN_RUN);
 	 }
 	 public void warp() {
-		 if (posY < LAND_POSY)this.setState(WARP);
+		 if (posY < LAND_POSY && warpCoolDown<=0) {
+			 this.setState(WARP);
+			 warpCoolDown = this.WARP_COOL_DOWN;
+		 }
 	 }
 	 
 	 public Rectangle getBound() {
@@ -212,6 +221,14 @@ public class Ninja {
 		}
 		public void playDeadSound() {
 			//deadSound.play();
+		}
+		public void updateScore() {
+			if(isStart) {
+				count++;
+				if(count>=10) {
+					score++;count=0;
+				}
+			}
 		}
 		
 		public void upScore() {
