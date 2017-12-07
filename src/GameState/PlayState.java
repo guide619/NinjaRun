@@ -26,11 +26,12 @@ public class PlayState extends GameState{
 	Ninja ninja ;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
-	private int gameState = GAME_PLAYING_STATE;
+	private int gameState = START_GAME_STATE;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	int i = 0;
 	private Clouds clouds;
+	private static final int START_GAME_STATE =0;
 
 
 	public PlayState(GameStateManager gsm) {
@@ -41,12 +42,13 @@ public class PlayState extends GameState{
 		clouds = new Clouds(1000,ninja);
 		ninja.setSpeedX(4);
 		enemiesManager = new EnemiesManager(ninja);
-		
 	}
 
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
+		
+		
 	}
 
 	@Override
@@ -76,6 +78,10 @@ public class PlayState extends GameState{
 		gc.fillText("Score " + ninja.score, 850, 40);
 		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		switch (gameState) {
+		case START_GAME_STATE:
+			gc.drawImage(RenderableHolder.spite, 300, 220);
+			gc.drawImage(RenderableHolder.land1, 0, 300);
+			break;
 		case GAME_PLAYING_STATE:
 			clouds.draw(game);
 			land.draw(game);
@@ -84,6 +90,7 @@ public class PlayState extends GameState{
 			
 			break;
 		case GAME_OVER_STATE:
+			RenderableHolder.gameplay.stop();
 			gsm.setState(GameStateManager.GAMEOVER);
 			//clouds.draw(g);
 			//land.draw(g);
@@ -107,11 +114,21 @@ public class PlayState extends GameState{
 	@Override
 	public void addKeyEventHandler() {
 		// TODO Auto-generated method stub
+		switch (gameState) {
+		case START_GAME_STATE :
+			if (Keys.isPressed(Keys.SPACE)) {
+				gameState = GAME_PLAYING_STATE;
+			}
+			break;
+		
+		case GAME_PLAYING_STATE:
 		if(Keys.isPressed(Keys.ESCAPE)) {
 			gsm.setPaused(true);
+			RenderableHolder.gameplay.stop();
 		}
 		if (Keys.isPressed(Keys.SPACE)) {
 			ninja.jump();
+		}break;
 		}
 		
 	}

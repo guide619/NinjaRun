@@ -7,6 +7,7 @@ import GameState.IntroState;
 import GameState.MenuState;
 import GameState.PauseState;
 import GameState.PlayState;
+import SharedObject.RenderableHolder;
 import application.Main;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
