@@ -15,50 +15,50 @@ public class EnemiesManager {
 	private Image enemy2;
 	private Random rand;
 	
-	private List<Enemy> enemies;
+	private List<Character> enemies;
 	private Ninja ninja;
 	
 	public EnemiesManager(Ninja	ninja) {
 		rand = new Random();
-		enemy1 = RenderableHolder.spite1;
-		enemy2 = RenderableHolder.spite;
+		enemy1 = RenderableHolder.Mark;
+		enemy2 = RenderableHolder.Pichu;
 		
-		enemies = new ArrayList<Enemy>();
+		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
 		enemies.add(createEnemy());
 	}
 	
 	public void update() {
-		for(Enemy e : enemies) {
+		for(Character e : enemies) {
 			e.update();
 		}
-		Enemy enemy = enemies.get(0);
-		//if(enemy.isOutOfScreen()) {
-		//	ninja.upScore();
-		//	enemies.clear();
-		//	enemies.add(createEnemy());
-		//}
+		Character enemy = enemies.get(0);
+		if(enemy.isOutOfScreen()) {
+			ninja.upScore();
+			enemies.clear();
+			enemies.add(createEnemy());
+		}
 	}
 	
 	public void draw(Canvas game) {
-		for(Enemy e : enemies) {
+		for(Character e : enemies) {
 			e.draw(game);
 		}
 	}
 	
-	private Enemy createEnemy() {
+	private Character createEnemy() {
 		// if (enemyType = getRandom)
 		int type = rand.nextInt(2);
-		if(type == 0) {
-			return new Enemy(ninja, 800, enemy1.getWidth() - 10, enemy1.getHeight() - 10, enemy1);
-		} else {
-			return new Enemy(ninja, 800, enemy2.getWidth() - 10, enemy2.getHeight() - 10, enemy2);
-		}
+		//if(type == 0) {
+			return new obstruct(ninja, 1100, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
+		//} else {
+		//	return new obstruct(ninja, 1100, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
+		//}
 	}
 	
 	public boolean isCollision() {
-		for(Enemy e : enemies) {
-			if (ninja.getBound().intersects(e.getBound())) {
+		for(Character e : enemies) {
+			if (ninja.getBound().intersects(e.getBound().getBoundsInLocal())) {
 				return true;
 			}
 		}

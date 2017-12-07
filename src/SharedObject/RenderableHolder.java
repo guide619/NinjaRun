@@ -45,7 +45,8 @@ public class RenderableHolder {
 	public static AudioClip Select;
 	public static Image bgplay;
 
-	
+	public static Image Mark;
+	public static Image Pichu;
 	
 
 	static {
@@ -90,6 +91,8 @@ public class RenderableHolder {
 		String gamePlay = "file:Resources/sound/gameplay.mp3";
 		String Collect = "file:Resources/sound/collect.wav";
 		String select = "file:Resources/sound/tilechange.wav";
+		String mark = "file:Resources/spite/Mark.png";
+		String pichu = "file:Resources/spite/pichu.png";
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
 		bg1 = new Image(BG1);
@@ -112,7 +115,8 @@ public class RenderableHolder {
 		Cloud3 = new Image(cloud3);
 		Cloud4 = new Image(cloud4);
 		
-		
+		Mark = new Image(mark);
+		Pichu = new Image(pichu);
 		
 		gameplay = new AudioClip(gamePlay);
 		collect = new AudioClip(Collect);

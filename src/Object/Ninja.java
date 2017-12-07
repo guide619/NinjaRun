@@ -1,13 +1,12 @@
 package Object;
 
-import java.awt.Rectangle;
-
 import Manager.Animation;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 
 
 public class Ninja {
@@ -96,10 +95,10 @@ public class Ninja {
 	 
 	 public Rectangle getBound() {
 			rectBound = new Rectangle();
-			rectBound.x = (int) posX + 5;
-			rectBound.y = (int) posY;
-			rectBound.width = (int) (normalRunAnim.getFrame().getWidth() - 10);
-			rectBound.height = (int) normalRunAnim.getFrame().getHeight();
+			rectBound.setX((int) posX+5);
+			rectBound.setY((int) posY);
+			rectBound.setWidth((int) (normalRunAnim.getFrame().getWidth() - 10));
+			rectBound.setHeight((int) normalRunAnim.getFrame().getHeight());
 			return rectBound;
 		}
 	 
@@ -123,6 +122,10 @@ public class Ninja {
 			if(score % 100 == 0) {
 				//scoreUpSound.play();
 			}
+		}
+		public boolean isOutOfScreen() {
+			// TODO Auto-generated method stub
+			return false;
 		}
 		
 	 

@@ -5,8 +5,6 @@ import Object.Ninja;
 import Object.Clouds;
 import Object.EnemiesManager;
 
-import java.awt.event.KeyEvent;
-
 import Manager.GameStateManager;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
@@ -24,14 +22,14 @@ public class PlayState extends GameState{
 	private static Land land;
 	int dx ;
 	Ninja ninja ;
+	private static final int START_GAME_STATE =0;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
 	private int gameState = START_GAME_STATE;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
-	int i = 0;
 	private Clouds clouds;
-	private static final int START_GAME_STATE =0;
+	
 
 
 	public PlayState(GameStateManager gsm) {
@@ -59,11 +57,12 @@ public class PlayState extends GameState{
 		land.update();
 		ninja.update();
 		enemiesManager.update();
-		//if (enemiesManager.isCollision()) {
+		if (enemiesManager.isCollision()) {
+			System.out.println("BOOM");
 			//mainCharacter.playDeadSound();
-		//	gameState = GAME_OVER_STATE;
-		//	ninja.dead(true);
-		//}
+			gameState = GAME_OVER_STATE;
+			ninja.dead(true);
+		}
 		
 		
 	}
@@ -92,15 +91,6 @@ public class PlayState extends GameState{
 		case GAME_OVER_STATE:
 			RenderableHolder.gameplay.stop();
 			gsm.setState(GameStateManager.GAMEOVER);
-			//clouds.draw(g);
-			//land.draw(g);
-			//enemiesManager.draw(this);
-			//g.setColor(Color.BLACK);
-			//if (gameState == GAME_OVER_STATE) {
-			//	g.drawImage(gameOverButtonImage, 200, 30, null);
-			//	g.drawImage(replayButtonImage, 283, 50, null);
-				
-			//}
 			break;
 		}
 		
@@ -118,6 +108,7 @@ public class PlayState extends GameState{
 		case START_GAME_STATE :
 			if (Keys.isPressed(Keys.SPACE)) {
 				gameState = GAME_PLAYING_STATE;
+				ninja.jump();
 			}
 			break;
 		
