@@ -45,6 +45,14 @@ public class RenderableHolder {
 	public static AudioClip Select;
 	public static Image bgplay;
 
+	public static Image item1;
+
+	public static Image item2;
+
+	public static Image item3;
+
+	public static Image item4;
+
 	
 	
 
@@ -90,6 +98,8 @@ public class RenderableHolder {
 		String gamePlay = "file:Resources/sound/gameplay.mp3";
 		String Collect = "file:Resources/sound/collect.wav";
 		String select = "file:Resources/sound/tilechange.wav";
+		String temple = "file:Resources/items/temple.png";
+		String house = "file:Resources/items/house.png";
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
 		bg1 = new Image(BG1);
@@ -117,6 +127,9 @@ public class RenderableHolder {
 		gameplay = new AudioClip(gamePlay);
 		collect = new AudioClip(Collect);
 		Select = new AudioClip(select);
+		
+		item1=new Image(temple);
+		item2=new Image(house);
 	}
 
 	public void add(IRenderable entity) {

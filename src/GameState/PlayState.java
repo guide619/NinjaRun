@@ -4,6 +4,7 @@ package GameState;
 import Object.Ninja;
 import Object.Clouds;
 import Object.EnemiesManager;
+import Object.backgroundItem;
 
 import java.awt.event.KeyEvent;
 
@@ -31,6 +32,7 @@ public class PlayState extends GameState{
 	private EnemiesManager enemiesManager;
 	int i = 0;
 	private Clouds clouds;
+	backgroundItem bgi;
 	private static final int START_GAME_STATE =0;
 
 
@@ -41,6 +43,7 @@ public class PlayState extends GameState{
 		ninja = new Ninja();
 		clouds = new Clouds(1000,ninja);
 		ninja.setSpeedX(4);
+		bgi = new backgroundItem(1000,ninja);
 		enemiesManager = new EnemiesManager(ninja);
 	}
 
@@ -59,6 +62,7 @@ public class PlayState extends GameState{
 		land.update();
 		ninja.update();
 		enemiesManager.update();
+		bgi.update();
 		//if (enemiesManager.isCollision()) {
 			//mainCharacter.playDeadSound();
 		//	gameState = GAME_OVER_STATE;
@@ -84,9 +88,11 @@ public class PlayState extends GameState{
 			break;
 		case GAME_PLAYING_STATE:
 			clouds.draw(game);
+			bgi.draw(game);
 			land.draw(game);
 			enemiesManager.draw(game);
 			ninja.draw(game);
+			
 			
 			break;
 		case GAME_OVER_STATE:
