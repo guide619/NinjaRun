@@ -105,6 +105,9 @@ public class Ninja {
 			rectBound.setHeight((int) normalRunAnim.getFrame().getHeight());
 			return rectBound;
 		}
+	 public int getHeight() {
+		 return (int)normalRunAnim.getFrame().getHeight();
+	 }
 	 
 	 
 	 public void dead(boolean isDeath) {

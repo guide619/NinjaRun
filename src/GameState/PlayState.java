@@ -4,6 +4,7 @@ package GameState;
 import Object.Ninja;
 import Object.Clouds;
 import Object.EnemiesManager;
+import Object.BackgroundItem;
 
 import Manager.GameStateManager;
 import Manager.Keys;
@@ -29,7 +30,8 @@ public class PlayState extends GameState{
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	private Clouds clouds;
-	
+
+	BackgroundItem bgi;
 
 
 	public PlayState(GameStateManager gsm) {
@@ -39,6 +41,7 @@ public class PlayState extends GameState{
 		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
 		ninja.setSpeedX(10);
+		bgi = new BackgroundItem(1000,ninja);
 		enemiesManager = new EnemiesManager(ninja);
 	}
 
@@ -58,10 +61,10 @@ public class PlayState extends GameState{
 			land.update();
 			ninja.update();
 			enemiesManager.update();
+			bgi.update();
 		}
 		if (enemiesManager.isCollision()) {
 			System.out.println("BOOM");
-			//mainCharacter.playDeadSound();
 			gameState = GAME_OVER_STATE;
 			ninja.dead(true);
 		}
@@ -77,19 +80,20 @@ public class PlayState extends GameState{
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
 		gc.fillText("Score " + ninja.score, 850, 40);
-		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
+		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		land.draw(game);
 		clouds.draw(game);
 		ninja.draw(game);
+		bgi.draw(game);
 		switch (gameState) {
 		case START_GAME_STATE:
 			break;
 		case GAME_PLAYING_STATE:
 			clouds.draw(game);
+			bgi.draw(game);
 			land.draw(game);
 			enemiesManager.draw(game);
 			ninja.draw(game);
-			
 			break;
 		case GAME_OVER_STATE:
 			RenderableHolder.gameplay.stop();

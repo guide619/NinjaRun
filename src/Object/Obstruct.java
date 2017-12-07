@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 
-public class obstruct extends Character {
+public class Obstruct extends Character {
 	
 	public static final int Y_LAND = 325;
 	
@@ -18,7 +18,7 @@ public class obstruct extends Character {
 	
 	private Rectangle rectBound;
 	
-	public obstruct(Ninja ninja , int posX, int width , int height , Image image){
+	public Obstruct(Ninja ninja , int posX, int width , int height , Image image){
 		this.posX = posX;
 		this.width = width;
 		this.height = height;
@@ -46,9 +46,9 @@ public class obstruct extends Character {
 	public Rectangle getBound() {
 		// TODO Auto-generated method stub
 		rectBound = new Rectangle();
-		rectBound.setX(posX+(image.getWidth() - width)/2);
-		rectBound.setY(Y_LAND - image.getHeight() + (image.getHeight() - height)/2);
-		rectBound.setWidth(width);
+		rectBound.setX(posX+20);
+		rectBound.setY(Y_LAND - image.getHeight() +10);
+		rectBound.setWidth(width-10);
 		rectBound.setHeight(height);
 		return rectBound;
 	}
