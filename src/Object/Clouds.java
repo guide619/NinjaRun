@@ -46,26 +46,26 @@ public class Clouds {
 				ImageCloud element = itr.next();
 				element.posX -= ninja.getSpeedX();
 			}
-			if(firstElement.posX < -cloud1.getWidth()) {
+			if(firstElement.posX < -firstElement.image.getWidth()) {
 				listCloud.remove(firstElement);
 				firstElement.posX = 1000;
 				listCloud.add(firstElement);
 			}
 		}
-		private void setImageLand(ImageCloud imgLand) {
-			int typeLand = getTypeOfLand();
-			if(typeLand == 1) {
-				imgLand.image = cloud1;
-			} else if(typeLand == 2) {
-				imgLand.image = cloud2;
-			}  else if(typeLand == 3) {
-				imgLand.image = cloud3;
+		private void setImageLand(ImageCloud imgCloud) {
+			int typeCloud = getTypeOfCloud();
+			if(typeCloud == 1) {
+				imgCloud.image = cloud1;
+			} else if(typeCloud == 2) {
+				imgCloud.image = cloud2;
+			}  else if(typeCloud == 3) {
+				imgCloud.image = cloud3;
 			} 
 			else {
-				imgLand.image = cloud4;
+				imgCloud.image = cloud4;
 			}
 		}
-		private int getTypeOfLand() {
+		private int getTypeOfCloud() {
 			Random rand = new Random();
 			int type = rand.nextInt(3);
 			if(type == 0) {
@@ -83,7 +83,6 @@ public class Clouds {
 		public void draw(Canvas game) {
 			GraphicsContext g = game.getGraphicsContext2D();
 			for(ImageCloud imgLand : listCloud) {
-				System.out.println("11111111");
 				g.drawImage(imgLand.image, (int) imgLand.posX, imgLand.posY);
 			}
 		}

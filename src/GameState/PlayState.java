@@ -73,7 +73,7 @@ public class PlayState extends GameState{
 		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
-		gc.fillText("Scroe " + ninja.score, 850, 40);
+		gc.fillText("Score " + ninja.score, 850, 40);
 		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		switch (gameState) {
 		case GAME_PLAYING_STATE:
