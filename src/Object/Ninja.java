@@ -30,6 +30,7 @@ public class Ninja {
 	private Image jumping;
 
 	public int score = 0;
+	int count = 0;
 	
 	private int state = NORMAL_RUN;
 	private Image deathImage;
@@ -70,6 +71,8 @@ public class Ninja {
 	 }
 	 public void update() {
 		normalRunAnim.updateFrame();
+		count++;
+		if(count>=10) {score++;count=0;}
 		if(posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if(state != DOWN_RUN) {
