@@ -30,6 +30,8 @@ public class PlayState extends GameState{
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	private Clouds clouds;
+	
+	public static int wave;
 
 	BackgroundItem bgi;
 
@@ -37,6 +39,7 @@ public class PlayState extends GameState{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
+		wave = 1;
 		ninja = new Ninja();
 		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
@@ -60,13 +63,18 @@ public class PlayState extends GameState{
 			clouds.update();
 			land.update();
 			ninja.update();
-			enemiesManager.update();
+			enemiesManager.update(wave);
 			bgi.update();
+		}if (wave >= 5) {
+			ninja.setSpeedX(15);
 		}
 		if (enemiesManager.isCollision()) {
 			System.out.println("BOOM");
 			gameState = GAME_OVER_STATE;
 			ninja.dead(true);
+			RenderableHolder.gameplay.stop();
+			gsm.setState(GameStateManager.GAMEOVER,ninja.score);
+			resetGame();
 		}
 		
 		
@@ -81,12 +89,13 @@ public class PlayState extends GameState{
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
 		gc.fillText("Score " + ninja.score, 850, 40);
 		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
-		land.draw(game);
 		clouds.draw(game);
-		ninja.draw(game);
 		bgi.draw(game);
-		switch (gameState) {
-		case START_GAME_STATE:
+		land.draw(game);
+		enemiesManager.draw(game);
+		ninja.draw(game);
+		//switch (gameState) {
+		/*case START_GAME_STATE:
 			break;
 		case GAME_PLAYING_STATE:
 			clouds.draw(game);
@@ -97,9 +106,9 @@ public class PlayState extends GameState{
 			break;
 		case GAME_OVER_STATE:
 			RenderableHolder.gameplay.stop();
-			gsm.setState(GameStateManager.GAMEOVER);
-			break;
-		}
+			gsm.setState(GameStateManager.GAMEOVER,ninja.score);
+			break;*/
+		//}
 		
 	}
 	private void resetGame() {
@@ -125,9 +134,13 @@ public class PlayState extends GameState{
 			gsm.setPaused(true);
 			RenderableHolder.gameplay.stop();
 		}
-		if (Keys.isPressed(Keys.SPACE)) {
+		if (Keys.isPressed(Keys.SPACE)|| Keys.isPressed(Keys.UP)) {
 			ninja.jump();
-		}break;
+		}
+		if (Keys.isDown(Keys.DOWN)) {
+			ninja.down();
+			}
+		break;
 		}
 		
 	}

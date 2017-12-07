@@ -16,7 +16,6 @@ public class EnemiesManager {
 	private Image enemy3;
 	private Random rand;
 	
-	private int wave;
 	private int NumberOfEnemy;
 	private int wait;
 	
@@ -30,16 +29,16 @@ public class EnemiesManager {
 		enemy2 = RenderableHolder.Guide;
 		enemy3 = RenderableHolder.Tan;
 		int count = 0;
-		wave = 1;
 		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
-		enemies.add(createEnemy());
+		enemies.add(createEnemy(0));
 		NumberOfEnemy = 1;
 		wait=0;
 		
 	}
 	
-	public void update() {
+	public void update(int wave) {
+		//System.out.println(wave);
 		for(Character e : enemies) {
 			e.update();
 		}
@@ -55,11 +54,14 @@ public class EnemiesManager {
 			count=0;
 			NumberOfEnemy=0;
 			if(wait == 10) {
-				for(int i =0 ;i<wave;i++) {
-					enemies.add(createEnemy());
+				wave++;
+				int j = wave+rand.nextInt(wave);
+				System.out.println(j);
+				for(int i =0 ;i<j;i++) {
+					enemies.add(createEnemy(i));
 					NumberOfEnemy++;
-					System.out.println(NumberOfEnemy);
-				}wave++;
+					//System.out.println(NumberOfEnemy);
+				}wait=0;
 			}else wait++;
 			
 		}
@@ -71,15 +73,15 @@ public class EnemiesManager {
 		}
 	}
 	
-	private Character createEnemy() {
-		int gap = 50+rand.nextInt(10)*rand.nextInt(20);
+	private Character createEnemy(int i) {
+		int gap = 50+rand.nextInt(20)*rand.nextInt(20);
 		int type = rand.nextInt(3);
 		if(type == 0) {
-			return new Bird(ninja, 1000+gap, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
+			return new Bird(ninja, 1000+gap+i*10, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
 		} else if (type ==1) {
-			return new Obstruct(ninja, 1000+gap, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
+			return new Obstruct(ninja, 1000+gap+i*10, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
 		}else {
-			return new Enemy(ninja, 1000+gap, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
+			return new Enemy(ninja, 1000+gap+i*10, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
 		}
 	}
 	
@@ -94,7 +96,7 @@ public class EnemiesManager {
 	
 	public void reset() {
 		enemies.clear();
-		enemies.add(createEnemy());
+		enemies.add(createEnemy(0));
 	}
 	
 }
