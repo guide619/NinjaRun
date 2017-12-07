@@ -42,6 +42,11 @@ public class RenderableHolder {
 	public static Image Cloud2;
 	public static Image Cloud3;
 	public static Image Cloud4;
+	
+	public static Image Smoke1;
+	public static Image Smoke2;
+	public static Image Smoke3;
+	public static Image Smoke4;
 
 	public static AudioClip gameplay;
 	public static AudioClip collect;
@@ -121,6 +126,11 @@ public class RenderableHolder {
 		String guide = "file:Resources/spite/Guide.png";
 		String tan = "file:Resources/spite/Tan.png";
 		String onfire = "file:Resources/spite/fire.png";
+		
+		String smoke1 = "file:Resources/smoke/smoke1.png";
+		String smoke2 = "file:Resources/smoke/smoke2.png";
+		String smoke3 = "file:Resources/smoke/smoke3.png";
+		String smoke4 = "file:Resources/smoke/smoke4.png";
 
 		logo = new Image(Logo);
 		bgs = new Image(BG2);
@@ -141,6 +151,11 @@ public class RenderableHolder {
 		spite1_blink = new Image(sprite1_blink);
 		spite3_blink = new Image(sprite3_blink);
 		spite5_blink = new Image(sprite5_blink);
+		
+		Smoke1= new Image(smoke1);
+		Smoke2= new Image(smoke2);
+		Smoke3= new Image(smoke3);
+		Smoke4= new Image(smoke4);
 
 
 		pichu = new Image(Pichu);

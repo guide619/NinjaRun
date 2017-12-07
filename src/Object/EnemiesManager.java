@@ -50,7 +50,6 @@ public class EnemiesManager {
 		for(Character e : enemies) {
 			e.update();
 		}
-		
 		if (count< this.NumberOfEnemy) {
 			Character enemy = enemies.get(0);
 			if(enemy.isOutOfScreen()) {
@@ -64,7 +63,7 @@ public class EnemiesManager {
 			NumberOfEnemy=0;
 			if(wait == 10) {
 				increaseWave();
-				int j = wave+rand.nextInt(3);
+				int j = wave+rand.nextInt(2);
 				for(int i =0 ;i<j;i++) {
 					enemies.add(createEnemy(i));
 					NumberOfEnemy++;
@@ -83,14 +82,14 @@ public class EnemiesManager {
 	}
 	
 	private Character createEnemy(int i) {
-		int gap = 50+rand.nextInt(20)*rand.nextInt(20);
-		int type = rand.nextInt(3);
-		if(type == 0) {
-			return new Bird(ninja, 1000+gap+i*10, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
-		} else if (type ==1) {
-			return new Obstruct(ninja, 1000+gap+i*10, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
+		int gap = i*rand.nextInt(10);
+		int type = rand.nextInt(11);
+		if(type >4 && type <=7) {
+			return new Bird(ninja, 1000+gap*10, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
+		} else if (type <=4) {
+			return new Obstruct(ninja, 1000+gap*10, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
 		}else {
-			return new Enemy(ninja, 1000+gap+i*10, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
+			return new Enemy(ninja, 1000+gap*10, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
 		}
 	}
 	
@@ -104,7 +103,7 @@ public class EnemiesManager {
 	}
 	public boolean isSpCollision() {
 			if (ninja.getBound().intersects(Special.getBound().getBoundsInLocal())) {
-				System.out.println("YEAHHHHH");
+				//System.out.println("YEAHHHHH");
 				Special.reset();
 				
 				return true;
@@ -122,7 +121,8 @@ public class EnemiesManager {
 	}
 
 	public void increaseWave() {
-		wave++;
+		System.out.println(wave);
+		if (wave<=5)wave++;
 	}
 	
 }

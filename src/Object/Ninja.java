@@ -15,6 +15,7 @@ public class Ninja {
 	public static final float GRAVITY = 0.98f;
 	public static final int MAX_HEALTH = 3;
 	public static final int HIT_COOL_DOWN = 20;
+	public static final int WARP_TIME = 25;
 
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
@@ -22,12 +23,15 @@ public class Ninja {
 	private static final int DEATH = 3;
 	private static final int COOLDOWN_RUN = 4;
 	private static final int COOLDOWN_JUMP = 5;
+	private static final int WARP = 6;
 	
 	public boolean isStart;
 	public int coolDown;
+	public int timewarp;
 	private float posY;
 	private float posX;
 	private float speedX;
+	private float normalspeedX;
 	private float speedY;
 	private Rectangle rectBound;
 	private int jumpcount;
@@ -36,6 +40,7 @@ public class Ninja {
 	private Animation normalRunAnim;
 	private Animation cooldownRunAnim;
 	private Animation cooldownJumpAnim;
+	private Animation warpAnim;
 	private Image jumping;
 
 	public int score = 0;
@@ -65,9 +70,27 @@ public class Ninja {
 		cooldownJumpAnim = new Animation(90);
 		cooldownJumpAnim.addFrame(RenderableHolder.spite1);
 		cooldownJumpAnim.addFrame(RenderableHolder.spite1_blink);
+		warpAnim = new Animation(60);
+		warpAnim.addFrame(RenderableHolder.spite1);
+		warpAnim.addFrame(RenderableHolder.Smoke1);
+		warpAnim.addFrame(RenderableHolder.Smoke2);
+		warpAnim.addFrame(RenderableHolder.Smoke3);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke3);
+		warpAnim.addFrame(RenderableHolder.Smoke2);
+		warpAnim.addFrame(RenderableHolder.Smoke1);
+		warpAnim.addFrame(RenderableHolder.spite1);
+		
+		
+		
 		isStart = false;
 		jumpcount = 0;
 		health = this.MAX_HEALTH;
+		timewarp = this.WARP_TIME;
 		coolDown = 0;
 			
 	 }
@@ -75,6 +98,7 @@ public class Ninja {
 		 return speedX;
 	 }
 	 public void setSpeedX(int speedX) {
+		 	this.normalspeedX = speedX;
 			this.speedX = speedX;
 		}
 	 public void  draw(Canvas game) {
@@ -95,25 +119,41 @@ public class Ninja {
 			case COOLDOWN_JUMP:
 				g.drawImage(cooldownJumpAnim.getFrame(), (int)posX, (int)posY);
 				break;
+			case DOWN_RUN:
+				g.drawImage(normalRunAnim.getFrame(), (int) posX, (int) posY);
+				break;
+			case WARP:
+				g.drawImage(warpAnim.getFrame(), (int) posX, (int) posY);
+				break;
 		}
 	 }
 	 public void update() {
 		normalRunAnim.updateFrame();
 		cooldownRunAnim.updateFrame();
 		cooldownJumpAnim.updateFrame();
+		if(state== DOWN_RUN) speedX=(float) (normalspeedX*1.5);
+		else speedX=normalspeedX;
 		if(isStart) {
 			count++;
 			if(count>=10) {score++;count=0;}
+		}if(state == WARP) {
+			if(timewarp>0) {
+				timewarp--;
+				warpAnim.updateFrame();
+			}
+			else {
+				setState(JUMPING);
+				timewarp = this.WARP_TIME;
+				warpAnim.resetFrame();
+			}
 		}
-		if(posY >= LAND_POSY) {
+		else if(posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			jumpcount = 0;
-			if(state != DOWN_RUN) {
-				if (coolDown>0) {
-					state = COOLDOWN_RUN;
-					coolDown--;
-				}else state = NORMAL_RUN;
-			}
+			if (coolDown>0) {
+				state = COOLDOWN_RUN;
+				coolDown--;
+			}else state = NORMAL_RUN;
 		} else {
 			speedY += 2*GRAVITY;
 			posY += speedY;
@@ -135,9 +175,15 @@ public class Ninja {
 			}
 		}
 	 public void down() {
-		 if (speedY >= 0) {
-			 posY+=speedY+10;
-		 }
+		 if(state == JUMPING) {
+			 if (speedY >= 0) {
+				 posY+=speedY+10;
+		 
+			 }
+		 }else state = DOWN_RUN;
+	 }
+	 public void warp() {
+		 if (posY < LAND_POSY)this.setState(WARP);
 	 }
 	 
 	 public Rectangle getBound() {
@@ -175,11 +221,12 @@ public class Ninja {
 			}
 		}
 		public void takeDamage() {
-			if(coolDown==0) {
-				decreaseHealth();
-				coolDown = this.HIT_COOL_DOWN;
+			if(state!=this.WARP) {
+				if(coolDown==0) {
+					decreaseHealth();
+					coolDown = this.HIT_COOL_DOWN;
+				}
 			}
-		
 		}
 		
 		public void decreaseHealth() {
@@ -197,6 +244,12 @@ public class Ninja {
 		public boolean isOutOfScreen() {
 			// TODO Auto-generated method stub
 			return false;
+		}
+		public int getState() {
+			return state;
+		}
+		public void setState(int state) {
+			this.state = state;
 		}
 		
 	 

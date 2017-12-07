@@ -75,7 +75,7 @@ public class PlayState extends GameState{
 			ninja.increaseHealth();
 		}
 		if (ninja.getHealth()<=0) {
-			System.out.println("BOOM");
+			//System.out.println("BOOM");
 			gameState = GAME_OVER_STATE;
 			ninja.dead(true);
 			RenderableHolder.gameplay.stop();
@@ -130,6 +130,9 @@ public class PlayState extends GameState{
 		}
 		if (Keys.isDown(Keys.DOWN)) {
 			ninja.down();
+			}
+		if (Keys.isPressed(Keys.RIGHT)) {
+			ninja.warp();
 			}
 		break;
 		}

@@ -28,6 +28,9 @@ public class Animation {
 			previousTime = System.currentTimeMillis();
 		}
 	}
+	public void resetFrame() {
+		currentFrame=0;
+	}
 
 	public void addFrame(Image image) {
 		list.add(image);
