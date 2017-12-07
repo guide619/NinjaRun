@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 
 public class Land {
 	public static final int LAND_POSY = 300;
-	final int speed = 15;
 	
 	private static List<ImageLand> listLand;
 	private Image land1;
@@ -26,8 +25,9 @@ public class Land {
 	private Image land9;
 	private Image land0;
 	private int type =1;
+	private Ninja ninja;
 	
-	public Land(int width) {
+	public Land(int width, Ninja ninja) {
 		land1 = RenderableHolder.land1;
 		land2 = RenderableHolder.land2;
 		land3 = RenderableHolder.land3;
@@ -38,6 +38,7 @@ public class Land {
 		land8 = RenderableHolder.land8;
 		land9 = RenderableHolder.land9;
 		land0 = RenderableHolder.land0;
+		this.ninja = ninja;
 		int numberOfImageLand = (int) (width / land1.getWidth() + 2);
 		listLand = new ArrayList<ImageLand>();
 		for(int i = 0; i < numberOfImageLand; i++) {
@@ -51,7 +52,7 @@ public class Land {
 	public void update(){
 		Iterator<ImageLand> itr = listLand.iterator();
 		ImageLand firstElement = itr.next();
-		firstElement.posX -= this.speed;
+		firstElement.posX -= ninja.getSpeedX() ;
 		float previousPosX = firstElement.posX;
 		while(itr.hasNext()) {
 			ImageLand element = itr.next();

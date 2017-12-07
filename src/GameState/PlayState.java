@@ -35,10 +35,10 @@ public class PlayState extends GameState{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
-		land = new Land(GamePanel.WIDTH);
 		ninja = new Ninja();
+		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
-		ninja.setSpeedX(4);
+		ninja.setSpeedX(10);
 		enemiesManager = new EnemiesManager(ninja);
 	}
 
@@ -78,7 +78,7 @@ public class PlayState extends GameState{
 		gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		switch (gameState) {
 		case START_GAME_STATE:
-			gc.drawImage(RenderableHolder.spite, 300, 220);
+			gc.drawImage(RenderableHolder.spite, 250, 220);
 			gc.drawImage(RenderableHolder.land1, 0, 300);
 			break;
 		case GAME_PLAYING_STATE:
@@ -109,6 +109,7 @@ public class PlayState extends GameState{
 			if (Keys.isPressed(Keys.SPACE)) {
 				gameState = GAME_PLAYING_STATE;
 				ninja.jump();
+				ninja.isStart = true;
 			}
 			break;
 		

@@ -12,13 +12,14 @@ import javafx.scene.shape.Rectangle;
 public class Ninja {
 
 	public static final int LAND_POSY = 220;
-	public static final float GRAVITY = 0.4f;
+	public static final float GRAVITY = 0.98f;
 
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
 	private static final int DOWN_RUN = 2;
 	private static final int DEATH = 3;
 	
+	public boolean isStart;
 	private float posY;
 	private float posX;
 	private float speedX;
@@ -35,7 +36,7 @@ public class Ninja {
 	private Image deathImage;
 	
 	 public Ninja() {
-		posX = 300;
+		posX = 250;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
 		normalRunAnim = new Animation(90);
@@ -45,6 +46,7 @@ public class Ninja {
 		normalRunAnim.addFrame(RenderableHolder.spite3);
 		normalRunAnim.addFrame(RenderableHolder.spite4);
 		jumping = RenderableHolder.spite;
+		isStart = false;
 			
 			
 	 }
@@ -70,15 +72,17 @@ public class Ninja {
 	 }
 	 public void update() {
 		normalRunAnim.updateFrame();
-		count++;
-		if(count>=10) {score++;count=0;}
+		if(isStart) {
+			count++;
+			if(count>=10) {score++;count=0;}
+		}
 		if(posY >= LAND_POSY) {
 			posY = LAND_POSY;
 			if(state != DOWN_RUN) {
 				state = NORMAL_RUN;
 			}
 		} else {
-			speedY += GRAVITY;
+			speedY += 2*GRAVITY;
 			posY += speedY;
 		}
 	}
@@ -87,7 +91,7 @@ public class Ninja {
 				/*if(jumpSound != null) {
 					jumpSound.play();
 				}*/
-				speedY = -7.5f;
+				speedY = -25f;
 				posY += speedY;
 				state = JUMPING;
 			}

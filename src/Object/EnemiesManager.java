@@ -13,6 +13,7 @@ public class EnemiesManager {
 	
 	private Image enemy1;
 	private Image enemy2;
+	private Image enemy3;
 	private Random rand;
 	
 	private List<Character> enemies;
@@ -21,14 +22,17 @@ public class EnemiesManager {
 	public EnemiesManager(Ninja	ninja) {
 		rand = new Random();
 		enemy1 = RenderableHolder.Mark;
-		enemy2 = RenderableHolder.Pichu;
+		enemy2 = RenderableHolder.Guide;
+		enemy3 = RenderableHolder.Tan;
 		
 		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
 		enemies.add(createEnemy());
+		
 	}
 	
 	public void update() {
+		
 		for(Character e : enemies) {
 			e.update();
 		}
@@ -47,13 +51,14 @@ public class EnemiesManager {
 	}
 	
 	private Character createEnemy() {
-		// if (enemyType = getRandom)
-		int type = rand.nextInt(2);
-		//if(type == 0) {
+		int type = rand.nextInt(3);
+		if(type == 0) {
 			return new obstruct(ninja, 1100, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
-		//} else {
-		//	return new obstruct(ninja, 1100, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
-		//}
+		} else if (type ==1) {
+			return new obstruct(ninja, 1100, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
+		}else {
+			return new obstruct(ninja, 1100, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
+		}
 	}
 	
 	public boolean isCollision() {
