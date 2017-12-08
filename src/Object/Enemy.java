@@ -1,8 +1,9 @@
 package Object;
 
+import Manager.Animation;
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 
 public class Enemy extends Character {
@@ -12,17 +13,17 @@ public class Enemy extends Character {
 	private int posX;
 	private int width;
 	private int height;
+	private int posY;
 	
-	private Image image;
+	private Animation enemyAnim;
 	private Ninja ninja;
 	
 	private Rectangle rectBound;
 	
-	public Enemy (Ninja ninja , int posX, int width , int height , Image image) {
+	public Enemy (Ninja ninja , int posX) {
 		this.posX = posX;
-		this.width = width;
-		this.height = height;
-		this.image = image;
+		this.posY=220;
+		this.enemyAnim = RenderableHolder.enemyAnim;
 		this.ninja = ninja;
 		rectBound = new Rectangle();
 	}
@@ -30,6 +31,7 @@ public class Enemy extends Character {
 	public void update() {
 		// TODO Auto-generated method stub
 		posX -= ninja.getSpeedX()*2;
+		enemyAnim.updateFrame();
 		
 	}
 
@@ -37,7 +39,7 @@ public class Enemy extends Character {
 	public void draw(Canvas game) {
 		// TODO Auto-generated method stub
 		GraphicsContext gc = game.getGraphicsContext2D();
-		gc.drawImage(image, posX, Y_LAND - image.getHeight());
+		gc.drawImage(enemyAnim.getFrame(), posX, posY);
 		
 	}
 
@@ -45,17 +47,17 @@ public class Enemy extends Character {
 	public Rectangle getBound() {
 		// TODO Auto-generated method stub
 		rectBound = new Rectangle();
-		rectBound.setX(posX+10);
-		rectBound.setY(Y_LAND - image.getHeight() +5);
-		rectBound.setWidth(width);
-		rectBound.setHeight(height);
+		rectBound.setX(posX+5);
+		rectBound.setY(posY+5);
+		rectBound.setWidth(enemyAnim.getFrame().getWidth()-10);
+		rectBound.setHeight(enemyAnim.getFrame().getHeight()-10);
 		return rectBound;
 	}
 
 	@Override
 	public boolean isOutOfScreen() {
 		// TODO Auto-generated method stub
-		if(posX < -image.getWidth()) {
+		if(posX < -enemyAnim.getFrame().getWidth()) {
 			return true;
 		}
 		return false;

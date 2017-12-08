@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import Manager.Animation;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 
@@ -39,6 +40,13 @@ public class RenderableHolder {
 	public static Image Smoke2;
 	public static Image Smoke3;
 	public static Image Smoke4;
+	
+	public static Image Enemy1;
+	public static Image Enemy2;
+	public static Image Enemy3;
+	public static Image Enemy4;
+	public static Image Enemy5;
+	public static Image Enemy6;
 
 	public static AudioClip gameplay;
 	public static AudioClip collect;
@@ -55,10 +63,14 @@ public class RenderableHolder {
 
 	public static Image item4;
 
-	
+	public static Animation normalRunAnim;
+	public static Animation cooldownRunAnim;
+	public static Animation cooldownJumpAnim;
+	public static Animation warpAnim;
+	public static Animation enemyAnim;
 
 	public static Image Mark;
-	public static Image Guide;
+	public static Image Spike;
 	public static Image Tan;
 	public static Image Heal;
 	public static Image fire;
@@ -121,6 +133,13 @@ public class RenderableHolder {
 		String heal = "file:Resources/items/sushi.png";
 		String speed = "file:Resources/items/scroll.png";
 		
+		String enemy1 = "file:Resources/Enemy/enemy1.png";
+		String enemy2 = "file:Resources/Enemy/enemy2.png";
+		String enemy3 = "file:Resources/Enemy/enemy3.png";
+		String enemy4 = "file:Resources/Enemy/enemy4.png";
+		String enemy5 = "file:Resources/Enemy/enemy5.png";
+		String enemy6 = "file:Resources/Enemy/enemy6.png";
+		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		String shuriken2 = "file:Resources/spite/shuriken2.png";
 		
@@ -137,7 +156,7 @@ public class RenderableHolder {
 		String house = "file:Resources/items/house.png";
 
 		String mark = "file:Resources/spite/Mark.png";
-		String guide = "file:Resources/spite/Guide.png";
+		String spike = "file:Resources/spite/Spike.png";
 		String tan = "file:Resources/spite/Tan.png";
 		String onfire = "file:Resources/spite/fire.png";
 		
@@ -170,6 +189,13 @@ public class RenderableHolder {
 		Smoke2= new Image(smoke2);
 		Smoke3= new Image(smoke3);
 		Smoke4= new Image(smoke4);
+		
+		Enemy1= new Image(enemy1);
+		Enemy2= new Image(enemy2);
+		Enemy3= new Image(enemy3);
+		Enemy4= new Image(enemy4);
+		Enemy5= new Image(enemy5);
+		Enemy6= new Image(enemy6);
 
 		Speed = new Image(speed);
 		Heal= new Image(heal);
@@ -182,7 +208,7 @@ public class RenderableHolder {
 		Cloud4 = new Image(cloud4);
 		
 		Mark = new Image(mark);
-		Guide = new Image(guide);
+		Spike = new Image(spike);
 		Tan = new Image(tan);
 		
 		gameplay = new AudioClip(gamePlay);
@@ -210,6 +236,44 @@ public class RenderableHolder {
 		explosionSound = new AudioClip(explode);
 		String ghost= "file:Resources/spite/ghost.png";
 		Ghost = new Image(ghost);
+		
+		normalRunAnim = new Animation(50);
+		normalRunAnim.addFrame(RenderableHolder.spite);
+		normalRunAnim.addFrame(RenderableHolder.spite1);
+		normalRunAnim.addFrame(RenderableHolder.spite2);
+		normalRunAnim.addFrame(RenderableHolder.spite3);
+		normalRunAnim.addFrame(RenderableHolder.spite4);
+		cooldownRunAnim = new Animation(90);
+		cooldownRunAnim.addFrame(RenderableHolder.spite);
+		cooldownRunAnim.addFrame(RenderableHolder.spite1_blink);
+		cooldownRunAnim.addFrame(RenderableHolder.spite2);
+		cooldownRunAnim.addFrame(RenderableHolder.spite3_blink);
+		cooldownRunAnim.addFrame(RenderableHolder.spite4);
+		cooldownRunAnim.addFrame(RenderableHolder.spite5_blink);
+		cooldownJumpAnim = new Animation(90);
+		cooldownJumpAnim.addFrame(RenderableHolder.spite1);
+		cooldownJumpAnim.addFrame(RenderableHolder.spite1_blink);
+		warpAnim = new Animation(70);
+		warpAnim.addFrame(RenderableHolder.spite1);
+		warpAnim.addFrame(RenderableHolder.Smoke1);
+		warpAnim.addFrame(RenderableHolder.Smoke2);
+		warpAnim.addFrame(RenderableHolder.Smoke3);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke4);
+		warpAnim.addFrame(RenderableHolder.Smoke1);
+		warpAnim.addFrame(RenderableHolder.Smoke2);
+		warpAnim.addFrame(RenderableHolder.Smoke3);
+		warpAnim.addFrame(RenderableHolder.spite1);
+		enemyAnim = new Animation(50);
+		enemyAnim.addFrame(RenderableHolder.Enemy1);
+		enemyAnim.addFrame(RenderableHolder.Enemy2);
+		enemyAnim.addFrame(RenderableHolder.Enemy3);
+		enemyAnim.addFrame(RenderableHolder.Enemy4);
+		enemyAnim.addFrame(RenderableHolder.Enemy5);
+		enemyAnim.addFrame(RenderableHolder.Enemy6);
 	}
 
 	public void add(IRenderable entity) {

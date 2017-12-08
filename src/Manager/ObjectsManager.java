@@ -16,11 +16,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class EnemiesManager {
+public class ObjectsManager {
 	
 	private Image enemy1;
-	private Image enemy2;
-	private Image enemy3;
 	private Random rand;
 	
 	private int wait;
@@ -29,23 +27,18 @@ public class EnemiesManager {
 	private List<Character> enemies;
 	private List<Shuriken> shurikens;
 	private Ninja ninja;
-	private int count;
 	private Heal heal;
 	private Image Heal;
 	private Image Speed;
 	private Speed speed;
-	private int NumberOfEnemy;
 	
 	
-	public EnemiesManager(Ninja	ninja) {
+	public ObjectsManager(Ninja	ninja) {
 		rand = new Random();
 		enemy1 = RenderableHolder.Mark;
-		enemy2 = RenderableHolder.Guide;
-		enemy3 = RenderableHolder.Tan;
 		Heal = RenderableHolder.Heal;
 		Speed = RenderableHolder.Speed;
 		
-		int count = 0;
 		enemies = new ArrayList<Character>();
 		shurikens = new ArrayList<Shuriken>();
 		this.ninja = ninja;
@@ -103,15 +96,14 @@ public class EnemiesManager {
 	private Character createEnemy(int i) {
 		int gap = 1000+i*50;
 		int type = rand.nextInt(11);
-		//int type = 10;
 		if(type >4 && type <=7) {
 			gap+= rand.nextInt(10)*100;
 			return new Bird(ninja, gap, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
 		} else if (type <=4) {
-			return new Obstruct(ninja, gap, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
+			return new Obstruct(ninja, gap);
 		}else {
 			gap+= rand.nextInt(10)*100;
-			return new Enemy(ninja, gap, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
+			return new Enemy(ninja, gap);
 		}
 	}
 	public void createShuriken() {
@@ -130,8 +122,8 @@ public class EnemiesManager {
 	public void checkFire() {
 		if(enemies.size()==0 || shurikens.size()==0)return;
 		for(Character e : enemies) {
-			if (shurikens.get(0).getBound().intersects(e.getBound().getBoundsInLocal())  ){
-					if(e instanceof Enemy) {
+			if (e instanceof Enemy ){
+					if(shurikens.get(0).getBound().intersects(e.getBound().getBoundsInLocal()) ) {
 						destroy(e);
 						shurikens.remove(0);
 						return;
@@ -152,7 +144,7 @@ public class EnemiesManager {
 				if(ninja.getState() != 6) {
 					speed.reset();
 					RenderableHolder.Healsound.play();
-					ninja.setSpeedX(ninja.getSpeedX()+2);
+					ninja.powerObtain();
 					return true;
 					}
 			}

@@ -54,8 +54,8 @@ public class Shuriken extends Character {
 		rectBound = new Rectangle();
 		rectBound.setX(posX);
 		rectBound.setY(posY);
-		rectBound.setWidth(width*1.2);
-		rectBound.setHeight(height*1.2);
+		rectBound.setWidth(width*1.25);
+		rectBound.setHeight(height*1.25);
 		return rectBound;
 	}
 	@Override

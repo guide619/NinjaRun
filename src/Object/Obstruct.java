@@ -1,5 +1,6 @@
 package Object;
 
+import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -18,11 +19,9 @@ public class Obstruct extends Character {
 	
 	private Rectangle rectBound;
 	
-	public Obstruct(Ninja ninja , int posX, int width , int height , Image image){
+	public Obstruct(Ninja ninja , int posX){
 		this.posX = posX;
-		this.width = width;
-		this.height = height;
-		this.image = image;
+		image = RenderableHolder.Spike;
 		this.ninja = ninja;
 		rectBound = new Rectangle();
 	}
@@ -48,8 +47,8 @@ public class Obstruct extends Character {
 		rectBound = new Rectangle();
 		rectBound.setX(posX+20);
 		rectBound.setY(Y_LAND - image.getHeight() +10);
-		rectBound.setWidth(width-10);
-		rectBound.setHeight(height);
+		rectBound.setWidth(image.getWidth()-10);
+		rectBound.setHeight(image.getHeight());
 		return rectBound;
 	}
 

@@ -5,7 +5,7 @@ import Object.Ninja;
 import Object.Heal;
 import Object.Clouds;
 import Object.BackgroundItem;
-import Manager.EnemiesManager;
+import Manager.ObjectsManager;
 import Manager.GameStateManager;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
@@ -28,7 +28,7 @@ public class PlayState extends GameState{
 	private static final int GAME_OVER_STATE = 2;
 	private int gameState = 0;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
-	private EnemiesManager enemiesManager;
+	private ObjectsManager objectsManager;
 	private Clouds clouds;
 
 	BackgroundItem bgi;
@@ -42,7 +42,7 @@ public class PlayState extends GameState{
 		clouds = new Clouds(1000,ninja);
 		ninja.setSpeedX(8);
 		bgi = new BackgroundItem(1000,ninja);
-		enemiesManager = new EnemiesManager(ninja);
+		objectsManager = new ObjectsManager(ninja);
 		
 	}
 
@@ -62,13 +62,13 @@ public class PlayState extends GameState{
 			clouds.update();
 			land.update();
 			ninja.update();
-			enemiesManager.update();
+			objectsManager.update();
 			bgi.update();
 		}
-		if(enemiesManager.isCollision()) {
+		if(objectsManager.isCollision()) {
 			ninja.takeDamage();
 		}
-		enemiesManager.isSpCollision() ;
+		objectsManager.isSpCollision() ;
 		if (ninja.getHealth()<=0) {
 			//System.out.println("BOOM");
 			gameState = GAME_OVER_STATE;
@@ -117,12 +117,13 @@ public class PlayState extends GameState{
 			gc.setStroke(Color.BLACK);
 			gc.strokeRect(800, 90, 100, 10);
 			gc.fillRect(800,90,20*ninja.getHealth(),10);
-			enemiesManager.draw(game);
+			if (ninja.isUltimateReady()) gc.drawImage(RenderableHolder.Mark, 30, 100);
+			objectsManager.draw(game);
 			ninja.draw(game);
 	}
 	}
 	private void resetGame() {
-		enemiesManager.reset();
+		objectsManager.reset();
 		ninja.dead(false);
 		ninja.reset();
 	}
@@ -154,7 +155,10 @@ public class PlayState extends GameState{
 			ninja.warp();
 			}
 		if(Keys.isPressed(Keys.SPACE))
-			enemiesManager.createShuriken();
+			objectsManager.createShuriken();
+		if(Keys.isPressed(Keys.LEFT)) {
+			ninja.ultimate();
+		}
 		break;
 		}
 		

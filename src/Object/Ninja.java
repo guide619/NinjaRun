@@ -19,15 +19,16 @@ public class Ninja {
 	public static final int HIT_COOL_DOWN = 20;
 	public static final int WARP_COOL_DOWN = 10;
 	public static final int WARP_TIME = 25;
+	public static final int ULTIMATE_TIME = 75;
 
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
-	private static final int DOWN_RUN = 2;
-	private static final int DEATH = 3;
-	private static final int COOLDOWN_RUN = 4;
-	private static final int COOLDOWN_JUMP = 5;
+	private static final int DOWN_RUN = 4;
+	private static final int COOLDOWN_RUN = 2;
+	private static final int COOLDOWN_JUMP = 3;
+	private static final int DEATH = 5;
 	private static final int WARP = 6;
-	
+	private static final int ULTIMATE = 7;
 	
 	public boolean isStart;
 	public int coolDown;
@@ -41,6 +42,9 @@ public class Ninja {
 	private Rectangle rectBound;
 	private int jumpcount;
 	private int health;
+	private int currentstate;
+	private int powerobtain;
+	private int ultimateTime;
 	
 	private Animation normalRunAnim;
 	private Animation cooldownRunAnim;
@@ -52,7 +56,6 @@ public class Ninja {
 	int count = 0;
 	
 	private int state = NORMAL_RUN;
-	private Image deathImage;
 	private int warpcount;
 	
 	 public Ninja() {
@@ -60,40 +63,11 @@ public class Ninja {
 		posX = 250;
 		posY = LAND_POSY;
 		rectBound = new Rectangle();
-		normalRunAnim = new Animation(50);
-		normalRunAnim.addFrame(RenderableHolder.spite);
-		normalRunAnim.addFrame(RenderableHolder.spite1);
-		normalRunAnim.addFrame(RenderableHolder.spite2);
-		normalRunAnim.addFrame(RenderableHolder.spite3);
-		normalRunAnim.addFrame(RenderableHolder.spite4);
-		cooldownRunAnim = new Animation(90);
-		cooldownRunAnim.addFrame(RenderableHolder.spite);
-		cooldownRunAnim.addFrame(RenderableHolder.spite1_blink);
-		cooldownRunAnim.addFrame(RenderableHolder.spite2);
-		cooldownRunAnim.addFrame(RenderableHolder.spite3_blink);
-		cooldownRunAnim.addFrame(RenderableHolder.spite4);
-		cooldownRunAnim.addFrame(RenderableHolder.spite5_blink);
-		jumping = RenderableHolder.spite;
-		cooldownJumpAnim = new Animation(90);
-		cooldownJumpAnim.addFrame(RenderableHolder.spite1);
-		cooldownJumpAnim.addFrame(RenderableHolder.spite1_blink);
-		warpAnim = new Animation(60);
-		warpAnim.addFrame(RenderableHolder.spite1);
-		warpAnim.addFrame(RenderableHolder.Smoke1);
-		warpAnim.addFrame(RenderableHolder.Smoke2);
-		warpAnim.addFrame(RenderableHolder.Smoke3);
-		warpAnim.addFrame(RenderableHolder.Smoke4);
-		warpAnim.addFrame(RenderableHolder.Smoke4);
-		warpAnim.addFrame(RenderableHolder.Smoke4);
-		warpAnim.addFrame(RenderableHolder.Smoke4);
-		warpAnim.addFrame(RenderableHolder.Smoke4);
-		warpAnim.addFrame(RenderableHolder.Smoke1);
-		warpAnim.addFrame(RenderableHolder.Smoke2);
-		warpAnim.addFrame(RenderableHolder.Smoke3);
-		warpAnim.addFrame(RenderableHolder.spite1);
-		
-		
-		
+		normalRunAnim = RenderableHolder.normalRunAnim;
+		cooldownRunAnim = RenderableHolder.cooldownRunAnim;
+		cooldownJumpAnim = RenderableHolder.cooldownJumpAnim;
+		warpAnim = RenderableHolder.warpAnim;
+		jumping = RenderableHolder.spite1;
 		isStart = false;
 		jumpcount = 0;
 		health = this.MAX_HEALTH;
@@ -101,6 +75,8 @@ public class Ninja {
 		coolDown = 0;
 		warpCoolDown = 0;
 		warpcount =0;
+		currentstate = NORMAL_RUN;
+		ultimateTime = this.ULTIMATE_TIME;
 			
 	 }
 	 public float getSpeedX() {
@@ -135,11 +111,26 @@ public class Ninja {
 			case WARP:
 				g.drawImage(warpAnim.getFrame(), (int) posX, (int) posY);
 				break;
+			case ULTIMATE:
+				g.drawImage(normalRunAnim.getFrame(), (int) posX, (int) posY);
+				break;
 		}
 	 }
 	 
 	 public void update() {
 		updateScore();
+		if(state==ULTIMATE) {
+			if(ultimateTime<=0) {
+				setState(this.currentstate+2);
+				coolDown = this.HIT_COOL_DOWN+10;
+				ultimateTime=ULTIMATE_TIME;
+				powerobtain = 0;
+			}
+			speedX=normalspeedX*75;
+			ultimateTime--;
+			normalRunAnim.updateFrame();
+			return;
+		}
 		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
 		if(state == WARP) {
@@ -212,6 +203,11 @@ public class Ninja {
 			 warpCoolDown = this.WARP_COOL_DOWN;
 			 RenderableHolder.explosionSound.play();
 		 }
+	 }public void ultimate() {
+		 if(powerobtain>=3 && currentstate!=this.COOLDOWN_JUMP && currentstate != this.COOLDOWN_RUN) {
+			 currentstate = state;
+			 setState(ULTIMATE);
+		 }
 	 }
 
 	 
@@ -255,17 +251,15 @@ public class Ninja {
 		public void upScore() {
 			score += 20;
 			if(score % 100 == 0) {
-				//scoreUpSound.play();
 			}
 		}
 		public void takeDamage() {
-			if(state!=this.WARP) {
+			if(state!=this.WARP && state!=ULTIMATE) {
 				if(coolDown==0) {
 					RenderableHolder.Select.setVolume(1000);
 					RenderableHolder.Select.play();
 					decreaseHealth();
 					coolDown = this.HIT_COOL_DOWN;
-		
 			}
 		}
 		}
@@ -274,7 +268,6 @@ public class Ninja {
 		}
 		public void increaseHealth() {
 			if(health<this.MAX_HEALTH) {
-				
 				health++;}
 		}
 		public int getHealth() {
@@ -282,6 +275,13 @@ public class Ninja {
 		}
 		public void resetHealth() {
 			health=this.MAX_HEALTH;
+		}
+		public void powerObtain() {
+			if(powerobtain<3) powerobtain++;
+		}
+		public boolean isUltimateReady() {
+			 if(powerobtain>=3) return true;
+			 else return false;
 		}
 		public boolean isOutOfScreen() {
 			// TODO Auto-generated method stub
