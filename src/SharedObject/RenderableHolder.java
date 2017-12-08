@@ -59,7 +59,7 @@ public class RenderableHolder {
 	public static Image Mark;
 	public static Image Guide;
 	public static Image Tan;
-	public static Image pichu;
+	public static Image Heal;
 	public static Image fire;
 
 	
@@ -99,7 +99,7 @@ public class RenderableHolder {
 		String sprite1_blink = "file:Resources/spite/sprite1_blink.png";
 		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
 		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
-		String Pichu = "file:Resources/spite/pichu.png";
+		String heal = "file:Resources/items/sushi.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		String shuriken2 = "file:Resources/spite/shuriken2.png";
@@ -149,7 +149,7 @@ public class RenderableHolder {
 		Smoke4= new Image(smoke4);
 
 
-		pichu = new Image(Pichu);
+		Heal= new Image(heal);
 		Shuriken = new Image(shuriken);
 		Shuriken2 = new Image(shuriken2);
 		
