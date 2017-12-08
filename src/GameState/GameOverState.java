@@ -59,7 +59,7 @@ public class GameOverState extends GameState {
 	@Override
 	public void addKeyEventHandler() {
 		// TODO Auto-generated method stub
-		if(Keys.anyKeyPress()) {
+		if(Keys.isPressed(Keys.ENTER)) {
 			gsm.setState(GameStateManager.MENU);
 		}
 	}

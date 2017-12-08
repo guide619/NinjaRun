@@ -29,6 +29,7 @@ public class RenderableHolder {
 	public static AudioClip  explosionSound;
 	public static Image land1;
 	public static Image Shuriken;
+	public static Image Shuriken2;
 	public static Image Cloud1;
 	public static Image Cloud2;
 	public static Image Cloud3;
@@ -116,6 +117,7 @@ public class RenderableHolder {
 		String speed = "file:Resources/items/scroll.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
+		String shuriken2 = "file:Resources/spite/shuriken2.png";
 		
 		String cloud1 = "file:Resources/cloud/cloud1.png";
 		String cloud2 = "file:Resources/cloud/cloud2.png";
@@ -165,6 +167,7 @@ public class RenderableHolder {
 		Speed = new Image(speed);
 		Heal= new Image(heal);
 		Shuriken = new Image(shuriken);
+		Shuriken2 = new Image(shuriken2);
 		
 		Cloud1 = new Image(cloud1);
 		Cloud2 = new Image(cloud2);
