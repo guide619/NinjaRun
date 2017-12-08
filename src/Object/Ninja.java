@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 
 
 public class Ninja {
-
+	public static final int MAX_SPEED = 25;
 	public static final int LAND_POSY = 220;
 	public static final float GRAVITY = 0.98f;
 	public static final int MAX_HEALTH = 3;
@@ -105,6 +105,7 @@ public class Ninja {
 		 return speedX;
 	 }
 	 public void setSpeedX(int speedX) {
+		 if(speedX<=25)
 		 	this.normalspeedX = speedX;
 			this.speedX = speedX;
 		}

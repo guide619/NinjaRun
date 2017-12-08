@@ -27,7 +27,7 @@ public class PlayState extends GameState{
 	private static final int START_GAME_STATE =0;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
-	private int gameState = 1;
+	private int gameState = 0;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	private Clouds clouds;
@@ -92,9 +92,11 @@ public class PlayState extends GameState{
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
 		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		if(gameState == this.START_GAME_STATE) {
-			land.draw(game);
-			clouds.draw(game);
-			bgi.draw(game);
+			//clouds.draw(game);
+			//bgi.draw(game);
+			gc.fillText("SPEACE BAR = JUMP",350 , 180);
+			gc.fillText("RIGHT = INVISIBLE",350 , 220);
+			gc.fillText("DOWN = SPRINT",350 , 260);
 			land.draw(game);
 			ninja.draw(game);
 		}
