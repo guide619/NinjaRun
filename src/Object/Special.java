@@ -1,5 +1,7 @@
 package Object;
 
+import java.util.Random;
+
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -9,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 public class Special extends Character  {
 	
 	private static final double Y_LAND = 220;
+	private int posy ;
 	private int posX =1000;
 	private int width;
 	private Image image;
@@ -35,7 +38,7 @@ public class Special extends Character  {
 	public void draw(Canvas game) {
 		// TODO Auto-generated method stub
 		GraphicsContext gc = game.getGraphicsContext2D();
-		gc.drawImage(image, posX, Y_LAND - image.getHeight());
+		gc.drawImage(image, posX, posy);
 		
 	}
 
@@ -59,7 +62,11 @@ public class Special extends Character  {
 				return false;
 	}
 	public void reset() {
-		posX = 5000;
+		Random rand = new Random();
+		int x = 5000+1000*rand.nextInt(5);
+		int y =(int) (this.Y_LAND - rand.nextInt(220));
+		posX = x;
+		posy = y;
 		
 	}
 
