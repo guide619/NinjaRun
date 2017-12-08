@@ -103,8 +103,9 @@ public class EnemiesManager {
 	}
 	public boolean isSpCollision() {
 			if (ninja.getBound().intersects(Special.getBound().getBoundsInLocal())) {
-				if(ninja.getState() != 6)
-					Special.reset();
+				if(ninja.getState() != 6) {
+					ninja.setSpeedX((int) (ninja.getSpeedX()+1));
+					Special.reset();}
 				
 				return true;
 		}
@@ -122,7 +123,7 @@ public class EnemiesManager {
 
 	public void increaseWave() {
 		System.out.println(wave);
-		if (wave<=5)wave++;
+		if (wave<=8)wave++;
 	}
 	
 }

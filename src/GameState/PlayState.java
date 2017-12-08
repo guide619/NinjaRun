@@ -64,10 +64,8 @@ public class PlayState extends GameState{
 			land.update();
 			ninja.update();
 			enemiesManager.update();
-			bgi.update();
-		}if (enemiesManager.getWave() >= 5) {
-			ninja.setSpeedX(15);
-		}if(enemiesManager.isCollision()) {
+			bgi.update();}
+		if(enemiesManager.isCollision()) {
 			ninja.takeDamage();
 		}
 		if (enemiesManager.isSpCollision() && ninja.getState() != 6) {

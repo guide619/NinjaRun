@@ -136,7 +136,7 @@ public class Ninja {
 	 }
 	 
 	 public void update() {
-		 System.out.println(warpcount);
+		 System.out.println(this.getSpeedX());
 		updateScore();
 		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
