@@ -70,8 +70,7 @@ public class PlayState extends GameState{
 		}if(enemiesManager.isCollision()) {
 			ninja.takeDamage();
 		}
-		if (enemiesManager.isSpCollision()) {
-			System.out.println("BOOMmmmmmmmmmm");
+		if (enemiesManager.isSpCollision() && ninja.getState() != 6) {
 			ninja.increaseHealth();
 		}
 		if (ninja.getHealth()<=0) {

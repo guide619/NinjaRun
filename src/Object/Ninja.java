@@ -20,6 +20,7 @@ public class Ninja {
 
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
+	private static final int JUMPING2 = 7;
 	private static final int DOWN_RUN = 2;
 	private static final int DEATH = 3;
 	private static final int COOLDOWN_RUN = 4;
@@ -50,6 +51,7 @@ public class Ninja {
 	
 	private int state = NORMAL_RUN;
 	private Image deathImage;
+	private int warpcount;
 	
 	 public Ninja() {
 		 
@@ -96,6 +98,7 @@ public class Ninja {
 		timewarp = this.WARP_TIME;
 		coolDown = 0;
 		warpCoolDown = 0;
+		warpcount =0;
 			
 	 }
 	 public float getSpeedX() {
@@ -133,6 +136,7 @@ public class Ninja {
 	 }
 	 
 	 public void update() {
+		 System.out.println(warpcount);
 		updateScore();
 		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
@@ -156,7 +160,11 @@ public class Ninja {
 				if (coolDown>0) {
 					setState(this.COOLDOWN_RUN);
 					coolDown--;
-				}else setState(this.NORMAL_RUN);
+				}else {
+					setState(this.NORMAL_RUN);
+					warpcount=0;
+					
+				}
 			} else {
 				speedY += 1.8*GRAVITY;
 				posY += speedY;
@@ -169,14 +177,21 @@ public class Ninja {
 		}
 	}
 	 public void jump() {
-			if(jumpcount <= 1) {
+			if(jumpcount < 1) {
 				/*if(jumpSound != null) {
 					jumpSound.play();
 				}*/
 				jumpcount++;
-				speedY = -25f;
+				speedY = -20f;
 				posY += speedY;
 				state = JUMPING;
+			} else if(jumpcount ==1) {
+				jumpcount++;
+				speedY = -20f;
+				posY += speedY;
+			}else {
+				if(this.posY == this.LAND_POSY)
+				this.setState(NORMAL_RUN);
 			}
 		}
 	 public void down() {
@@ -189,8 +204,9 @@ public class Ninja {
 			 setState(DOWN_RUN);
 	 }
 	 public void warp() {
-		 if (posY < LAND_POSY && warpCoolDown<=0) {
+		 if (jumpcount <3 && warpCoolDown<=0 && warpcount<1 ) {
 			 this.setState(WARP);
+			 warpcount++;
 			 warpCoolDown = this.WARP_COOL_DOWN;
 		 }
 	 }
@@ -250,7 +266,7 @@ public class Ninja {
 			health--;
 		}
 		public void increaseHealth() {
-			health++;
+				health++;
 		}
 		public int getHealth() {
 			return health;

@@ -103,8 +103,8 @@ public class EnemiesManager {
 	}
 	public boolean isSpCollision() {
 			if (ninja.getBound().intersects(Special.getBound().getBoundsInLocal())) {
-				//System.out.println("YEAHHHHH");
-				Special.reset();
+				if(ninja.getState() != 6)
+					Special.reset();
 				
 				return true;
 		}
