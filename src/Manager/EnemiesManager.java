@@ -8,7 +8,7 @@ import Object.Character;
 import Object.Enemy;
 import Object.Ninja;
 import Object.Obstruct;
-import Object.Special;
+import Object.Heal;
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -19,7 +19,6 @@ public class EnemiesManager {
 	private Image enemy1;
 	private Image enemy2;
 	private Image enemy3;
-	private Image special;
 	private Random rand;
 	
 	private int NumberOfEnemy;
@@ -29,14 +28,15 @@ public class EnemiesManager {
 	private List<Character> enemies;
 	private Ninja ninja;
 	private int count;
-	private Special Special;
+	private Heal heal;
+	private Image Heal;
 	
 	public EnemiesManager(Ninja	ninja) {
 		rand = new Random();
 		enemy1 = RenderableHolder.Mark;
 		enemy2 = RenderableHolder.Guide;
 		enemy3 = RenderableHolder.Tan;
-		special = RenderableHolder.pichu;
+		Heal = RenderableHolder.Heal;
 		int count = 0;
 		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
@@ -44,13 +44,13 @@ public class EnemiesManager {
 		wave = 0;
 		NumberOfEnemy = 1;
 		wait=0;
-		Special = new Special(ninja,1000,(int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, special);
+		heal= new Heal(ninja,1000,(int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, Heal);
 		
 	}
 	
 	public void update() {
 		//System.out.println(wave);
-		Special.update();
+		heal.update();
 		for(Character e : enemies) {
 			e.update();
 		}
@@ -79,7 +79,7 @@ public class EnemiesManager {
 	}
 	
 	public void draw(Canvas game) {
-		Special.draw(game);
+		heal.draw(game);
 		for(Character e : enemies) {
 			e.draw(game);
 		}
@@ -106,13 +106,13 @@ public class EnemiesManager {
 		return false;
 	}
 	public boolean isSpCollision() {
-			if (ninja.getBound().intersects(Special.getBound().getBoundsInLocal())) {
+			if (ninja.getBound().intersects(heal.getBound().getBoundsInLocal())) {
 				if(ninja.getState() != 6) {
-					ninja.setSpeedX((int) (ninja.getSpeedX()+1));
-					Special.reset();}
-				
-				return true;
-		}
+					ninja.increaseHealth();
+					heal.reset();
+					return true;
+					}
+			}
 		return false;
 	}
 	

@@ -2,7 +2,7 @@ package GameState;
 
 
 import Object.Ninja;
-import Object.Special;
+import Object.Heal;
 import Object.Clouds;
 import Object.BackgroundItem;
 import Manager.EnemiesManager;

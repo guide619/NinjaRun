@@ -99,20 +99,6 @@ public class GamePanel extends Canvas implements Runnable {
 		
 	}
 	
-	// key event
-	
-	/*private void addKeyEventHandler() {
-		this.setOnKeyPressed(new EventHandler<KeyEvent>(){
-			public void handle(KeyEvent key) {
-				System.out.println("v");
-				Keys.keySet(key, true);
-			}
-		});
-		this.setOnKeyReleased(new EventHandler<KeyEvent>(){
-			public void handle(KeyEvent key) {
-				Keys.keySet(key, false);
-			}
-		});
-	}*/
+
 	
 }

@@ -104,7 +104,7 @@ public class Ninja {
 	 public float getSpeedX() {
 		 return speedX;
 	 }
-	 public void setSpeedX(int speedX) {
+	 public void setSpeedX(float speedX) {
 		 if(speedX<=25)
 		 	this.normalspeedX = speedX;
 			this.speedX = speedX;
@@ -287,6 +287,9 @@ public class Ninja {
 		public void setState(int state) {
 			this.state = state;
 		}
+		
+			
+		
 		
 	 
 
