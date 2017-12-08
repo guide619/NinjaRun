@@ -36,8 +36,7 @@ public class BackgroundItem {
 		imageCloud.posX = 900;
 		imageCloud.image = item2;
 		listitem.add(imageCloud);
-		
-		}
+	}
 		
 	
 	public  void update(){
@@ -50,7 +49,8 @@ public class BackgroundItem {
 		}
 		if(firstElement.posX < -firstElement.image.getWidth()) {
 			listitem.remove(firstElement);
-			firstElement.posX = 1000;
+			//Random rand = new Random();
+			firstElement.posX = 1000;//+rand.nextInt(3000);
 			listitem.add(firstElement);
 		}
 	}

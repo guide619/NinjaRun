@@ -38,6 +38,7 @@ import javafx.stage.Stage;
   
 	public void init() {
 		ticks=0;
+		RenderableHolder.Logosound.play();
 	}
   
 	public void update() {

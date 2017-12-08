@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import Object.Bird;
+import Object.Speed;
 import Object.Character;
 import Object.Enemy;
 import Object.Ninja;
@@ -30,6 +31,8 @@ public class EnemiesManager {
 	private int count;
 	private Heal heal;
 	private Image Heal;
+	private Image Speed;
+	private Speed speed;
 	
 	public EnemiesManager(Ninja	ninja) {
 		rand = new Random();
@@ -37,6 +40,8 @@ public class EnemiesManager {
 		enemy2 = RenderableHolder.Guide;
 		enemy3 = RenderableHolder.Tan;
 		Heal = RenderableHolder.Heal;
+		Speed = RenderableHolder.Speed;
+		
 		int count = 0;
 		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
@@ -44,13 +49,15 @@ public class EnemiesManager {
 		wave = 0;
 		NumberOfEnemy = 1;
 		wait=0;
-		heal= new Heal(ninja,1000,(int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, Heal);
+		heal= new Heal(ninja,4000,(int)Heal.getWidth() - 10, (int)Heal.getHeight() - 10, Heal);
+		speed= new Speed(ninja,500,(int)Speed.getWidth() - 10, (int)Speed.getHeight() - 10, Speed);
 		
 	}
 	
 	public void update() {
 		//System.out.println(wave);
 		heal.update();
+		speed.update();
 		for(Character e : enemies) {
 			e.update();
 		}
@@ -80,6 +87,7 @@ public class EnemiesManager {
 	
 	public void draw(Canvas game) {
 		heal.draw(game);
+		speed.draw(game);
 		for(Character e : enemies) {
 			e.draw(game);
 		}
@@ -108,8 +116,17 @@ public class EnemiesManager {
 	public boolean isSpCollision() {
 			if (ninja.getBound().intersects(heal.getBound().getBoundsInLocal())) {
 				if(ninja.getState() != 6) {
+					RenderableHolder.Healsound.play();
 					ninja.increaseHealth();
 					heal.reset();
+					return true;
+					}
+			}
+			if (ninja.getBound().intersects(speed.getBound().getBoundsInLocal())) {
+				if(ninja.getState() != 6) {
+					speed.reset();
+					RenderableHolder.Healsound.play();
+					ninja.setSpeedX(ninja.getSpeedX()+2);
 					return true;
 					}
 			}

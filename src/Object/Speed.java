@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Speed extends Character{
 	private static final double Y_LAND = 220;
-	private int posy ;
+	private int posy =200;
 	private int posX =1000;
 	private int width;
 	private Image image;
@@ -64,7 +64,7 @@ public class Speed extends Character{
 	public void reset() {
 		Random rand = new Random();
 		int x = 5000+1000*rand.nextInt(5);
-		int y =(int) (this.Y_LAND - rand.nextInt(220));
+		int y =(int) (200 - rand.nextInt(150));
 		posX = x;
 		posy = y;
 	}

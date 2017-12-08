@@ -119,7 +119,7 @@ public class Ninja {
 				g.drawImage(jumping, (int) posX, (int) posY);
 				break;
 			case DEATH:
-				g.drawImage(deathImage, (int) posX, (int) posY);
+				g.drawImage(RenderableHolder.Ghost, (int) 500, (int) posY);
 				break;
 			case COOLDOWN_RUN:
 				g.drawImage(cooldownRunAnim.getFrame(), (int)posX, (int)posY);
@@ -137,7 +137,6 @@ public class Ninja {
 	 }
 	 
 	 public void update() {
-		 System.out.println(this.getSpeedX());
 		updateScore();
 		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
@@ -180,14 +179,13 @@ public class Ninja {
 	}
 	 public void jump() {
 			if(jumpcount < 1) {
-				/*if(jumpSound != null) {
-					jumpSound.play();
-				}*/
+				RenderableHolder.jumpSound.play();
 				jumpcount++;
 				speedY = -20f;
 				posY += speedY;
 				state = JUMPING;
 			} else if(jumpcount ==1) {
+				RenderableHolder.jumpSound.play();
 				jumpcount++;
 				speedY = -20f;
 				posY += speedY;
@@ -210,6 +208,7 @@ public class Ninja {
 			 this.setState(WARP);
 			 warpcount++;
 			 warpCoolDown = this.WARP_COOL_DOWN;
+			 RenderableHolder.explosionSound.play();
 		 }
 	 }
 	 
@@ -238,7 +237,7 @@ public class Ninja {
 			resetHealth();
 		}
 		public void playDeadSound() {
-			//deadSound.play();
+			RenderableHolder.DieSound.play();
 		}
 		public void updateScore() {
 			if(isStart) {
@@ -258,18 +257,21 @@ public class Ninja {
 		public void takeDamage() {
 			if(state!=this.WARP) {
 				if(coolDown==0) {
+					RenderableHolder.Select.setVolume(1000);
+					RenderableHolder.Select.play();
 					decreaseHealth();
 					coolDown = this.HIT_COOL_DOWN;
-				}
+		
 			}
 		}
-		
+		}
 		public void decreaseHealth() {
 			health--;
 		}
 		public void increaseHealth() {
-			if(health<this.MAX_HEALTH)
-				health++;
+			if(health<this.MAX_HEALTH) {
+				
+				health++;}
 		}
 		public int getHealth() {
 			return health;

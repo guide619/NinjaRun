@@ -11,8 +11,8 @@ import javafx.scene.shape.Rectangle;
 public class Heal extends Character  {
 	
 	private static final double Y_LAND = 220;
-	private int posy = 0 ;
-	private int posX =1000;
+	private int posy = 200 ;
+	private int posX =500;
 	private int width;
 	private Image image;
 	private int height;
@@ -62,7 +62,7 @@ public class Heal extends Character  {
 	public void reset() {
 		Random rand = new Random();
 		int x = 5000+1000*rand.nextInt(5);
-		int y =(int) (this.Y_LAND - rand.nextInt(180));
+		int y =(int) (200 - rand.nextInt(150));
 		posX = x;
 		posy = y;
 		

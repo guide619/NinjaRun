@@ -40,7 +40,7 @@ public class PlayState extends GameState{
 		ninja = new Ninja();
 		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
-		ninja.setSpeedX(10);
+		ninja.setSpeedX(8);
 		bgi = new BackgroundItem(1000,ninja);
 		enemiesManager = new EnemiesManager(ninja);
 		
@@ -49,7 +49,7 @@ public class PlayState extends GameState{
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		RenderableHolder.gameplay.play();
+		//RenderableHolder.gameplay.play();
 		
 		
 	}
@@ -68,9 +68,7 @@ public class PlayState extends GameState{
 		if(enemiesManager.isCollision()) {
 			ninja.takeDamage();
 		}
-		if (enemiesManager.isSpCollision() && ninja.getState() != 6) {
-			ninja.increaseHealth();
-		}
+		enemiesManager.isSpCollision() ;
 		if (ninja.getHealth()<=0) {
 			//System.out.println("BOOM");
 			gameState = GAME_OVER_STATE;
@@ -94,9 +92,14 @@ public class PlayState extends GameState{
 		if(gameState == this.START_GAME_STATE) {
 			//clouds.draw(game);
 			//bgi.draw(game);
-			gc.fillText("SPEACE BAR = JUMP",350 , 180);
+			gc.fillText(" = HEAL",400 , 140);
+			gc.fillText(" = SPEED",550 , 140);
+			gc.fillText("SPEACE BAR = ATTACK",350 , 180);
 			gc.fillText("RIGHT = INVISIBLE",350 , 220);
-			gc.fillText("DOWN = SPRINT",350 , 260);
+			gc.fillText("UP = JUMP",350 , 260);
+			gc.fillText("DOWN = SPRINT",350 , 300);
+			gc.drawImage(RenderableHolder.Heal, 350, 105);
+			gc.drawImage(RenderableHolder.Speed, 520, 105);
 			land.draw(game);
 			ninja.draw(game);
 		}
@@ -107,9 +110,12 @@ public class PlayState extends GameState{
 			gc.fillText("Health"+ninja.getHealth(),800 , 80);
 			gc.fillText("Score " + ninja.score, 800, 40);
 			gc.fillText("Chakra", 30, 40);
+			gc.strokeRect(30, 50, 150, 10);
 			gc.setFill(Color.DARKCYAN);
 			gc.fillRect(30, 50, 150-ninja.warpCoolDown*15, 10);
 			gc.setFill(Color.RED);
+			gc.setStroke(Color.BLACK);
+			gc.strokeRect(800, 90, 100, 10);
 			gc.fillRect(800,90,20*ninja.getHealth(),10);
 			enemiesManager.draw(game);
 			ninja.draw(game);

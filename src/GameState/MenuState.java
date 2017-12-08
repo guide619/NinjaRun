@@ -33,7 +33,7 @@ public class MenuState extends GameState {
 	}
 
 	public void init() {
-		
+		RenderableHolder.gameplay.play();
 	}
 
 	public void update() {
@@ -81,6 +81,7 @@ public class MenuState extends GameState {
 		if(Keys.isPressed(Keys.ENTER) || Keys.isPressed(Keys.SPACE)) {
 			//JukeBox.play("collect");
 			selectOption();
+			RenderableHolder.ninjaSound.play();
 		}
 		
 	}
@@ -88,8 +89,8 @@ public class MenuState extends GameState {
 	protected void selectOption() {
 		// TODO Auto-generated method stub
 		if(currentOption == 0) {
-			RenderableHolder.Select.play();
 			gsm.setState(GameStateManager.PLAY);
+			RenderableHolder.gameplay.stop();
 			//System.out.println("play");
 		}
 		if(currentOption ==1) {

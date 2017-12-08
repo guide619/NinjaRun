@@ -42,6 +42,7 @@ public class RenderableHolder {
 	public static AudioClip gameplay;
 	public static AudioClip collect;
 	public static AudioClip Select;
+	public static AudioClip Damage;
 	public static Image bgplay;
 
 
@@ -61,6 +62,19 @@ public class RenderableHolder {
 	public static Image Heal;
 	public static Image fire;
 
+	public static Image Speed;
+
+	public static AudioClip Healsound;
+
+	public static AudioClip SpeedSound;
+
+	public static AudioClip DieSound;
+	public static AudioClip jumpSound;
+	public static AudioClip ninjaSound;
+
+	public static Image Ghost;
+
+	public static AudioClip Logosound;
 	
 
 	static {
@@ -99,6 +113,7 @@ public class RenderableHolder {
 		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
 		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
 		String heal = "file:Resources/items/sushi.png";
+		String speed = "file:Resources/items/scroll.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		
@@ -106,9 +121,10 @@ public class RenderableHolder {
 		String cloud2 = "file:Resources/cloud/cloud2.png";
 		String cloud3 = "file:Resources/cloud/cloud3.png";
 		String cloud4 = "file:Resources/cloud/cloud4.png";
-		String gamePlay = "file:Resources/sound/gameplay.mp3";
+		String gamePlay = "file:Resources/sound/gameplay1.mp3";
 		String Collect = "file:Resources/sound/collect.wav";
 		String select = "file:Resources/sound/tilechange.wav";
+		String damage = "file:Resources/sound/damage.wav";
 
 		String temple = "file:Resources/items/temple.png";
 		String house = "file:Resources/items/house.png";
@@ -146,7 +162,7 @@ public class RenderableHolder {
 		Smoke3= new Image(smoke3);
 		Smoke4= new Image(smoke4);
 
-
+		Speed = new Image(speed);
 		Heal= new Image(heal);
 		Shuriken = new Image(shuriken);
 		
@@ -162,9 +178,28 @@ public class RenderableHolder {
 		gameplay = new AudioClip(gamePlay);
 		collect = new AudioClip(Collect);
 		Select = new AudioClip(select);
+		Damage = new AudioClip(select);
+		String healsound = "file:Resources/sound/heal.wav" ;
+		Healsound = new AudioClip(healsound );
+		String diesound = "file:Resources/sound/die.wav" ;
+		DieSound = new AudioClip(diesound);
+		String jumpsound = "file:Resources/sound/jump.wav" ;
+		jumpSound = new AudioClip(jumpsound);
+		String ninjasound = "file:Resources/sound/ninja.wav" ;
+		ninjaSound = new AudioClip(ninjasound);
+		String logo = "file:Resources/sound/logo.wav" ;
+		Logosound = new AudioClip(logo);
 		
 		item1=new Image(temple);
 		item2=new Image(house);
+		String sakura = "file:Resources/items/sakura.png";
+		item3 = new Image(sakura);
+		String bamboo= "file:Resources/items/bamboo.png";
+		item4 = new Image(bamboo);
+		String explode = "file:Resources/sound/Explosion.wav";
+		explosionSound = new AudioClip(explode);
+		String ghost= "file:Resources/spite/ghost.png";
+		Ghost = new Image(ghost);
 	}
 
 	public void add(IRenderable entity) {
