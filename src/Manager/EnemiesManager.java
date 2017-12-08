@@ -101,15 +101,16 @@ public class EnemiesManager {
 		
 	}
 	private Character createEnemy(int i) {
-		int gap = 1000+i*100;
-		gap+= rand.nextInt(10)*100;
+		int gap = 1000+i*50;
 		int type = rand.nextInt(11);
 		//int type = 10;
 		if(type >4 && type <=7) {
+			gap+= rand.nextInt(10)*100;
 			return new Bird(ninja, gap, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
 		} else if (type <=4) {
 			return new Obstruct(ninja, gap, (int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, enemy2);
 		}else {
+			gap+= rand.nextInt(10)*100;
 			return new Enemy(ninja, gap, (int)enemy3.getWidth() - 10, (int)enemy3.getHeight() - 10, enemy3);
 		}
 	}
@@ -176,7 +177,7 @@ public class EnemiesManager {
 		//System.out.println("Check");
 		increaseWave();
 		int j = wave+rand.nextInt(2);
-		if(wave>=7) j=5+rand.nextInt(2);
+		if(wave>=7) j=5+rand.nextInt(10);
 		for(int i =0 ;i<j;i++) {
 			enemies.add(createEnemy(i));
 		}

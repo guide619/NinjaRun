@@ -54,6 +54,7 @@ import javafx.stage.Stage;
 		}
 		if(ticks > FADE_IN + LENGTH + FADE_OUT) {
 			gsm.setState(GameStateManager.MENU);
+			RenderableHolder.Logosound.stop();
 		}
 	}
   
@@ -70,6 +71,7 @@ import javafx.stage.Stage;
 		public void addKeyEventHandler() {
 			if(Keys.isPressed(Keys.ENTER)) {
 				gsm.setState(GameStateManager.MENU);
+				RenderableHolder.Logosound.stop();
 			}
 		}
 		

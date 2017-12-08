@@ -76,6 +76,10 @@ public class RenderableHolder {
 	public static Image Ghost;
 
 	public static AudioClip Logosound;
+
+	public static Image pausebg;
+
+	public static Image pausescroll;
 	
 
 	static {
@@ -99,6 +103,7 @@ public class RenderableHolder {
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGmenu = "file:Resources/bg/bgmenu.jpg";
+		String bgpause = "file:Resources/bg/bgpjpg";
 		String BG3 = "file:Resources/Map/bgplay.jpg";
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
@@ -148,7 +153,9 @@ public class RenderableHolder {
 		bgplay = new Image(BG3);
 		fire = new Image(onfire);
 		land1 = new Image(Land);
-		
+		pausebg = new Image(bgpause);
+		String scrollp =  "file:Resources/bg/puase.png";
+		pausescroll = new Image(scrollp );
 		
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);

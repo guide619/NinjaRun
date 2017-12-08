@@ -24,15 +24,28 @@ public class PauseState extends GameState {
 	public void draw(Canvas g) {
 		// TODO Auto-generated method stub
 		GraphicsContext gc = g.getGraphicsContext2D();
-		gc.setFill(Color.GREEN);
-		gc.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
-		gc.setFill(Color.BLACK);
-		gc.setFont(TEXT_FONT);
-		gc.fillText("RESTART", 300, 125);
-		gc.fillText("MENU", 300, 225);
+		gc.drawImage(RenderableHolder.pausebg, 0, 0);
 		
-		if(currentOption == 0) gc.fillText("-",250,125);
-		else if(currentOption == 1) gc.fillText("-", 250,225);
+		if(currentOption == 0) {
+			gc.setFill(Color.BLACK);
+			//gc.fillRect(300, 50, 400, 200);
+			gc.drawImage(RenderableHolder.pausescroll, 300, 50);
+			gc.setFill(Color.BLACK);
+			gc.fillText("-",380,150);
+			gc.fillText("ESC = RESUME", 400, 120);
+			gc.fillText("RESTART", 400, 160);
+			gc.fillText("MENU", 400, 190);
+		}
+		else if(currentOption == 1) {
+			gc.setFill(Color.BLACK);
+			//gc.fillRect(300, 50, 400, 200);
+			gc.drawImage(RenderableHolder.pausescroll, 300, 50);
+			gc.setFill(Color.BLACK);
+			gc.fillText("-",380,180);
+			gc.fillText("ESC = RESUME", 400, 120);
+			gc.fillText("RESTART", 400, 160);
+			gc.fillText("MENU", 400, 190);
+		}
 		
 	}
 

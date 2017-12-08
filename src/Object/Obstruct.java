@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Obstruct extends Character {
 	
-	public static final int Y_LAND = 325;
+	public static final int Y_LAND = 300;
 	
 	private int posX;
 	private int width;
