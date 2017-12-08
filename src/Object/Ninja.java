@@ -1,5 +1,7 @@
 package Object;
 
+import java.util.List;
+
 import Manager.Animation;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
@@ -20,12 +22,12 @@ public class Ninja {
 
 	private static final int NORMAL_RUN = 0;
 	private static final int JUMPING = 1;
-	private static final int JUMPING2 = 7;
 	private static final int DOWN_RUN = 2;
 	private static final int DEATH = 3;
 	private static final int COOLDOWN_RUN = 4;
 	private static final int COOLDOWN_JUMP = 5;
 	private static final int WARP = 6;
+	
 	
 	public boolean isStart;
 	public int coolDown;
@@ -136,7 +138,7 @@ public class Ninja {
 	 }
 	 
 	 public void update() {
-		 System.out.println(this.getSpeedX());
+		 //System.out.println(this.getSpeedX());
 		updateScore();
 		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
@@ -211,6 +213,7 @@ public class Ninja {
 			 warpCoolDown = this.WARP_COOL_DOWN;
 		 }
 	 }
+
 	 
 	 public Rectangle getBound() {
 			rectBound = new Rectangle();
@@ -235,9 +238,6 @@ public class Ninja {
 		public void reset() {
 			posY = LAND_POSY;
 			resetHealth();
-		}
-		public void playDeadSound() {
-			//deadSound.play();
 		}
 		public void updateScore() {
 			if(isStart) {
@@ -285,6 +285,12 @@ public class Ninja {
 		}
 		public void setState(int state) {
 			this.state = state;
+		}
+		public float getPosY() {
+			return posY;
+		}
+		public float getPosX() {
+			return posX;
 		}
 		
 	 

@@ -49,7 +49,7 @@ public class PlayState extends GameState{
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		RenderableHolder.gameplay.play();
+		//RenderableHolder.gameplay.play();
 		
 		
 	}
@@ -136,7 +136,7 @@ public class PlayState extends GameState{
 			gsm.setPaused(true);
 			RenderableHolder.gameplay.stop();
 		}
-		if (Keys.isPressed(Keys.SPACE)|| Keys.isPressed(Keys.UP)) {
+		if (Keys.isPressed(Keys.UP)) {
 			ninja.jump();
 		}
 		if (Keys.isDown(Keys.DOWN)) {
@@ -145,6 +145,8 @@ public class PlayState extends GameState{
 		if (Keys.isPressed(Keys.RIGHT)) {
 			ninja.warp();
 			}
+		if(Keys.isPressed(Keys.SPACE))
+			enemiesManager.createShuriken();
 		break;
 		}
 		
