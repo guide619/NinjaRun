@@ -4,9 +4,8 @@ package GameState;
 import Object.Ninja;
 import Object.Special;
 import Object.Clouds;
-import Object.EnemiesManager;
 import Object.BackgroundItem;
-
+import Manager.EnemiesManager;
 import Manager.GameStateManager;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
@@ -64,7 +63,8 @@ public class PlayState extends GameState{
 			land.update();
 			ninja.update();
 			enemiesManager.update();
-			bgi.update();}
+			bgi.update();
+		}
 		if(enemiesManager.isCollision()) {
 			ninja.takeDamage();
 		}
@@ -99,11 +99,16 @@ public class PlayState extends GameState{
 			ninja.draw(game);
 		}
 		if(gameState == this.GAME_PLAYING_STATE) {
-			gc.fillText("Health"+ninja.getHealth(),800 , 80);
-			gc.fillText("Score " + ninja.score, 800, 40);
 			clouds.draw(game);
 			bgi.draw(game);
 			land.draw(game);
+			gc.fillText("Health"+ninja.getHealth(),800 , 80);
+			gc.fillText("Score " + ninja.score, 800, 40);
+			gc.fillText("Chakra", 30, 40);
+			gc.setFill(Color.DARKCYAN);
+			gc.fillRect(30, 50, 150-ninja.warpCoolDown*15, 10);
+			gc.setFill(Color.RED);
+			gc.fillRect(800,90,20*ninja.getHealth(),10);
 			enemiesManager.draw(game);
 			ninja.draw(game);
 	}

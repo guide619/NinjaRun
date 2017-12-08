@@ -1,11 +1,14 @@
-package Object;
+package Manager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import Object.Bird;
+import Object.Character;
 import Object.Enemy;
-
+import Object.Ninja;
+import Object.Obstruct;
+import Object.Special;
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -38,6 +41,7 @@ public class EnemiesManager {
 		enemies = new ArrayList<Character>();
 		this.ninja = ninja;
 		enemies.add(createEnemy(0));
+		wave = 0;
 		NumberOfEnemy = 1;
 		wait=0;
 		Special = new Special(ninja,1000,(int)enemy2.getWidth() - 10, (int)enemy2.getHeight() - 10, special);
@@ -122,7 +126,7 @@ public class EnemiesManager {
 	}
 
 	public void increaseWave() {
-		System.out.println(wave);
+		System.out.println("wave = "+wave);
 		if (wave<=8)wave++;
 	}
 	

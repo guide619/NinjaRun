@@ -13,7 +13,7 @@ public class Ninja {
 
 	public static final int LAND_POSY = 220;
 	public static final float GRAVITY = 0.98f;
-	public static final int MAX_HEALTH = 3;
+	public static final int MAX_HEALTH = 5;
 	public static final int HIT_COOL_DOWN = 20;
 	public static final int WARP_COOL_DOWN = 10;
 	public static final int WARP_TIME = 25;
@@ -149,6 +149,7 @@ public class Ninja {
 				setState(JUMPING);
 				timewarp = this.WARP_TIME;
 				warpAnim.resetFrame();
+				speedY=0;
 			}
 		}
 		else {
@@ -173,7 +174,7 @@ public class Ninja {
 					setState(this.COOLDOWN_JUMP);
 					coolDown--;
 				}else this.setState(this.JUMPING);}
-			warpCoolDown--;
+			if(warpCoolDown>0)warpCoolDown--;
 		}
 	}
 	 public void jump() {
@@ -266,6 +267,7 @@ public class Ninja {
 			health--;
 		}
 		public void increaseHealth() {
+			if(health<this.MAX_HEALTH)
 				health++;
 		}
 		public int getHealth() {
