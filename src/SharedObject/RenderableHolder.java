@@ -14,7 +14,7 @@ public class RenderableHolder {
 
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
-	public static Image bgs;
+	public static Image bg;
 	public static Image logo;
 	public static Image bg1;
 	public static Image bg2;
@@ -28,15 +28,6 @@ public class RenderableHolder {
 	public static Image spite5_blink;
 	public static AudioClip  explosionSound;
 	public static Image land1;
-	public static Image land2;
-	public static Image land3;
-	public static Image land4;
-	public static Image land5;
-	public static Image land6;
-	public static Image land7;
-	public static Image land8;
-	public static Image land9;
-	public static Image land0;
 	public static Image Shuriken;
 	public static Image Cloud1;
 	public static Image Cloud2;
@@ -92,11 +83,11 @@ public class RenderableHolder {
 	
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
-		String BGscroll = "file:Resources/Menu/BG.jpg";
-		String BG1 = "file:Resources/bg/bg1.png";
-		String BG2 = "file:Resources/bg/bg2.jpg";
+		String BGmenu = "file:Resources/bg/bgmenu.jpg";
 		String BG3 = "file:Resources/Map/bgplay.jpg";
-		
+		String Land = "file:Resources/bg/bg1.png";
+		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
+		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
 		
 		
 		String sprite = "file:Resources/spite/sprite.png";
@@ -133,14 +124,12 @@ public class RenderableHolder {
 		String smoke4 = "file:Resources/smoke/smoke4.png";
 
 		logo = new Image(Logo);
-		bgs = new Image(BG2);
-		bg1 = new Image(BG1);
-		bg2 = new Image(BG2);
-		land1 = new Image(BG1);
-		land2 = new Image(BG2);
+		bg = new Image(BGmenu);
+		bg1 = new Image(BGmenu1);
+		bg2 = new Image(BGmenu2);
 		bgplay = new Image(BG3);
 		fire = new Image(onfire);
-		
+		land1 = new Image(Land);
 		
 		
 		spite = new Image(sprite);

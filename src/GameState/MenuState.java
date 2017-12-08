@@ -14,6 +14,9 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import Manager.Keys;
+import Object.BackgroundItem;
+import Object.Clouds;
+import Object.Ninja;
 import SharedObject.RenderableHolder;
 
 import java.io.*;
@@ -40,15 +43,27 @@ public class MenuState extends GameState {
 	public void draw(Canvas g) {
 		//Draw Background and Options
 		GraphicsContext gc = g.getGraphicsContext2D();
-		gc.drawImage(RenderableHolder.bgs, 0, 0);
-		gc.setFill(Color.WHITE);
-		gc.setFont(TEXT_FONT);
-		gc.fillText(options[0], 300, 125);
-		gc.fillText(options[1], 300, 225);
+		gc.drawImage(RenderableHolder.bg1, 0, 0);
+		gc.drawImage(RenderableHolder.land1, 0, 300);
+		Ninja ninja = new Ninja();
+		Clouds cloud = new Clouds(1000,ninja);
+		BackgroundItem bgi = new BackgroundItem(1000,ninja);
 		
 		//Draw Pointer in front of options
-		if(currentOption == 0) gc.drawImage(RenderableHolder.Shuriken, 180, 50); 
-		else if(currentOption == 1) gc.drawImage(RenderableHolder.Shuriken, 180, 150); 
+		if(currentOption == 0) {
+			cloud.draw(g);
+			bgi.draw(g);
+			ninja.draw(g);
+			gc.drawImage(RenderableHolder.bg1, 0, 0);
+			gc.drawImage(RenderableHolder.land1, 0, 300);
+		}
+		else if(currentOption == 1) {
+			cloud.draw(g);
+			bgi.draw(g);
+			ninja.draw(g);
+			gc.drawImage(RenderableHolder.bg2, 0, 0);
+			gc.drawImage(RenderableHolder.land1, 0, 300);
+		}
 		
 	}
 	public void addKeyEventHandler() {

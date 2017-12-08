@@ -27,7 +27,7 @@ public class PlayState extends GameState{
 	private static final int START_GAME_STATE =0;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
-	private int gameState = START_GAME_STATE;
+	private int gameState = 1;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private EnemiesManager enemiesManager;
 	private Clouds clouds;
@@ -92,14 +92,23 @@ public class PlayState extends GameState{
 		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bgplay, 0, 0);
-		gc.fillText("Score " + ninja.score, 850, 40);
-		gc.fillText("Health"+ninja.getHealth(),850 , 80);
 		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
-		clouds.draw(game);
-		bgi.draw(game);
-		land.draw(game);
-		enemiesManager.draw(game);
-		ninja.draw(game);
+		if(gameState == this.START_GAME_STATE) {
+			land.draw(game);
+			clouds.draw(game);
+			bgi.draw(game);
+			land.draw(game);
+			ninja.draw(game);
+		}
+		if(gameState == this.GAME_PLAYING_STATE) {
+			gc.fillText("Health"+ninja.getHealth(),800 , 80);
+			gc.fillText("Score " + ninja.score, 800, 40);
+			clouds.draw(game);
+			bgi.draw(game);
+			land.draw(game);
+			enemiesManager.draw(game);
+			ninja.draw(game);
+	}
 	}
 	private void resetGame() {
 		enemiesManager.reset();

@@ -3,7 +3,7 @@ package Object;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
+
 
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
@@ -15,29 +15,12 @@ public class Land {
 	
 	private static List<ImageLand> listLand;
 	private Image land1;
-	private Image land2;
-	private Image land3;
-	private Image land4;
-	private Image land5;
-	private Image land6;
-	private Image land7;
-	private Image land8;
-	private Image land9;
-	private Image land0;
-	private int type =1;
+
+	
 	private Ninja ninja;
 	
 	public Land(int width, Ninja ninja) {
 		land1 = RenderableHolder.land1;
-		land2 = RenderableHolder.land2;
-		land3 = RenderableHolder.land3;
-		land4 = RenderableHolder.land4;
-		land5 = RenderableHolder.land5;
-		land6 = RenderableHolder.land6;
-		land7 = RenderableHolder.land7;
-		land8 = RenderableHolder.land8;
-		land9 = RenderableHolder.land9;
-		land0 = RenderableHolder.land0;
 		this.ninja = ninja;
 		int numberOfImageLand = (int) (width / land1.getWidth() + 2);
 		listLand = new ArrayList<ImageLand>();
@@ -83,12 +66,7 @@ public class Land {
 		
 	}
 
-	private static void printList() {
-		System.out.print("[");
-		for (ImageLand l : listLand) {
-			System.out.print(l.type+", ");
-		}System.out.println("]");
-	}
+
 	
 	private class ImageLand {
 		float posX;
