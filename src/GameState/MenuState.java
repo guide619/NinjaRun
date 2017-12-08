@@ -33,7 +33,7 @@ public class MenuState extends GameState {
 	}
 
 	public void init() {
-		RenderableHolder.gameplay.play();
+		//RenderableHolder.gameplay.play();
 	}
 
 	public void update() {

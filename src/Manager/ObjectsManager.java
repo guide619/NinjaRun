@@ -18,7 +18,7 @@ import javafx.scene.image.Image;
 
 public class ObjectsManager {
 	
-	private static final int MAX_CHURIKEN = 3;
+	private static final int MAX_CHURIKEN = 50;
 	
 	private Random rand;
 	
@@ -59,7 +59,7 @@ public class ObjectsManager {
 		checkFire();
 		heal.update();
 		speed.update();
-		
+		if(shurikencount<=this.MAX_CHURIKEN) shurikencount++;
 
 	}
 	public void draw(Canvas game) {
@@ -78,7 +78,6 @@ public class ObjectsManager {
 			s.update((int)ninja.getSpeedX());
 		}if(shurikens.get(0).isOutOfScreen()) {
 			shurikens.remove(0);
-			shurikencount++;
 		}
 	
 		}
@@ -116,7 +115,8 @@ public class ObjectsManager {
 		if(ninja.getState() != 6 && shurikencount > 0) {
 			shurikens.add(new Shuriken((int)(ninja.getPosX()),(int)ninja.getPosY()));
 			RenderableHolder.ShurikenSound.play();
-			shurikencount--;
+			shurikencount-=30;
+			System.out.println(shurikencount);
 		}
 	}
 	
@@ -136,7 +136,6 @@ public class ObjectsManager {
 						destroy(e);
 						RenderableHolder.EnemyHitSound.play();
 						shurikens.remove(0);
-						shurikencount++;
 						return;
 					}
 			}
