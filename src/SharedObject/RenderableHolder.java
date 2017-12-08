@@ -31,15 +31,20 @@ public class RenderableHolder {
 	public static Image land1;
 	public static Image Shuriken;
 	public static Image Shuriken2;
+	public static Image Kunai;
 	public static Image Cloud1;
 	public static Image Cloud2;
 	public static Image Cloud3;
 	public static Image Cloud4;
 	
+	public static Image Ultimate;
+	public static Image UltimateReady;
+	
 	public static Image Smoke1;
 	public static Image Smoke2;
 	public static Image Smoke3;
 	public static Image Smoke4;
+	public static Image Boom;
 	
 	public static Image Enemy1;
 	public static Image Enemy2;
@@ -47,6 +52,8 @@ public class RenderableHolder {
 	public static Image Enemy4;
 	public static Image Enemy5;
 	public static Image Enemy6;
+	public static Image BadShuriken;
+	public static Image BadShuriken2;
 
 	public static AudioClip gameplay;
 	public static AudioClip collect;
@@ -56,11 +63,8 @@ public class RenderableHolder {
 
 
 	public static Image item1;
-
 	public static Image item2;
-
 	public static Image item3;
-
 	public static Image item4;
 
 	public static Animation normalRunAnim;
@@ -68,6 +72,7 @@ public class RenderableHolder {
 	public static Animation cooldownJumpAnim;
 	public static Animation warpAnim;
 	public static Animation enemyAnim;
+	public static Animation badShuAnim;
 
 	public static Image Mark;
 	public static Image Spike;
@@ -78,12 +83,14 @@ public class RenderableHolder {
 	public static Image Speed;
 
 	public static AudioClip Healsound;
-
 	public static AudioClip SpeedSound;
-
 	public static AudioClip DieSound;
 	public static AudioClip jumpSound;
 	public static AudioClip ninjaSound;
+	
+	public static AudioClip UltimateSound;
+	public static AudioClip ShurikenSound;
+	public static AudioClip EnemyHitSound;
 
 	public static Image Ghost;
 
@@ -92,6 +99,8 @@ public class RenderableHolder {
 	public static Image pausebg;
 
 	public static Image pausescroll;
+
+	public static AudioClip warpSound;
 	
 
 	static {
@@ -120,6 +129,8 @@ public class RenderableHolder {
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
 		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
+		String ultimate = "file:Resources/Ultimate.png";
+		String ultimateready = "file:Resources/UltimateReady.png";
 		
 		
 		String sprite = "file:Resources/spite/sprite.png";
@@ -139,9 +150,12 @@ public class RenderableHolder {
 		String enemy4 = "file:Resources/Enemy/enemy4.png";
 		String enemy5 = "file:Resources/Enemy/enemy5.png";
 		String enemy6 = "file:Resources/Enemy/enemy6.png";
+		String badshuriken = "file:Resources/Enemy/badshuriken.png";
+		String badshuriken2 = "file:Resources/Enemy/badshuriken2.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		String shuriken2 = "file:Resources/spite/shuriken2.png";
+		String kunai = "file:Resources/spite/kunai.png";
 		
 		String cloud1 = "file:Resources/cloud/cloud1.png";
 		String cloud2 = "file:Resources/cloud/cloud2.png";
@@ -151,6 +165,7 @@ public class RenderableHolder {
 		String Collect = "file:Resources/sound/collect.wav";
 		String select = "file:Resources/sound/tilechange.wav";
 		String damage = "file:Resources/sound/damage.wav";
+		String warp = "file:Resources/sound/warp.mp3";
 
 		String temple = "file:Resources/items/temple.png";
 		String house = "file:Resources/items/house.png";
@@ -164,6 +179,7 @@ public class RenderableHolder {
 		String smoke2 = "file:Resources/smoke/smoke2.png";
 		String smoke3 = "file:Resources/smoke/smoke3.png";
 		String smoke4 = "file:Resources/smoke/smoke4.png";
+		String boom = "file:Resources/smoke/boom.png";
 
 		logo = new Image(Logo);
 		bg = new Image(BGmenu);
@@ -175,6 +191,8 @@ public class RenderableHolder {
 		pausebg = new Image(bgpause);
 		String scrollp =  "file:Resources/bg/puase.png";
 		pausescroll = new Image(scrollp );
+		Ultimate = new Image(ultimate);
+		UltimateReady = new Image(ultimateready);
 		
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);
@@ -189,6 +207,7 @@ public class RenderableHolder {
 		Smoke2= new Image(smoke2);
 		Smoke3= new Image(smoke3);
 		Smoke4= new Image(smoke4);
+		Boom = new Image(boom);
 		
 		Enemy1= new Image(enemy1);
 		Enemy2= new Image(enemy2);
@@ -196,11 +215,14 @@ public class RenderableHolder {
 		Enemy4= new Image(enemy4);
 		Enemy5= new Image(enemy5);
 		Enemy6= new Image(enemy6);
+		BadShuriken = new Image(badshuriken);
+		BadShuriken2 = new Image(badshuriken2);
 
 		Speed = new Image(speed);
 		Heal= new Image(heal);
 		Shuriken = new Image(shuriken);
 		Shuriken2 = new Image(shuriken2);
+		Kunai = new Image(kunai);
 		
 		Cloud1 = new Image(cloud1);
 		Cloud2 = new Image(cloud2);
@@ -210,6 +232,13 @@ public class RenderableHolder {
 		Mark = new Image(mark);
 		Spike = new Image(spike);
 		Tan = new Image(tan);
+		
+		String ultimateSound = "file:Resources/sound/Ultimate.mp3" ;
+		UltimateSound = new AudioClip(ultimateSound);
+		String shurikenSound = "file:Resources/sound/shurikenThrow.mp3" ;
+		ShurikenSound = new AudioClip(shurikenSound);
+		String explode = "file:Resources/sound/Explosion.wav";
+		EnemyHitSound = new AudioClip(explode);
 		
 		gameplay = new AudioClip(gamePlay);
 		collect = new AudioClip(Collect);
@@ -232,8 +261,7 @@ public class RenderableHolder {
 		item3 = new Image(sakura);
 		String bamboo= "file:Resources/items/bamboo.png";
 		item4 = new Image(bamboo);
-		String explode = "file:Resources/sound/Explosion.wav";
-		explosionSound = new AudioClip(explode);
+		warpSound = new AudioClip(warp);
 		String ghost= "file:Resources/spite/ghost.png";
 		Ghost = new Image(ghost);
 		
@@ -274,6 +302,9 @@ public class RenderableHolder {
 		enemyAnim.addFrame(RenderableHolder.Enemy4);
 		enemyAnim.addFrame(RenderableHolder.Enemy5);
 		enemyAnim.addFrame(RenderableHolder.Enemy6);
+		badShuAnim = new Animation(30);
+		badShuAnim.addFrame(BadShuriken);
+		badShuAnim.addFrame(BadShuriken2);
 	}
 
 	public void add(IRenderable entity) {

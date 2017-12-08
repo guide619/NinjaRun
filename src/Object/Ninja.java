@@ -112,11 +112,11 @@ public class Ninja {
 				g.drawImage(warpAnim.getFrame(), (int) posX, (int) posY);
 				break;
 			case ULTIMATE:
+				g.drawImage(RenderableHolder.fire, (int) posX-110, (int)posY-25);
 				g.drawImage(normalRunAnim.getFrame(), (int) posX, (int) posY);
 				break;
 		}
 	 }
-	 
 	 public void update() {
 		updateScore();
 		if(state==ULTIMATE) {
@@ -126,12 +126,12 @@ public class Ninja {
 				ultimateTime=ULTIMATE_TIME;
 				powerobtain = 0;
 			}
-			speedX=normalspeedX*75;
+			speedX=normalspeedX*50;
 			ultimateTime--;
 			normalRunAnim.updateFrame();
 			return;
 		}
-		if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
+		else if(state== DOWN_RUN) speedX=(float) (normalspeedX*2);
 		else speedX=normalspeedX;
 		if(state == WARP) {
 			if(timewarp>0) {
@@ -201,12 +201,13 @@ public class Ninja {
 			 this.setState(WARP);
 			 warpcount++;
 			 warpCoolDown = this.WARP_COOL_DOWN;
-			 RenderableHolder.explosionSound.play();
+			 RenderableHolder.warpSound.play();
 		 }
 	 }public void ultimate() {
-		 if(powerobtain>=3 && currentstate!=this.COOLDOWN_JUMP && currentstate != this.COOLDOWN_RUN) {
+		 if(isUltimateReady() && currentstate!=this.COOLDOWN_JUMP && currentstate != this.COOLDOWN_RUN) {
 			 currentstate = state;
 			 setState(ULTIMATE);
+			 RenderableHolder.UltimateSound.play();
 		 }
 	 }
 
@@ -231,7 +232,7 @@ public class Ninja {
 				state = NORMAL_RUN;
 			}
 	}
-		public void reset() {
+	 public void reset() {
 			posY = LAND_POSY;
 			resetHealth();
 		}
@@ -268,7 +269,9 @@ public class Ninja {
 		}
 		public void increaseHealth() {
 			if(health<this.MAX_HEALTH) {
-				health++;}
+				health++;
+				RenderableHolder.Healsound.play();
+			}
 		}
 		public int getHealth() {
 			return health;

@@ -67,7 +67,8 @@ public class PlayState extends GameState{
 		}
 		if(objectsManager.isCollision()) {
 			ninja.takeDamage();
-		}
+		}if(objectsManager.getWave()==15) ninja.setSpeedX(10);
+		else if (objectsManager.getWave()==25) ninja.setSpeedX(20);
 		objectsManager.isSpCollision() ;
 		if (ninja.getHealth()<=0) {
 			//System.out.println("BOOM");
@@ -117,7 +118,8 @@ public class PlayState extends GameState{
 			gc.setStroke(Color.BLACK);
 			gc.strokeRect(800, 90, 100, 10);
 			gc.fillRect(800,90,20*ninja.getHealth(),10);
-			if (ninja.isUltimateReady()) gc.drawImage(RenderableHolder.Mark, 30, 100);
+			if (ninja.isUltimateReady()) gc.drawImage(RenderableHolder.UltimateReady, 350, -50);
+			else gc.drawImage(RenderableHolder.Ultimate, 350, -50);
 			objectsManager.draw(game);
 			ninja.draw(game);
 	}
@@ -133,7 +135,7 @@ public class PlayState extends GameState{
 		// TODO Auto-generated method stub
 		switch (gameState) {
 		case START_GAME_STATE :
-			if (Keys.isPressed(Keys.SPACE)||Keys.isPressed(Keys.UP)) {
+			if (Keys.isPressed(Keys.UP)) {
 				gameState = GAME_PLAYING_STATE;
 				ninja.jump();
 				ninja.isStart = true;

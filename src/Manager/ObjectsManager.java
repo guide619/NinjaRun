@@ -18,7 +18,8 @@ import javafx.scene.image.Image;
 
 public class ObjectsManager {
 	
-	private Image enemy1;
+	private static final int MAX_CHURIKEN = 3;
+	
 	private Random rand;
 	
 	private int wait;
@@ -32,19 +33,20 @@ public class ObjectsManager {
 	private Image Speed;
 	private Speed speed;
 	
+	private int shurikencount;
+	
 	
 	public ObjectsManager(Ninja	ninja) {
 		rand = new Random();
-		enemy1 = RenderableHolder.Mark;
 		Heal = RenderableHolder.Heal;
 		Speed = RenderableHolder.Speed;
-		
 		enemies = new ArrayList<Character>();
 		shurikens = new ArrayList<Shuriken>();
 		this.ninja = ninja;
 		enemies.add(createEnemy(0));
 		wave = 0;
 		wait=0;
+		shurikencount = MAX_CHURIKEN;
 		heal= new Heal(ninja,4000,(int)Heal.getWidth() - 10, (int)Heal.getHeight() - 10, Heal);
 		speed= new Speed(ninja,500,(int)Speed.getWidth() - 10, (int)Speed.getHeight() - 10, Speed);
 		
@@ -74,7 +76,10 @@ public class ObjectsManager {
 		if(shurikens.size()!=0) {
 		for(Shuriken s : shurikens) {
 			s.update((int)ninja.getSpeedX());
-		}if(shurikens.get(0).isOutOfScreen()) shurikens.remove(0);
+		}if(shurikens.get(0).isOutOfScreen()) {
+			shurikens.remove(0);
+			shurikencount++;
+		}
 	
 		}
 	}
@@ -96,9 +101,10 @@ public class ObjectsManager {
 	private Character createEnemy(int i) {
 		int gap = 1000+i*50;
 		int type = rand.nextInt(11);
+		//int type = 7;
 		if(type >4 && type <=7) {
 			gap+= rand.nextInt(10)*100;
-			return new Bird(ninja, gap, (int)enemy1.getWidth() - 10, (int)enemy1.getHeight() - 10, enemy1);
+			return new Bird(ninja, gap);
 		} else if (type <=4) {
 			return new Obstruct(ninja, gap);
 		}else {
@@ -107,8 +113,11 @@ public class ObjectsManager {
 		}
 	}
 	public void createShuriken() {
-		if(ninja.getState() != 6)
-		shurikens.add(new Shuriken((int)(ninja.getPosX()),(int)ninja.getPosY()));
+		if(ninja.getState() != 6 && shurikencount > 0) {
+			shurikens.add(new Shuriken((int)(ninja.getPosX()),(int)ninja.getPosY()));
+			RenderableHolder.ShurikenSound.play();
+			shurikencount--;
+		}
 	}
 	
 	public boolean isCollision() {
@@ -125,7 +134,9 @@ public class ObjectsManager {
 			if (e instanceof Enemy ){
 					if(shurikens.get(0).getBound().intersects(e.getBound().getBoundsInLocal()) ) {
 						destroy(e);
+						RenderableHolder.EnemyHitSound.play();
 						shurikens.remove(0);
+						shurikencount++;
 						return;
 					}
 			}
