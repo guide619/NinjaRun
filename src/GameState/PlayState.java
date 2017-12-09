@@ -95,33 +95,31 @@ public class PlayState extends GameState{
 		GraphicsContext gc = game.getGraphicsContext2D();
 		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
-		gc.drawImage(RenderableHolder.bg, 0, 0);
+		gc.drawImage(RenderableHolder.Background, 0, 0);
 		switch (gameState) {
 		case START_GAME_STATE :
-			gc.drawImage(RenderableHolder.bg, 0, 0);
 			clouds.draw(game);
 			bgi.draw(game);
 			land.draw(game);
 			ninja.draw(game);
+			gc.drawImage(RenderableHolder.Instruction, 0, 0);
 			break;
 		
 		case GAME_PLAYING_STATE:
-			gc.drawImage(RenderableHolder.bgplay, 0, 0);
 			clouds.draw(game);
 			bgi.draw(game);
 			land.draw(game);
-			gc.fillText(""+ ninja.getHealth(),920 , 80);
-			gc.fillText(""+ ninja.score, 900, 40);
-			//gc.fillText("Chakra", 30, 40);
-			gc.strokeRect(30, 50, 150, 10);
-			gc.setFill(Color.DARKCYAN);
-			gc.fillRect(30, 50, 150-ninja.warpCoolDown*15, 10);
-			gc.setFill(Color.RED);
-			gc.setStroke(Color.BLACK);
-			gc.strokeRect(800, 90, 100, 10);
-			gc.fillRect(800,90,20*ninja.getHealth(),10);
 			if (ninja.isUltimateReady()) gc.drawImage(RenderableHolder.UltimateReady, 350, -50);
 			else gc.drawImage(RenderableHolder.Ultimate, 350, -50);
+			gc.drawImage(RenderableHolder.ScoreAndHealth, 0, 0);
+			gc.fillText(""+ ninja.score, 880, 42);
+			gc.setStroke(Color.WHITE);
+			gc.strokeRect(127, 64, 200, 17);
+			gc.setFill(Color.DARKCYAN);
+			gc.fillRect(127, 64, 200-ninja.warpCoolDown*20, 17);
+			gc.setFill(Color.RED);
+			gc.strokeRect(127, 22, 200, 17);
+			gc.fillRect(127,22,40*ninja.getHealth(),17);
 			objectsManager.draw(game);
 			ninja.draw(game);
 			break;
