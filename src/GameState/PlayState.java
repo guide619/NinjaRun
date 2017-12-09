@@ -37,7 +37,7 @@ public class PlayState extends GameState{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
-		gameState = START_GAME_STATE;
+		gameState = 2;//START_GAME_STATE;
 		ninja = new Ninja();
 		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);

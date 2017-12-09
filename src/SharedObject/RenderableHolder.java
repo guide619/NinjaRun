@@ -102,6 +102,9 @@ public class RenderableHolder {
 	public static Image pausescroll2;
 
 	public static AudioClip warpSound;
+
+	public static Image Over;
+	public static Image Over1;
 	
 
 	static {
@@ -125,7 +128,8 @@ public class RenderableHolder {
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGmenu = "file:Resources/bg/bgmenu.jpg";
-		String bgpause = "file:Resources/bg/bgpjpg";
+		String bgover = "file:Resources/bg/over.png";
+		String bgover1 = "file:Resources/bg/over1.png";
 		String BG = "file:Resources/Map/bgplaystart.jpg";
 		String BG1 = "file:Resources/Map/bgplay1.jpg";
 		String Land = "file:Resources/bg/bg1.png";
@@ -190,7 +194,8 @@ public class RenderableHolder {
 		bgplay = new Image(BG1);
 		fire = new Image(onfire);
 		land1 = new Image(Land);
-		pausebg = new Image(bgpause);
+		Over = new Image(bgover);
+		Over1 = new Image(bgover1);
 		String scrollp1 =  "file:Resources/bg/puase1.png";
 		pausescroll1 = new Image(scrollp1);
 		String scrollp2 =  "file:Resources/bg/puase2.png";
