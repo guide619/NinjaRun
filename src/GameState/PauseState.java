@@ -48,6 +48,7 @@ public class PauseState extends GameState {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
+		currentOption = 0;
 		
 	}
 
