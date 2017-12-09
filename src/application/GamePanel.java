@@ -32,7 +32,6 @@ public class GamePanel extends Canvas implements Runnable {
 		super(WIDTH,HEIGHT);
 		requestFocus();
 		startAnimation();
-		//System.out.println("kuy");
 		
 	}
 	

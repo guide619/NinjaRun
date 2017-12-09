@@ -186,7 +186,7 @@ public class PlayState extends GameState{
 		case GAME_OVER_STATE:
 			if (Keys.isPressed(Keys.ENTER)) {
 				resetGame();
-				gsm.setState(GameStateManager.GAMEOVER,ninja.score);
+				gsm.setState(GameStateManager.GAMEOVER , ninja.score);
 			}
 			break;
 		}

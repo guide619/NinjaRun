@@ -255,7 +255,10 @@ public class Ninja {
 	 
 	 
 	 public void dead(boolean isDeath) {
-			if(isDeath) setState(DEATH);
+			if(isDeath) {
+				setState(DEATH);
+				RenderableHolder.DieSound.play();
+			}
 	}
 	 
 	public void reset() {

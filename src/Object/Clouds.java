@@ -3,7 +3,6 @@ package Object;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import SharedObject.RenderableHolder;
 
@@ -17,12 +16,8 @@ import javafx.scene.image.Image;
 public class Clouds {
 
 		private List<ImageCloud> listCloud;
-		private Image cloud1;
-		
 		private Ninja ninja;
 		private Image cloud2;
-		private Image cloud3;
-		private Image cloud4;
 		
 		public Clouds(int width, Ninja ninja) {
 			this.ninja = ninja;

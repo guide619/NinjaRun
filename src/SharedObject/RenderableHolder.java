@@ -116,6 +116,7 @@ public class RenderableHolder {
 	public static Image Background;
 	public static Image deathBackground;
 	public static Image Press;
+	public static Image PressEnter;
 	static {
 		loadResource();
 	}
@@ -141,14 +142,20 @@ public class RenderableHolder {
 		String bgover = "file:Resources/bg/over.png";
 		String bgover1 = "file:Resources/bg/over1.png";
 		String press = "file:Resources/bg/press.png";
+		String pressen = "file:Resources/bg/pressEnter.png";
 		String BG = "file:Resources/Map/bgplaystart.jpg";
 		String BG1 = "file:Resources/Map/bgplay1.jpg";
 
-		String bgpause = "file:Resources/bg/bgpjpg";
+	
 		String background = "file:Resources/Map/bgplay.jpg";
 		String instruction = "file:Resources/Map/bgplaystart.png";
 		String scoreAndHealth = "file:Resources/Map/bgplay2.png";
+
+		String scrollp1 =  "file:Resources/bg/puase1.png";
+		String scrollp2 =  "file:Resources/bg/puase2.png";
+
 		String deathbackground = "file:Resources/Map/bgdead.jpg";
+
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
 		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
@@ -182,16 +189,17 @@ public class RenderableHolder {
 		String shuriken = "file:Resources/spite/shuriken.png";
 		String shuriken2 = "file:Resources/spite/shuriken2.png";
 		String kunai = "file:Resources/spite/kunai.png";
+		String ghost= "file:Resources/spite/ghost.png";
 		
-		String cloud1 = "file:Resources/cloud/cloud1.png";
 		String cloud2 = "file:Resources/cloud/cloud2.png";
-		String cloud3 = "file:Resources/cloud/cloud3.png";
-		String cloud4 = "file:Resources/cloud/cloud4.png";
+		
+		
 		String gamePlay = "file:Resources/sound/gameplay1.mp3";
 		String Collect = "file:Resources/sound/collect.wav";
 		String select = "file:Resources/sound/tilechange.wav";
 		String damage = "file:Resources/sound/damage.wav";
 		String warp = "file:Resources/sound/warp.mp3";
+		String healsound = "file:Resources/sound/heal.wav" ;
 
 		String temple = "file:Resources/items/temple.png";
 		String house = "file:Resources/items/house.png";
@@ -206,6 +214,7 @@ public class RenderableHolder {
 		String smoke3 = "file:Resources/smoke/smoke3.png";
 		String smoke4 = "file:Resources/smoke/smoke4.png";
 		String boom = "file:Resources/smoke/boom.png";
+		
 
 		Background = new Image(background);
 		deathBackground = new Image(deathbackground);
@@ -218,13 +227,13 @@ public class RenderableHolder {
 		land1 = new Image(Land);
 		Over = new Image(bgover);
 		Over1 = new Image(bgover1);
-		String scrollp1 =  "file:Resources/bg/puase1.png";
+		
 		pausescroll1 = new Image(scrollp1);
-		String scrollp2 =  "file:Resources/bg/puase2.png";
 		pausescroll2 = new Image(scrollp2 );
 		Ultimate = new Image(ultimate);
 		UltimateReady = new Image(ultimateready);
 		Press = new Image(press);
+		PressEnter = new Image(pressen);
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);
 		spite2 = new Image(sprite2);
@@ -233,8 +242,10 @@ public class RenderableHolder {
 		spite1_blink = new Image(sprite1_blink);
 		spite3_blink = new Image(sprite3_blink);
 		spite5_blink = new Image(sprite5_blink);
+
 		Spitedead = new Image(spriteDead);
 		
+
 		Smoke1= new Image(smoke1);
 		Smoke2= new Image(smoke2);
 		Smoke3= new Image(smoke3);
@@ -257,15 +268,12 @@ public class RenderableHolder {
 		Shuriken = new Image(shuriken);
 		Shuriken2 = new Image(shuriken2);
 		Kunai = new Image(kunai);
-		
-		Cloud1 = new Image(cloud1);
 		Cloud2 = new Image(cloud2);
-		Cloud3 = new Image(cloud3);
-		Cloud4 = new Image(cloud4);
 		
-		Mark = new Image(mark);
 		Spike = new Image(spike);
-		Tan = new Image(tan);
+		Ghost = new Image(ghost);
+		item1 = new Image(house);
+		item2 = new Image(temple);
 		
 		String ultimateSound = "file:Resources/sound/Ultimate.mp3" ;
 		UltimateSound = new AudioClip(ultimateSound);
@@ -278,7 +286,6 @@ public class RenderableHolder {
 		collect = new AudioClip(Collect);
 		Select = new AudioClip(select);
 		Damage = new AudioClip(select);
-		String healsound = "file:Resources/sound/heal.wav" ;
 		Healsound = new AudioClip(healsound );
 		String diesound = "file:Resources/sound/die.wav" ;
 		DieSound = new AudioClip(diesound);
@@ -288,16 +295,8 @@ public class RenderableHolder {
 		ninjaSound = new AudioClip(ninjasound);
 		String logo = "file:Resources/sound/logo.wav" ;
 		Logosound = new AudioClip(logo);
-		
-		item1=new Image(temple);
-		item2=new Image(house);
-		String sakura = "file:Resources/items/sakura.png";
-		item3 = new Image(sakura);
-		String bamboo= "file:Resources/items/bamboo.png";
-		item4 = new Image(bamboo);
 		warpSound = new AudioClip(warp);
-		String ghost= "file:Resources/spite/ghost.png";
-		Ghost = new Image(ghost);
+
 		
 		normalRunAnim = new Animation(50);
 		normalRunAnim.addFrame(RenderableHolder.spite);

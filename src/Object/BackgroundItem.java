@@ -24,8 +24,6 @@ public class BackgroundItem {
 		this.ninja = ninja;
 		item1 = RenderableHolder.item1;
 		item2 = RenderableHolder.item2;
-		item3 = RenderableHolder.item3;
-		item4 = RenderableHolder.item4;
 		listitem = new ArrayList<Imageitem>();
 		Imageitem imageCloud = new Imageitem();
 		imageCloud.posX = 100;
