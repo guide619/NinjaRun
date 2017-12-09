@@ -225,6 +225,7 @@ public class Ninja {
 	 }
 	 
 	 
+	 
 	 public void dead(boolean isDeath) {
 			if(isDeath) {
 				state = DEATH;

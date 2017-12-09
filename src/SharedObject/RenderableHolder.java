@@ -98,7 +98,8 @@ public class RenderableHolder {
 
 	public static Image pausebg;
 
-	public static Image pausescroll;
+	public static Image pausescroll1;
+	public static Image pausescroll2;
 
 	public static AudioClip warpSound;
 	
@@ -125,7 +126,8 @@ public class RenderableHolder {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGmenu = "file:Resources/bg/bgmenu.jpg";
 		String bgpause = "file:Resources/bg/bgpjpg";
-		String BG3 = "file:Resources/Map/bgplay.jpg";
+		String BG = "file:Resources/Map/bgplaystart.jpg";
+		String BG1 = "file:Resources/Map/bgplay1.jpg";
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
 		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
@@ -182,15 +184,17 @@ public class RenderableHolder {
 		String boom = "file:Resources/smoke/boom.png";
 
 		logo = new Image(Logo);
-		bg = new Image(BGmenu);
+		bg = new Image(BG);
 		bg1 = new Image(BGmenu1);
 		bg2 = new Image(BGmenu2);
-		bgplay = new Image(BG3);
+		bgplay = new Image(BG1);
 		fire = new Image(onfire);
 		land1 = new Image(Land);
 		pausebg = new Image(bgpause);
-		String scrollp =  "file:Resources/bg/puase.png";
-		pausescroll = new Image(scrollp );
+		String scrollp1 =  "file:Resources/bg/puase1.png";
+		pausescroll1 = new Image(scrollp1);
+		String scrollp2 =  "file:Resources/bg/puase2.png";
+		pausescroll2 = new Image(scrollp2 );
 		Ultimate = new Image(ultimate);
 		UltimateReady = new Image(ultimateready);
 		

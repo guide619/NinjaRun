@@ -29,24 +29,14 @@ public class PauseState extends GameState {
 		if(currentOption == 0) {
 			gc.setFill(Color.BLACK);
 			//gc.fillRect(300, 50, 400, 200);
-			gc.drawImage(RenderableHolder.pausescroll, 300, 50);
-			gc.setFill(Color.BLACK);
-			gc.fillText("-",380,150);
-			gc.fillText("ESC = RESUME", 400, 120);
-			gc.fillText("RESTART", 400, 160);
-			gc.fillText("MENU", 400, 190);
+			gc.drawImage(RenderableHolder.pausescroll1, 300, 50);
+
 		}
 		else if(currentOption == 1) {
 			gc.setFill(Color.BLACK);
 			//gc.fillRect(300, 50, 400, 200);
-			gc.drawImage(RenderableHolder.pausescroll, 300, 50);
-			gc.setFill(Color.BLACK);
-			gc.fillText("-",380,180);
-			gc.fillText("ESC = RESUME", 400, 120);
-			gc.fillText("RESTART", 400, 160);
-			gc.fillText("MENU", 400, 190);
-		}
-		
+			gc.drawImage(RenderableHolder.pausescroll2, 300, 50);
+		}	
 	}
 
 	public void update() {
@@ -68,11 +58,13 @@ public class PauseState extends GameState {
 			//JukeBox.play("menuoption");
 			currentOption++;
 			currentOption= currentOption%options.length;
+			RenderableHolder.collect.play();
 		}
 		if(Keys.isPressed(Keys.UP)) {
 			//JukeBox.play("menuoption");
 			currentOption--;
 			currentOption= (-1)*(currentOption%options.length);
+			RenderableHolder.collect.play();
 		}
 		if(Keys.isPressed(Keys.ENTER)) {
 			//JukeBox.play("collect");

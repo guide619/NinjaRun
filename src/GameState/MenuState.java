@@ -68,7 +68,6 @@ public class MenuState extends GameState {
 	}
 	public void addKeyEventHandler() {
 		if(Keys.isPressed(Keys.DOWN) ) {
-			//JukeBox.play("menuoption");
 			RenderableHolder.collect.play();
 			currentOption++;
 			currentOption= currentOption%options.length;
@@ -79,7 +78,6 @@ public class MenuState extends GameState {
 			currentOption= (-1)*(currentOption%options.length);
 		}
 		if(Keys.isPressed(Keys.ENTER) || Keys.isPressed(Keys.SPACE)) {
-			//JukeBox.play("collect");
 			selectOption();
 			RenderableHolder.ninjaSound.play();
 		}

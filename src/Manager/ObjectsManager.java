@@ -102,7 +102,7 @@ public class ObjectsManager {
 		int type = rand.nextInt(11);
 		//int type = 7;
 		if(type >4 && type <=7) {
-			gap+= rand.nextInt(10)*100;
+			gap+= rand.nextInt(20)*100;
 			return new Bird(ninja, gap);
 		} else if (type <=4) {
 			return new Obstruct(ninja, gap);

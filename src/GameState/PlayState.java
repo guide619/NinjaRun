@@ -88,29 +88,23 @@ public class PlayState extends GameState{
 		GraphicsContext gc = game.getGraphicsContext2D();
 		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
-		gc.drawImage(RenderableHolder.bgplay, 0, 0);
+		gc.drawImage(RenderableHolder.bg, 0, 0);
 		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
 		if(gameState == this.START_GAME_STATE) {
 			//clouds.draw(game);
 			//bgi.draw(game);
-			gc.fillText(" = HEAL",400 , 140);
-			gc.fillText(" = SPEED",550 , 140);
-			gc.fillText("SPEACE BAR = ATTACK",350 , 180);
-			gc.fillText("RIGHT = INVISIBLE",350 , 220);
-			gc.fillText("UP = JUMP",350 , 260);
-			gc.fillText("DOWN = SPRINT",350 , 300);
-			gc.drawImage(RenderableHolder.Heal, 350, 105);
-			gc.drawImage(RenderableHolder.Speed, 520, 105);
+			gc.drawImage(RenderableHolder.bg, 0, 0);
 			land.draw(game);
 			ninja.draw(game);
 		}
 		if(gameState == this.GAME_PLAYING_STATE) {
+			gc.drawImage(RenderableHolder.bgplay, 0, 0);
 			clouds.draw(game);
 			bgi.draw(game);
 			land.draw(game);
-			gc.fillText("Health"+ninja.getHealth(),800 , 80);
-			gc.fillText("Score " + ninja.score, 800, 40);
-			gc.fillText("Chakra", 30, 40);
+			gc.fillText(""+ ninja.getHealth(),920 , 80);
+			gc.fillText(""+ ninja.score, 900, 40);
+			//gc.fillText("Chakra", 30, 40);
 			gc.strokeRect(30, 50, 150, 10);
 			gc.setFill(Color.DARKCYAN);
 			gc.fillRect(30, 50, 150-ninja.warpCoolDown*15, 10);
@@ -135,7 +129,7 @@ public class PlayState extends GameState{
 		// TODO Auto-generated method stub
 		switch (gameState) {
 		case START_GAME_STATE :
-			if (Keys.isPressed(Keys.UP)) {
+			if (Keys.anyKeyPress()) {
 				gameState = GAME_PLAYING_STATE;
 				ninja.jump();
 				ninja.isStart = true;
