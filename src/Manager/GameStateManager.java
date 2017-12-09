@@ -75,6 +75,7 @@ import javafx.stage.Stage;
 		}
 		
 		public void setPaused(boolean b) {
+			pauseState.init();
 			paused = b;
 		}
 		

@@ -74,12 +74,13 @@ public class ObjectsManager {
 	}
 	public void shurikenupdate() {
 		if(shurikens.size()!=0) {
-		for(Shuriken s : shurikens) {
+		}for(int i = 0 ; i<shurikens.size();i++) {
+			Shuriken s =shurikens.get(i);
 			s.update((int)ninja.getSpeedX());
-		}if(shurikens.get(0).isOutOfScreen()) {
-			shurikens.remove(0);
-		}
-	
+			if (s.isOutOfScreen()) {
+				shurikens.remove(i);
+				i--;
+			}
 		}
 	}
 	public void enemyupdate(){

@@ -14,7 +14,7 @@ public class Bird extends Character {
 	public static final int Y_LAND = 325;
 	
 	private Random rand;
-	private int posX;
+	private double posX;
 	private int width;
 	private int height;
 	private int posY;
@@ -39,7 +39,7 @@ public class Bird extends Character {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		posX -= ninja.getSpeedX()+5;
+		posX -= ninja.getSpeedX()*2.5;
 		badShuriken.updateFrame();
 		
 	}

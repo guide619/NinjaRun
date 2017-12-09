@@ -131,12 +131,14 @@ public class Ninja {
 		}
 		updateScore();
 		if(warpCoolDown>0)warpCoolDown--;
-		if(coolDown>0) {
-			coolDown--;
-			if(posY >= LAND_POSY) {
-				posY = LAND_POSY;
-				setState(COOLDOWN_RUN);
-			}else setState(COOLDOWN_JUMP);
+		if(state!=WARP) {
+			if(coolDown>0) {
+				coolDown--;
+				if(posY >= LAND_POSY) {
+					posY = LAND_POSY;
+					setState(COOLDOWN_RUN);	
+				}else setState(COOLDOWN_JUMP);
+			}
 		}
 		switch(state) {
 		case ULTIMATE:
@@ -199,12 +201,14 @@ public class Ninja {
 		}	
 	}
 	 public void jump() {
-		 if(jumpcount<2) {
-			 speedY = -20f;
-			 RenderableHolder.jumpSound.play();
-			 jumpcount++;
-			 posY += speedY;
-			 setState(JUMPING);
+		 if(state<=3) {
+			 if(jumpcount<2) {
+				 speedY = -20f;
+				 RenderableHolder.jumpSound.play();
+				 jumpcount++;
+				 posY += speedY;
+				 setState(JUMPING);
+			 }
 		 }
 	}
 	
@@ -217,8 +221,9 @@ public class Ninja {
 			 setState(DOWN_RUN);
 	 }
 	 public void warp() {
-		 if (warpCoolDown<=0 && warpcount<1 && coolDown<=0) {
+		 if (warpCoolDown<=0 && warpcount<1 && state <= 4) {
 			 currentstate = state;
+			 speedX = normalspeedX;
 			 setState(WARP);
 			 warpcount++;
 			 warpCoolDown = WARP_COOL_DOWN;
