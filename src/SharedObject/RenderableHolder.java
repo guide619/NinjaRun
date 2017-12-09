@@ -55,6 +55,8 @@ public class RenderableHolder {
 	public static Image Enemy6;
 	public static Image BadShuriken;
 	public static Image BadShuriken2;
+	public static Image BadShuriken3;
+	public static Image BadShuriken4;
 
 	public static AudioClip gameplay;
 	public static AudioClip collect;
@@ -104,12 +106,15 @@ public class RenderableHolder {
 
 	public static AudioClip warpSound;
 
+
+	public static Image Over;
+	public static Image Over1;
+
+
 	public static Image ScoreAndHealth;
 	public static Image Background;
-
 	public static Image deathBackground;
-	
-
+	public static Image Press;
 	static {
 		loadResource();
 	}
@@ -131,6 +136,13 @@ public class RenderableHolder {
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGmenu = "file:Resources/bg/bgmenu.jpg";
+
+		String bgover = "file:Resources/bg/over.png";
+		String bgover1 = "file:Resources/bg/over1.png";
+		String press = "file:Resources/bg/press.png";
+		String BG = "file:Resources/Map/bgplaystart.jpg";
+		String BG1 = "file:Resources/Map/bgplay1.jpg";
+
 		String bgpause = "file:Resources/bg/bgpjpg";
 		String background = "file:Resources/Map/bgplay.jpg";
 		String instruction = "file:Resources/Map/bgplaystart.png";
@@ -163,6 +175,8 @@ public class RenderableHolder {
 		String enemy6 = "file:Resources/Enemy/enemy6.png";
 		String badshuriken = "file:Resources/Enemy/badshuriken.png";
 		String badshuriken2 = "file:Resources/Enemy/badshuriken2.png";
+		String badshuriken3 = "file:Resources/Enemy/badshuriken3.png";
+		String badshuriken4 = "file:Resources/Enemy/badshuriken4.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		String shuriken2 = "file:Resources/spite/shuriken2.png";
@@ -201,14 +215,15 @@ public class RenderableHolder {
 		ScoreAndHealth = new Image(scoreAndHealth);
 		fire = new Image(onfire);
 		land1 = new Image(Land);
-		pausebg = new Image(bgpause);
+		Over = new Image(bgover);
+		Over1 = new Image(bgover1);
 		String scrollp1 =  "file:Resources/bg/puase1.png";
 		pausescroll1 = new Image(scrollp1);
 		String scrollp2 =  "file:Resources/bg/puase2.png";
 		pausescroll2 = new Image(scrollp2 );
 		Ultimate = new Image(ultimate);
 		UltimateReady = new Image(ultimateready);
-		
+		Press = new Image(press);
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);
 		spite2 = new Image(sprite2);
@@ -233,6 +248,8 @@ public class RenderableHolder {
 		Enemy6= new Image(enemy6);
 		BadShuriken = new Image(badshuriken);
 		BadShuriken2 = new Image(badshuriken2);
+		BadShuriken3 = new Image(badshuriken3);
+		BadShuriken4 = new Image(badshuriken4);
 
 		Speed = new Image(speed);
 		Heal= new Image(heal);
@@ -318,9 +335,11 @@ public class RenderableHolder {
 		enemyAnim.addFrame(RenderableHolder.Enemy4);
 		enemyAnim.addFrame(RenderableHolder.Enemy5);
 		enemyAnim.addFrame(RenderableHolder.Enemy6);
-		badShuAnim = new Animation(30);
+		badShuAnim = new Animation(50);
 		badShuAnim.addFrame(BadShuriken);
 		badShuAnim.addFrame(BadShuriken2);
+		badShuAnim.addFrame(BadShuriken3);
+		badShuAnim.addFrame(BadShuriken4);
 	}
 
 	public void add(IRenderable entity) {

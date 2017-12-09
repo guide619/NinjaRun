@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 
 import Manager.GameStateManager;
 import Manager.Keys;
+import SharedObject.RenderableHolder;
 import application.GamePanel;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,6 +14,7 @@ import javafx.scene.text.Font;
 public class GameOverState extends GameState {
 	private int score;
 	private static final Font TEXT_FONT = new Font("Fipps", 80);
+	private int i;
 
 	public GameOverState(GameStateManager gsm) {
 		// TODO Auto-generated constructor stub
@@ -37,7 +39,7 @@ public class GameOverState extends GameState {
 		// TODO Auto-generated method stub
 		this.addKeyEventHandler();
 		//System.out.println("CHECK");
-		
+		i++;
 
 	}
 
@@ -45,14 +47,26 @@ public class GameOverState extends GameState {
 	public void draw(Canvas g) {
 		// TODO Auto-generated method stub
 		GraphicsContext gc = g.getGraphicsContext2D();
-		gc.setFill(Color.RED);
-		gc.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
-		//System.out.println("CHECK");
-		
-		gc.setFill(Color.WHITE);
-		gc.setFont(TEXT_FONT);
-		gc.fillText("High Score: "+score, 300, 125);
-		
+		if(i%10<6) {
+			gc.drawImage(RenderableHolder.Over, 0, 0);
+			gc.drawImage(RenderableHolder.Ghost, 450, 150);
+			gc.setFill(Color.WHITE);
+			gc.setFont(TEXT_FONT);
+			gc.fillText(""+score, 500, 110);
+			gc.setStroke(Color.BLACK);
+			gc.strokeText(""+score, 500, 110);
+		}
+		if(i%10>6) {
+			gc.drawImage(RenderableHolder.Over1, 0, 0);
+			gc.drawImage(RenderableHolder.Ghost, 450, 150);
+			gc.setFill(Color.WHITE);
+			gc.setFont(TEXT_FONT);
+			gc.fillText(""+score, 500, 110);
+			gc.setStroke(Color.BLACK);
+			gc.strokeText(""+score, 500, 110);
+
+			;
+		}
 
 	}
 

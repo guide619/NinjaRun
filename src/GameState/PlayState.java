@@ -30,6 +30,7 @@ public class PlayState extends GameState{
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private ObjectsManager objectsManager;
 	private Clouds clouds;
+	private int countintro =0;
 
 	BackgroundItem bgi;
 
@@ -59,6 +60,7 @@ public class PlayState extends GameState{
 	public void update() {
 		// TODO Auto-generated method stub
 		addKeyEventHandler();
+		countintro++;
 		wave = objectsManager.wave;
 		switch(gameState) {
 		case START_GAME_STATE :
@@ -105,6 +107,7 @@ public class PlayState extends GameState{
 			land.draw(game);
 			ninja.draw(game);
 			gc.drawImage(RenderableHolder.Instruction, 0, 0);
+			if(countintro%10<6) gc.drawImage(RenderableHolder.Press, 0, 0);
 			break;
 		
 		case GAME_PLAYING_STATE:
