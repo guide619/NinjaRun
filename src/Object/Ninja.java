@@ -55,7 +55,7 @@ public class Ninja {
 	public int score = 0;
 	int count = 0;
 	
-	private int state = NORMAL_RUN;
+	private int state = 7;//NORMAL_RUN;
 	private int warpcount;
 	
 	 public Ninja() {
