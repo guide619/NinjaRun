@@ -15,7 +15,7 @@ public class Ninja {
 	public static final int MAX_SPEED = 25;
 	public static final int LAND_POSY = 220;
 	public static final float GRAVITY = 0.98f;
-	public static final int MAX_HEALTH = 5;
+	public static final int MAX_HEALTH = 1;
 	public static final int HIT_COOL_DOWN = 20;
 	public static final int WARP_COOL_DOWN = 10;
 	public static final int WARP_TIME = 25;
@@ -45,6 +45,7 @@ public class Ninja {
 	private int currentstate;
 	private int powerobtain;
 	private int ultimateTime;
+	private int ghost;
 	
 	private Animation normalRunAnim;
 	private Animation cooldownRunAnim;
@@ -77,6 +78,7 @@ public class Ninja {
 		warpcount =0;
 		currentstate = NORMAL_RUN;
 		ultimateTime = ULTIMATE_TIME;
+		ghost = 0;
 			
 	 }
 	 public float getSpeedX() {
@@ -97,7 +99,8 @@ public class Ninja {
 				g.drawImage(jumping, (int) posX, (int) posY);
 				break;
 			case DEATH:
-				g.drawImage(RenderableHolder.Ghost, (int) 500, (int) posY);
+				if(posY>=LAND_POSY)g.drawImage(RenderableHolder.Ghost, (int) posX+ghost/2+50, (int) posY-(20+ghost));
+				g.drawImage(RenderableHolder.Spitedead, posX, posY+20);
 				break;
 			case COOLDOWN_RUN:
 				g.drawImage(cooldownRunAnim.getFrame(), (int)posX, (int)posY);
@@ -120,6 +123,10 @@ public class Ninja {
 	 public void update() {
 		if(!isStart) {
 			normalRunAnim.updateFrame();
+			return;
+		}else if (state == DEATH) {
+			if(posY<LAND_POSY)posY+=15;
+			else ghost+=1;
 			return;
 		}
 		updateScore();

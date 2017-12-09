@@ -81,8 +81,10 @@ public class PlayState extends GameState{
 				gameState = GAME_OVER_STATE;
 				ninja.dead(true);
 				RenderableHolder.gameplay.stop();
-				resetGame();
 			}
+			break;
+		case GAME_OVER_STATE:
+			ninja.update();
 			break;
 		}
 		
@@ -120,6 +122,21 @@ public class PlayState extends GameState{
 			gc.setFill(Color.RED);
 			gc.strokeRect(127, 22, 200, 17);
 			gc.fillRect(127,22,40*ninja.getHealth(),17);
+			objectsManager.draw(game);
+			ninja.draw(game);
+			break;
+		case GAME_OVER_STATE:
+			gc.drawImage(RenderableHolder.deathBackground, 0, 0);
+			land.draw(game);
+			gc.drawImage(RenderableHolder.ScoreAndHealth, 0, 0);
+			gc.fillText(""+ ninja.score, 880, 42);
+			gc.setStroke(Color.WHITE);
+			gc.strokeRect(127, 64, 200, 17);
+			gc.setFill(Color.DARKCYAN);
+			gc.fillRect(127, 64, 200-ninja.warpCoolDown*20, 17);
+			gc.setFill(Color.RED);
+			gc.strokeRect(127, 22, 200, 17);
+			gc.fillRect(127,22,0,17);
 			objectsManager.draw(game);
 			ninja.draw(game);
 			break;
@@ -165,6 +182,7 @@ public class PlayState extends GameState{
 		break;
 		case GAME_OVER_STATE:
 			if (Keys.isPressed(Keys.ENTER)) {
+				resetGame();
 				gsm.setState(GameStateManager.GAMEOVER,ninja.score);
 			}
 			break;

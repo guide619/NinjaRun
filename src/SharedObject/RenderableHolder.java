@@ -27,6 +27,7 @@ public class RenderableHolder {
 	public static Image spite3_blink;
 	public static Image spite4;
 	public static Image spite5_blink;
+	public static Image Spitedead;
 	public static AudioClip  explosionSound;
 	public static Image land1;
 	public static Image Shuriken;
@@ -105,6 +106,8 @@ public class RenderableHolder {
 
 	public static Image ScoreAndHealth;
 	public static Image Background;
+
+	public static Image deathBackground;
 	
 
 	static {
@@ -132,6 +135,7 @@ public class RenderableHolder {
 		String background = "file:Resources/Map/bgplay.jpg";
 		String instruction = "file:Resources/Map/bgplaystart.png";
 		String scoreAndHealth = "file:Resources/Map/bgplay2.png";
+		String deathbackground = "file:Resources/Map/bgdead.jpg";
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
 		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
@@ -147,6 +151,7 @@ public class RenderableHolder {
 		String sprite1_blink = "file:Resources/spite/sprite1_blink.png";
 		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
 		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
+		String spriteDead = "file:Resources/spite/spritedead.png";
 		String heal = "file:Resources/items/sushi.png";
 		String speed = "file:Resources/items/scroll.png";
 		
@@ -188,6 +193,7 @@ public class RenderableHolder {
 		String boom = "file:Resources/smoke/boom.png";
 
 		Background = new Image(background);
+		deathBackground = new Image(deathbackground);
 		logo = new Image(Logo);
 		Instruction = new Image(instruction);
 		bg1 = new Image(BGmenu1);
@@ -211,6 +217,7 @@ public class RenderableHolder {
 		spite1_blink = new Image(sprite1_blink);
 		spite3_blink = new Image(sprite3_blink);
 		spite5_blink = new Image(sprite5_blink);
+		Spitedead = new Image(spriteDead);
 		
 		Smoke1= new Image(smoke1);
 		Smoke2= new Image(smoke2);
