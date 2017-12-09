@@ -110,6 +110,7 @@ public class RenderableHolder {
 
 	public static Image ScoreAndHealth;
 	public static Image Background;
+	public static Image Press;
 
 	
 
@@ -137,6 +138,7 @@ public class RenderableHolder {
 
 		String bgover = "file:Resources/bg/over.png";
 		String bgover1 = "file:Resources/bg/over1.png";
+		String press = "file:Resources/bg/press.png";
 		String BG = "file:Resources/Map/bgplaystart.jpg";
 		String BG1 = "file:Resources/Map/bgplay1.jpg";
 
@@ -216,7 +218,7 @@ public class RenderableHolder {
 		pausescroll2 = new Image(scrollp2 );
 		Ultimate = new Image(ultimate);
 		UltimateReady = new Image(ultimateready);
-		
+		Press = new Image(press);
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);
 		spite2 = new Image(sprite2);

@@ -53,7 +53,8 @@ public class GameOverState extends GameState {
 			gc.setFill(Color.WHITE);
 			gc.setFont(TEXT_FONT);
 			gc.fillText(""+score, 500, 110);
-				;
+			gc.setStroke(Color.BLACK);
+			gc.strokeText(""+score, 500, 110);
 		}
 		if(i%10>6) {
 			gc.drawImage(RenderableHolder.Over1, 0, 0);
@@ -61,6 +62,9 @@ public class GameOverState extends GameState {
 			gc.setFill(Color.WHITE);
 			gc.setFont(TEXT_FONT);
 			gc.fillText(""+score, 500, 110);
+			gc.setStroke(Color.BLACK);
+			gc.strokeText(""+score, 500, 110);
+
 			;
 		}
 
