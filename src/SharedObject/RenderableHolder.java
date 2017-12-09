@@ -15,7 +15,7 @@ public class RenderableHolder {
 
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
-	public static Image bg;
+	public static Image Instruction;
 	public static Image logo;
 	public static Image bg1;
 	public static Image bg2;
@@ -103,8 +103,14 @@ public class RenderableHolder {
 
 	public static AudioClip warpSound;
 
+
 	public static Image Over;
 	public static Image Over1;
+
+
+	public static Image ScoreAndHealth;
+	public static Image Background;
+
 	
 
 	static {
@@ -128,10 +134,17 @@ public class RenderableHolder {
 	public static void loadResource() {
 		String Logo = "file:Resources/Logo/GT.png";
 		String BGmenu = "file:Resources/bg/bgmenu.jpg";
+
 		String bgover = "file:Resources/bg/over.png";
 		String bgover1 = "file:Resources/bg/over1.png";
 		String BG = "file:Resources/Map/bgplaystart.jpg";
 		String BG1 = "file:Resources/Map/bgplay1.jpg";
+
+		String bgpause = "file:Resources/bg/bgpjpg";
+		String background = "file:Resources/Map/bgplay.jpg";
+		String instruction = "file:Resources/Map/bgplaystart.png";
+		String scoreAndHealth = "file:Resources/Map/bgplay2.png";
+
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
 		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
@@ -187,11 +200,12 @@ public class RenderableHolder {
 		String smoke4 = "file:Resources/smoke/smoke4.png";
 		String boom = "file:Resources/smoke/boom.png";
 
+		Background = new Image(background);
 		logo = new Image(Logo);
-		bg = new Image(BG);
+		Instruction = new Image(instruction);
 		bg1 = new Image(BGmenu1);
 		bg2 = new Image(BGmenu2);
-		bgplay = new Image(BG1);
+		ScoreAndHealth = new Image(scoreAndHealth);
 		fire = new Image(onfire);
 		land1 = new Image(Land);
 		Over = new Image(bgover);

@@ -44,7 +44,7 @@ public class ObjectsManager {
 		shurikens = new ArrayList<Shuriken>();
 		this.ninja = ninja;
 		enemies.add(createEnemy(1));
-		wave = 15;
+		wave = 0;
 		wait=0;
 		shurikencount = MAX_CHURIKEN;
 		heal= new Heal(ninja,4000,(int)Heal.getWidth() - 10, (int)Heal.getHeight() - 10, Heal);
