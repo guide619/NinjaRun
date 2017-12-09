@@ -169,16 +169,16 @@ public class PlayState extends GameState{
 			RenderableHolder.gameplay.stop();
 		}
 		if (Keys.isPressed(Keys.UP)) {
-			ninja.jump();
+			if(ninja.getState()!=ninja.ULTIMATE) ninja.jump();
 		}
 		if (Keys.isDown(Keys.DOWN)) {
-			ninja.down();
+			if(ninja.getState()!=ninja.ULTIMATE) ninja.down();
 		}
 		if (Keys.isPressed(Keys.RIGHT)) {
-			ninja.warp();
+			if(ninja.getState()!=ninja.ULTIMATE) ninja.warp();
 			}
 		if(Keys.isPressed(Keys.SPACE))
-			objectsManager.createShuriken();
+			if(ninja.getState()!=ninja.ULTIMATE) objectsManager.createShuriken();
 		if(Keys.isPressed(Keys.LEFT)) {
 			ninja.ultimate();
 		}

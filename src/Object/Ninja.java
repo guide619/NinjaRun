@@ -173,6 +173,8 @@ public class Ninja {
 			}break;
 		case COOLDOWN_RUN:
 			cooldownRunAnim.updateFrame();
+			warpcount=0;
+			jumpcount=0;
 			if(coolDown<=0)setState(NORMAL_RUN);
 			break;
 		case COOLDOWN_JUMP:
