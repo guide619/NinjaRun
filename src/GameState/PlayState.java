@@ -21,12 +21,12 @@ import Object.Land;
 public class PlayState extends GameState{
 	
 	private static Land land;
-	int dx ;
-	Ninja ninja ;
+	public int wave;
+	public static Ninja ninja ;
 	private static final int START_GAME_STATE =0;
 	private static final int GAME_PLAYING_STATE = 1;
 	private static final int GAME_OVER_STATE = 2;
-	private int gameState = 0;
+	public static int gameState;
 	private static final Font SCORE_TIME_FONT = new Font("Monospace", 30);
 	private ObjectsManager objectsManager;
 	private Clouds clouds;
@@ -37,10 +37,10 @@ public class PlayState extends GameState{
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
 		// TODO Auto-generated constructor stub
+		gameState = START_GAME_STATE;
 		ninja = new Ninja();
 		land = new Land(GamePanel.WIDTH,ninja);
 		clouds = new Clouds(1000,ninja);
-		ninja.setSpeedX(8);
 		bgi = new BackgroundItem(1000,ninja);
 		objectsManager = new ObjectsManager(ninja);
 		
@@ -50,6 +50,7 @@ public class PlayState extends GameState{
 	public void init() {
 		// TODO Auto-generated method stub
 		//RenderableHolder.gameplay.play();
+		ninja.setSpeedX(8);
 		
 		
 	}
@@ -58,25 +59,31 @@ public class PlayState extends GameState{
 	public void update() {
 		// TODO Auto-generated method stub
 		addKeyEventHandler();
-		if(gameState== this.GAME_PLAYING_STATE) {
+		wave = objectsManager.wave;
+		switch(gameState) {
+		case START_GAME_STATE :
+			land.update();
+			ninja.update();
+			bgi.update();
+			clouds.update();
+			break;
+		case GAME_PLAYING_STATE :
 			clouds.update();
 			land.update();
 			ninja.update();
 			objectsManager.update();
 			bgi.update();
-		}
-		if(objectsManager.isCollision()) {
-			ninja.takeDamage();
-		}if(objectsManager.getWave()==15) ninja.setSpeedX(10);
-		else if (objectsManager.getWave()==25) ninja.setSpeedX(20);
-		objectsManager.isSpCollision() ;
-		if (ninja.getHealth()<=0) {
-			//System.out.println("BOOM");
-			gameState = GAME_OVER_STATE;
-			ninja.dead(true);
-			RenderableHolder.gameplay.stop();
-			gsm.setState(GameStateManager.GAMEOVER,ninja.score);
-			resetGame();
+			if(objectsManager.isCollision()) ninja.takeDamage();
+			//System.out.println(wave);
+			objectsManager.isSpCollision() ;
+			if (ninja.getHealth()<=0) {
+				//System.out.println("BOOM");
+				gameState = GAME_OVER_STATE;
+				ninja.dead(true);
+				RenderableHolder.gameplay.stop();
+				resetGame();
+			}
+			break;
 		}
 		
 		
@@ -89,15 +96,16 @@ public class PlayState extends GameState{
 		gc.setFont(SCORE_TIME_FONT);
 		gc.setFill(Color.WHITE);
 		gc.drawImage(RenderableHolder.bg, 0, 0);
-		//gc.drawImage(RenderableHolder.Cloud1, 1000, 50);
-		if(gameState == this.START_GAME_STATE) {
-			//clouds.draw(game);
-			//bgi.draw(game);
+		switch (gameState) {
+		case START_GAME_STATE :
 			gc.drawImage(RenderableHolder.bg, 0, 0);
+			clouds.draw(game);
+			bgi.draw(game);
 			land.draw(game);
 			ninja.draw(game);
-		}
-		if(gameState == this.GAME_PLAYING_STATE) {
+			break;
+		
+		case GAME_PLAYING_STATE:
 			gc.drawImage(RenderableHolder.bgplay, 0, 0);
 			clouds.draw(game);
 			bgi.draw(game);
@@ -116,7 +124,9 @@ public class PlayState extends GameState{
 			else gc.drawImage(RenderableHolder.Ultimate, 350, -50);
 			objectsManager.draw(game);
 			ninja.draw(game);
-	}
+			break;
+		}
+	
 	}
 	private void resetGame() {
 		objectsManager.reset();
@@ -131,7 +141,6 @@ public class PlayState extends GameState{
 		case START_GAME_STATE :
 			if (Keys.anyKeyPress()) {
 				gameState = GAME_PLAYING_STATE;
-				ninja.jump();
 				ninja.isStart = true;
 			}
 			break;
@@ -146,7 +155,7 @@ public class PlayState extends GameState{
 		}
 		if (Keys.isDown(Keys.DOWN)) {
 			ninja.down();
-			}
+		}
 		if (Keys.isPressed(Keys.RIGHT)) {
 			ninja.warp();
 			}
@@ -156,6 +165,11 @@ public class PlayState extends GameState{
 			ninja.ultimate();
 		}
 		break;
+		case GAME_OVER_STATE:
+			if (Keys.isPressed(Keys.ENTER)) {
+				gsm.setState(GameStateManager.GAMEOVER,ninja.score);
+			}
+			break;
 		}
 		
 	}

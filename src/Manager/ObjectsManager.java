@@ -1,6 +1,7 @@
 package Manager;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import Object.Bird;
@@ -23,7 +24,7 @@ public class ObjectsManager {
 	private Random rand;
 	
 	private int wait;
-	private int wave;
+	public static int wave;
 	
 	private List<Character> enemies;
 	private List<Shuriken> shurikens;
@@ -32,7 +33,6 @@ public class ObjectsManager {
 	private Image Heal;
 	private Image Speed;
 	private Speed speed;
-	
 	private int shurikencount;
 	
 	
@@ -43,12 +43,12 @@ public class ObjectsManager {
 		enemies = new ArrayList<Character>();
 		shurikens = new ArrayList<Shuriken>();
 		this.ninja = ninja;
-		enemies.add(createEnemy(0));
-		wave = 0;
+		enemies.add(createEnemy(1));
+		wave = 15;
 		wait=0;
 		shurikencount = MAX_CHURIKEN;
 		heal= new Heal(ninja,4000,(int)Heal.getWidth() - 10, (int)Heal.getHeight() - 10, Heal);
-		speed= new Speed(ninja,500,(int)Speed.getWidth() - 10, (int)Speed.getHeight() - 10, Speed);
+		speed= new Speed(ninja,1000,(int)Speed.getWidth() - 10, (int)Speed.getHeight() - 10, Speed);
 		
 	}
 	
@@ -59,7 +59,7 @@ public class ObjectsManager {
 		checkFire();
 		heal.update();
 		speed.update();
-		if(shurikencount<=this.MAX_CHURIKEN) shurikencount++;
+		if(shurikencount<=MAX_CHURIKEN) shurikencount++;
 
 	}
 	public void draw(Canvas game) {
@@ -87,11 +87,12 @@ public class ObjectsManager {
 			if (wait==10) spawnEnemy();
 			else wait++;
 		}else{
-			for(Character e : enemies) {
+			for(int i = 0; i <enemies.size();i++) {
+				Character e = enemies.get(i);
 				e.update();
 				if (e.isOutOfScreen()) {
 					destroy(e);
-					break;
+					i--;
 				}
 			}
 		}
@@ -112,17 +113,18 @@ public class ObjectsManager {
 		}
 	}
 	public void createShuriken() {
-		if(ninja.getState() != 6 && shurikencount > 0) {
+		if(ninja.getState() != ninja.WARP && shurikencount > 0) {
 			shurikens.add(new Shuriken((int)(ninja.getPosX()),(int)ninja.getPosY()));
 			RenderableHolder.ShurikenSound.play();
 			shurikencount-=30;
-			System.out.println(shurikencount);
+			//System.out.println(shurikencount);
 		}
 	}
 	
 	public boolean isCollision() {
+		if(ninja.getState() == ninja.WARP || ninja.getState() == ninja.ULTIMATE) return false;
 		for(Character e : enemies) {
-			if (ninja.getBound().intersects(e.getBound().getBoundsInLocal()) && (ninja.getState() != 6) ){
+			if (ninja.getBound().intersects(e.getBound().getBoundsInLocal())){
 				return true;
 			}
 		}
@@ -142,36 +144,36 @@ public class ObjectsManager {
 		}
 	}
 	public boolean isSpCollision() {
-			if (ninja.getBound().intersects(heal.getBound().getBoundsInLocal())) {
-				if(ninja.getState() != 6) {
-					RenderableHolder.Healsound.play();
-					ninja.increaseHealth();
-					heal.reset();
-					return true;
-					}
-			}
-			if (ninja.getBound().intersects(speed.getBound().getBoundsInLocal())) {
-				if(ninja.getState() != 6) {
-					speed.reset();
-					RenderableHolder.Healsound.play();
-					ninja.powerObtain();
-					return true;
-					}
-			}
+		if(ninja.getState() == ninja.WARP || ninja.getState() == ninja.ULTIMATE) return false;
+		if (ninja.getBound().intersects(heal.getBound().getBoundsInLocal())) {
+			RenderableHolder.Healsound.play();
+			ninja.increaseHealth();
+			heal.reset();
+			return true;	
+		}
+		if (ninja.getBound().intersects(speed.getBound().getBoundsInLocal())) {
+			speed.reset();
+			RenderableHolder.Healsound.play();
+			ninja.powerObtain();
+			return true;
+		}
 		return false;
 	}
 	
 	public void reset() {
 		enemies.clear();
-		enemies.add(createEnemy(0));
+		enemies.add(createEnemy(1));
 	}
 
 	public int getWave() {
 		return wave;
 	}
 	public void increaseWave() {
-		//System.out.println("wave = "+wave);
+		System.out.println("wave = "+wave);
 		wave++;
+		if(wave>=15) ninja.increaseNormalSpeedX(1);
+		else if(wave>=20) ninja.increaseNormalSpeedX(2);
+		else if (wave>=30)ninja.setSpeedX(30);
 	}
 
 	public void spawnEnemy() {

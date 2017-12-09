@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 
 public class Speed extends Character{
-	private static final double Y_LAND = 220;
 	private int posy =200;
 	private int posX =1000;
 	private int width;
@@ -45,10 +44,10 @@ public class Speed extends Character{
 	public Rectangle getBound() {
 		// TODO Auto-generated method stub
 		rectBound = new Rectangle();
-		rectBound.setX(posX+10);
-		rectBound.setY(Y_LAND - image.getHeight() +5);
-		rectBound.setWidth(width);
-		rectBound.setHeight(height);
+		rectBound.setX(posX);
+		rectBound.setY(posy);
+		rectBound.setWidth(width*1.2);
+		rectBound.setHeight(height*1.2);
 		return rectBound;
 	}
 

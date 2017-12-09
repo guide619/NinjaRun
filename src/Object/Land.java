@@ -50,7 +50,7 @@ public class Land {
 		}
 	}
 	
-	public static void draw(Canvas game) {
+	public void draw(Canvas game) {
 		GraphicsContext gc = game.getGraphicsContext2D();
 		//printList();
 		for(ImageLand imgLand : listLand) {
@@ -61,9 +61,6 @@ public class Land {
 	
 	private void setImageLand(ImageLand imgLand) {
 			imgLand.image = land1;
-			imgLand.type = 1;
-		
-		
 	}
 
 
@@ -71,6 +68,5 @@ public class Land {
 	private class ImageLand {
 		float posX;
 		Image image;
-		int type;
 	}
 }
