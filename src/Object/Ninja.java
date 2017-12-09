@@ -217,13 +217,14 @@ public class Ninja {
 			 setState(DOWN_RUN);
 	 }
 	 public void warp() {
-		 if (warpCoolDown<=0 && warpcount<1 ) {
+		 if (warpCoolDown<=0 && warpcount<1 && coolDown<=0) {
 			 currentstate = state;
 			 setState(WARP);
 			 warpcount++;
 			 warpCoolDown = WARP_COOL_DOWN;
 			 RenderableHolder.warpSound.play();
 		 }
+		 
 	 }public void ultimate() {
 		 if(isUltimateReady() && coolDown<=0) {
 			 currentstate = state;
