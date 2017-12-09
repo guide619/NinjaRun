@@ -27,6 +27,7 @@ public class RenderableHolder {
 	public static Image spite3_blink;
 	public static Image spite4;
 	public static Image spite5_blink;
+	public static Image Spitedead;
 	public static AudioClip  explosionSound;
 	public static Image land1;
 	public static Image Shuriken;
@@ -54,6 +55,8 @@ public class RenderableHolder {
 	public static Image Enemy6;
 	public static Image BadShuriken;
 	public static Image BadShuriken2;
+	public static Image BadShuriken3;
+	public static Image BadShuriken4;
 
 	public static AudioClip gameplay;
 	public static AudioClip collect;
@@ -110,10 +113,9 @@ public class RenderableHolder {
 
 	public static Image ScoreAndHealth;
 	public static Image Background;
+	public static Image deathBackground;
 	public static Image Press;
-
-	
-
+	public static Image PressEnter;
 	static {
 		loadResource();
 	}
@@ -139,6 +141,7 @@ public class RenderableHolder {
 		String bgover = "file:Resources/bg/over.png";
 		String bgover1 = "file:Resources/bg/over1.png";
 		String press = "file:Resources/bg/press.png";
+		String pressen = "file:Resources/bg/pressEnter.png";
 		String BG = "file:Resources/Map/bgplaystart.jpg";
 		String BG1 = "file:Resources/Map/bgplay1.jpg";
 
@@ -146,8 +149,11 @@ public class RenderableHolder {
 		String background = "file:Resources/Map/bgplay.jpg";
 		String instruction = "file:Resources/Map/bgplaystart.png";
 		String scoreAndHealth = "file:Resources/Map/bgplay2.png";
+
 		String scrollp1 =  "file:Resources/bg/puase1.png";
 		String scrollp2 =  "file:Resources/bg/puase2.png";
+
+		String deathbackground = "file:Resources/Map/bgdead.jpg";
 
 		String Land = "file:Resources/bg/bg1.png";
 		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
@@ -164,6 +170,7 @@ public class RenderableHolder {
 		String sprite1_blink = "file:Resources/spite/sprite1_blink.png";
 		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
 		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
+		String spriteDead = "file:Resources/spite/spritedead.png";
 		String heal = "file:Resources/items/sushi.png";
 		String speed = "file:Resources/items/scroll.png";
 		
@@ -175,6 +182,8 @@ public class RenderableHolder {
 		String enemy6 = "file:Resources/Enemy/enemy6.png";
 		String badshuriken = "file:Resources/Enemy/badshuriken.png";
 		String badshuriken2 = "file:Resources/Enemy/badshuriken2.png";
+		String badshuriken3 = "file:Resources/Enemy/badshuriken3.png";
+		String badshuriken4 = "file:Resources/Enemy/badshuriken4.png";
 		
 		String shuriken = "file:Resources/spite/shuriken.png";
 		String shuriken2 = "file:Resources/spite/shuriken2.png";
@@ -204,8 +213,10 @@ public class RenderableHolder {
 		String smoke3 = "file:Resources/smoke/smoke3.png";
 		String smoke4 = "file:Resources/smoke/smoke4.png";
 		String boom = "file:Resources/smoke/boom.png";
+		
 
 		Background = new Image(background);
+		deathBackground = new Image(deathbackground);
 		logo = new Image(Logo);
 		Instruction = new Image(instruction);
 		bg1 = new Image(BGmenu1);
@@ -221,6 +232,7 @@ public class RenderableHolder {
 		Ultimate = new Image(ultimate);
 		UltimateReady = new Image(ultimateready);
 		Press = new Image(press);
+		PressEnter = new Image(pressen);
 		spite = new Image(sprite);
 		spite1 = new Image(sprite1);
 		spite2 = new Image(sprite2);
@@ -229,7 +241,10 @@ public class RenderableHolder {
 		spite1_blink = new Image(sprite1_blink);
 		spite3_blink = new Image(sprite3_blink);
 		spite5_blink = new Image(sprite5_blink);
-		 
+
+		Spitedead = new Image(spriteDead);
+		
+
 		Smoke1= new Image(smoke1);
 		Smoke2= new Image(smoke2);
 		Smoke3= new Image(smoke3);
@@ -244,6 +259,8 @@ public class RenderableHolder {
 		Enemy6= new Image(enemy6);
 		BadShuriken = new Image(badshuriken);
 		BadShuriken2 = new Image(badshuriken2);
+		BadShuriken3 = new Image(badshuriken3);
+		BadShuriken4 = new Image(badshuriken4);
 
 		Speed = new Image(speed);
 		Heal= new Image(heal);
@@ -317,9 +334,11 @@ public class RenderableHolder {
 		enemyAnim.addFrame(RenderableHolder.Enemy4);
 		enemyAnim.addFrame(RenderableHolder.Enemy5);
 		enemyAnim.addFrame(RenderableHolder.Enemy6);
-		badShuAnim = new Animation(30);
+		badShuAnim = new Animation(50);
 		badShuAnim.addFrame(BadShuriken);
 		badShuAnim.addFrame(BadShuriken2);
+		badShuAnim.addFrame(BadShuriken3);
+		badShuAnim.addFrame(BadShuriken4);
 	}
 
 	public void add(IRenderable entity) {

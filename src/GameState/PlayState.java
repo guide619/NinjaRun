@@ -83,8 +83,10 @@ public class PlayState extends GameState{
 				gameState = GAME_OVER_STATE;
 				ninja.dead(true);
 				RenderableHolder.gameplay.stop();
-				resetGame();
 			}
+			break;
+		case GAME_OVER_STATE:
+			ninja.update();
 			break;
 		}
 		
@@ -126,6 +128,21 @@ public class PlayState extends GameState{
 			objectsManager.draw(game);
 			ninja.draw(game);
 			break;
+		case GAME_OVER_STATE:
+			gc.drawImage(RenderableHolder.deathBackground, 0, 0);
+			land.draw(game);
+			gc.drawImage(RenderableHolder.ScoreAndHealth, 0, 0);
+			gc.fillText(""+ ninja.score, 880, 42);
+			gc.setStroke(Color.WHITE);
+			gc.strokeRect(127, 64, 200, 17);
+			gc.setFill(Color.DARKCYAN);
+			gc.fillRect(127, 64, 200-ninja.warpCoolDown*20, 17);
+			gc.setFill(Color.RED);
+			gc.strokeRect(127, 22, 200, 17);
+			gc.fillRect(127,22,0,17);
+			objectsManager.draw(game);
+			ninja.draw(game);
+			break;
 		}
 	
 	}
@@ -152,23 +169,24 @@ public class PlayState extends GameState{
 			RenderableHolder.gameplay.stop();
 		}
 		if (Keys.isPressed(Keys.UP)) {
-			ninja.jump();
+			if(ninja.getState()!=ninja.ULTIMATE) ninja.jump();
 		}
 		if (Keys.isDown(Keys.DOWN)) {
-			ninja.down();
+			if(ninja.getState()!=ninja.ULTIMATE) ninja.down();
 		}
 		if (Keys.isPressed(Keys.RIGHT)) {
-			ninja.warp();
+			if(ninja.getState()!=ninja.ULTIMATE) ninja.warp();
 			}
 		if(Keys.isPressed(Keys.SPACE))
-			objectsManager.createShuriken();
+			if(ninja.getState()!=ninja.ULTIMATE) objectsManager.createShuriken();
 		if(Keys.isPressed(Keys.LEFT)) {
 			ninja.ultimate();
 		}
 		break;
 		case GAME_OVER_STATE:
 			if (Keys.isPressed(Keys.ENTER)) {
-				gsm.setState(GameStateManager.GAMEOVER,ninja.score);
+				resetGame();
+				gsm.setState(GameStateManager.GAMEOVER , ninja.score);
 			}
 			break;
 		}

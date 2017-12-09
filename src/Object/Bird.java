@@ -19,7 +19,6 @@ public class Bird extends Character {
 	private int height;
 	private int posY;
 	
-	private Image image;
 	private Animation badShuriken;
 	private Ninja ninja;
 	
@@ -29,7 +28,6 @@ public class Bird extends Character {
 	public Bird (Ninja ninja , int posX) {
 		rand = new Random();
 		this.posX = posX;
-		this.image = image;
 		this.ninja = ninja;
 		this.badShuriken = RenderableHolder.badShuAnim;
 		this.width = (int)badShuriken.getFrame().getWidth()-10;

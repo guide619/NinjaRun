@@ -169,7 +169,7 @@ public class ObjectsManager {
 		return wave;
 	}
 	public void increaseWave() {
-		System.out.println("wave = "+wave);
+		//System.out.println("wave = "+wave);
 		wave++;
 		if(wave>=15) ninja.increaseNormalSpeedX(1);
 		else if(wave>=20) ninja.increaseNormalSpeedX(2);
