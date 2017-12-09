@@ -7,6 +7,7 @@ import java.util.Random;
 import Object.Bird;
 import Object.Speed;
 import Object.Character;
+import Object.Effect;
 import Object.Enemy;
 import Object.Ninja;
 import Object.Obstruct;
@@ -28,6 +29,7 @@ public class ObjectsManager {
 	
 	private List<Character> enemies;
 	private List<Shuriken> shurikens;
+	private List<Effect> booms;
 	private Ninja ninja;
 	private Heal heal;
 	private Image Heal;
@@ -42,6 +44,7 @@ public class ObjectsManager {
 		Speed = RenderableHolder.Speed;
 		enemies = new ArrayList<Character>();
 		shurikens = new ArrayList<Shuriken>();
+		booms = new ArrayList<Effect>();
 		this.ninja = ninja;
 		enemies.add(createEnemy(1));
 		wave = 0;
@@ -50,12 +53,14 @@ public class ObjectsManager {
 		heal= new Heal(ninja,4000,(int)Heal.getWidth() - 10, (int)Heal.getHeight() - 10, Heal);
 		speed= new Speed(ninja,1000,(int)Speed.getWidth() - 10, (int)Speed.getHeight() - 10, Speed);
 		
+		
 	}
 	
 	public void update() {
 		//System.out.println(wave);
 		enemyupdate();
 		shurikenupdate();
+		boomupdate();
 		checkFire();
 		heal.update();
 		speed.update();
@@ -70,6 +75,19 @@ public class ObjectsManager {
 		}
 		for(Shuriken s : shurikens) {
 			s.draw(game);
+		}for(Effect b : booms) {
+			b.draw(game);
+		}
+	}
+	public void boomupdate() {
+		if(booms.size()!=0) {
+		}for(int i = 0 ; i<booms.size();i++) {
+			Effect s =booms.get(i);
+			s.update();
+			if (s.isDestroy()) {
+				booms.remove(i);
+				i--;
+			}
 		}
 	}
 	public void shurikenupdate() {
@@ -136,6 +154,7 @@ public class ObjectsManager {
 		for(Character e : enemies) {
 			if (e instanceof Enemy ){
 					if(shurikens.get(0).getBound().intersects(e.getBound().getBoundsInLocal()) ) {
+						booms.add(new Effect(((Enemy) e).getPosX(),((Enemy) e).getPosY(),ninja.getSpeedX()));
 						destroy(e);
 						RenderableHolder.EnemyHitSound.play();
 						shurikens.remove(0);

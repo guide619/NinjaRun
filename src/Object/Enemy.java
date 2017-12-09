@@ -11,8 +11,6 @@ public class Enemy extends Character {
 	public static final int Y_LAND = 325;
 	
 	private int posX;
-	private int width;
-	private int height;
 	private int posY;
 	
 	private Animation enemyAnim;
@@ -62,5 +60,12 @@ public class Enemy extends Character {
 		}
 		return false;
 	}
+	public int getPosX() {
+		return posX;
+	}
+	public int getPosY() {
+		return posY;
+	}
+	
 
 }

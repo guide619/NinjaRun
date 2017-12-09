@@ -76,6 +76,7 @@ public class RenderableHolder {
 	public static Animation warpAnim;
 	public static Animation enemyAnim;
 	public static Animation badShuAnim;
+	public static Animation boomAnim;
 
 	public static Image Mark;
 	public static Image Spike;
@@ -340,6 +341,11 @@ public class RenderableHolder {
 		badShuAnim.addFrame(BadShuriken2);
 		badShuAnim.addFrame(BadShuriken3);
 		badShuAnim.addFrame(BadShuriken4);
+		boomAnim = new Animation(70);
+		boomAnim.addFrame(RenderableHolder.Smoke1);
+		boomAnim.addFrame(RenderableHolder.Smoke2);
+		boomAnim.addFrame(RenderableHolder.Smoke3);
+		boomAnim.addFrame(RenderableHolder.Smoke4);
 	}
 
 	public void add(IRenderable entity) {
