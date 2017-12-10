@@ -1,7 +1,6 @@
 package Manager;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import Object.Bird;
@@ -15,7 +14,6 @@ import Object.Shuriken;
 import Object.Heal;
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class ObjectsManager {
@@ -61,7 +59,7 @@ public class ObjectsManager {
 		enemyupdate();
 		shurikenupdate();
 		boomupdate();
-		checkFire();
+		if(!shurikens.isEmpty())checkFire();
 		heal.update();
 		speed.update();
 		if(shurikencount<=MAX_CHURIKEN) shurikencount++;
@@ -120,7 +118,7 @@ public class ObjectsManager {
 	private Character createEnemy(int i) {
 		int gap = 1000+i*50;
 		int type = rand.nextInt(11);
-		//int type = 7;
+		//int type =11;
 		if(type >4 && type <=7) {
 			gap+= rand.nextInt(20)*100;
 			return new Bird(ninja, gap);
@@ -133,7 +131,7 @@ public class ObjectsManager {
 	}
 	public void createShuriken() {
 		if(ninja.getState() != ninja.WARP && shurikencount > 0) {
-			shurikens.add(new Shuriken((int)(ninja.getPosX()),(int)ninja.getPosY()));
+			shurikens.add(new Shuriken((int)(ninja.getPosX()-10),(int)ninja.getPosY()));
 			RenderableHolder.ShurikenSound.play();
 			shurikencount-=30;
 			//System.out.println(shurikencount);
@@ -150,11 +148,11 @@ public class ObjectsManager {
 		return false;
 	}
 	public void checkFire() {
-		if(enemies.size()==0 || shurikens.size()==0)return;
+		if(enemies.isEmpty())return;
 		for(Character e : enemies) {
 			if (e instanceof Enemy ){
 					if(shurikens.get(0).getBound().intersects(e.getBound().getBoundsInLocal()) ) {
-						booms.add(new Effect(((Enemy) e).getPosX(),((Enemy) e).getPosY(),ninja.getSpeedX()));
+						booms.add(new Effect(e.getPosX(),e.getPosY(),ninja.getSpeedX()));
 						destroy(e);
 						RenderableHolder.EnemyHitSound.play();
 						shurikens.remove(0);
@@ -191,9 +189,9 @@ public class ObjectsManager {
 	public void increaseWave() {
 		//System.out.println("wave = "+wave);
 		wave++;
-		if(wave>=15) ninja.increaseNormalSpeedX(1);
-		else if(wave>=20) ninja.increaseNormalSpeedX(2);
-		else if (wave>=30)ninja.setSpeedX(30);
+		if(wave>=15 && wave<25) ninja.increaseNormalSpeedX(1);
+		//else if(wave>=20) ninja.increaseNormalSpeedX(2);
+		//else if (wave>=30)ninja.setSpeedX(30);
 	}
 
 	public void spawnEnemy() {

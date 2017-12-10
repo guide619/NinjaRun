@@ -67,4 +67,16 @@ public class Heal extends Character  {
 		
 	}
 
+	@Override
+	public int getPosX() {
+		// TODO Auto-generated method stub
+		return posX;
+	}
+
+	@Override
+	public int getPosY() {
+		// TODO Auto-generated method stub
+		return posy;
+	}
+
 }

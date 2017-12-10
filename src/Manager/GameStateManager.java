@@ -7,13 +7,7 @@ import GameState.IntroState;
 import GameState.MenuState;
 import GameState.PauseState;
 import GameState.PlayState;
-import Object.Ninja;
-import SharedObject.RenderableHolder;
-import application.Main;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.stage.Stage;
-
 
 	public class GameStateManager {
 		

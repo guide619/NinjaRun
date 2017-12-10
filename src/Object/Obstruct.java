@@ -11,8 +11,6 @@ public class Obstruct extends Character {
 	public static final int Y_LAND = 300;
 	
 	private int posX;
-	private int width;
-	private int height;
 	
 	private Image image;
 	private Ninja ninja;
@@ -59,5 +57,19 @@ public class Obstruct extends Character {
 		}
 		return false;
 	}
+
+	@Override
+	public int getPosX() {
+		// TODO Auto-generated method stub
+		return posX;
+	}
+
+	@Override
+	public int getPosY() {
+		// TODO Auto-generated method stub
+		return Y_LAND;
+	}
+
+	
 
 }

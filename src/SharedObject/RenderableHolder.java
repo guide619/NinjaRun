@@ -117,6 +117,8 @@ public class RenderableHolder {
 	public static Image deathBackground;
 	public static Image Press;
 	public static Image PressEnter;
+
+	public static Image pauseInstruct;
 	static {
 		loadResource();
 	}
@@ -153,6 +155,7 @@ public class RenderableHolder {
 
 		String scrollp1 =  "file:Resources/bg/puase1.png";
 		String scrollp2 =  "file:Resources/bg/puase2.png";
+		String pauseinstruct =  "file:Resources/bg/puaseinstruct.png";
 
 		String deathbackground = "file:Resources/Map/bgdead.jpg";
 
@@ -230,6 +233,7 @@ public class RenderableHolder {
 		
 		pausescroll1 = new Image(scrollp1);
 		pausescroll2 = new Image(scrollp2 );
+		pauseInstruct = new Image(pauseinstruct);
 		Ultimate = new Image(ultimate);
 		UltimateReady = new Image(ultimateready);
 		Press = new Image(press);

@@ -45,7 +45,7 @@ public class Enemy extends Character {
 	public Rectangle getBound() {
 		// TODO Auto-generated method stub
 		rectBound = new Rectangle();
-		rectBound.setX(posX+5);
+		rectBound.setX(posX+10);
 		rectBound.setY(posY+5);
 		rectBound.setWidth(enemyAnim.getFrame().getWidth()-10);
 		rectBound.setHeight(enemyAnim.getFrame().getHeight()-10);

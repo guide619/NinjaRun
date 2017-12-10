@@ -13,4 +13,6 @@ public abstract class Character {
 	public abstract void draw(Canvas game);
 	public abstract Rectangle getBound();
 	public abstract boolean isOutOfScreen();
+	public abstract int getPosX();
+	public abstract int getPosY();
 }

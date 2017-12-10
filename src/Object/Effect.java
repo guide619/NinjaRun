@@ -21,7 +21,7 @@ public class Effect {
 		this.speedX = speedX;
 		boomAnim = RenderableHolder.boomAnim;
 		count = 0;
-		System.out.println("CHECK");
+		//System.out.println("CHECK");
 	}
 	public void update() {
 		posX -= speedX;

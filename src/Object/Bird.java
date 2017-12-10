@@ -71,5 +71,14 @@ public class Bird extends Character {
 		}
 		return false;
 	}
-
+	@Override
+	public int getPosX() {
+		// TODO Auto-generated method stub
+		return (int)posX;
+	}
+	@Override
+	public int getPosY() {
+		// TODO Auto-generated method stub
+		return (int)posY;
+	}
 }

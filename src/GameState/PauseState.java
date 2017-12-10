@@ -25,17 +25,18 @@ public class PauseState extends GameState {
 		// TODO Auto-generated method stub
 		GraphicsContext gc = g.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.pausebg, 0, 0);
+		gc.drawImage(RenderableHolder.pauseInstruct, 0, 0);
 		
 		if(currentOption == 0) {
 			gc.setFill(Color.BLACK);
 			//gc.fillRect(300, 50, 400, 200);
-			gc.drawImage(RenderableHolder.pausescroll1, 300, 50);
+			gc.drawImage(RenderableHolder.pausescroll1, 300, 40);
 
 		}
 		else if(currentOption == 1) {
 			gc.setFill(Color.BLACK);
 			//gc.fillRect(300, 50, 400, 200);
-			gc.drawImage(RenderableHolder.pausescroll2, 300, 50);
+			gc.drawImage(RenderableHolder.pausescroll2, 300, 40);
 		}	
 	}
 

@@ -67,6 +67,18 @@ public class Speed extends Character{
 		posX = x;
 		posy = y;
 	}
+
+	@Override
+	public int getPosX() {
+		// TODO Auto-generated method stub
+		return posX;
+	}
+
+	@Override
+	public int getPosY() {
+		// TODO Auto-generated method stub
+		return posy;
+	}
 	
 
 }
