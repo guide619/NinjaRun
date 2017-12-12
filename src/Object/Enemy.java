@@ -8,7 +8,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Enemy extends Character {
 	
-	public static final int Y_LAND = 325;
+	public static final int Y_LAND = 220;
 	
 	private int posX;
 	private int posY;
@@ -20,7 +20,7 @@ public class Enemy extends Character {
 	
 	public Enemy (Ninja ninja , int posX) {
 		this.posX = posX;
-		this.posY=220;
+		this.posY=Y_LAND;
 		this.enemyAnim = RenderableHolder.enemyAnim;
 		this.ninja = ninja;
 		rectBound = new Rectangle();

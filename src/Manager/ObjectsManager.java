@@ -3,7 +3,7 @@ package Manager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import Object.Bird;
+import Object.FlyingObject;
 import Object.Speed;
 import Object.Character;
 import Object.Effect;
@@ -30,26 +30,22 @@ public class ObjectsManager {
 	private List<Effect> booms;
 	private Ninja ninja;
 	private Heal heal;
-	private Image Heal;
-	private Image Speed;
 	private Speed speed;
 	private int shurikencount;
 	
 	
 	public ObjectsManager(Ninja	ninja) {
+		this.ninja = ninja;
 		rand = new Random();
-		Heal = RenderableHolder.Heal;
-		Speed = RenderableHolder.Speed;
 		enemies = new ArrayList<Character>();
 		shurikens = new ArrayList<Shuriken>();
 		booms = new ArrayList<Effect>();
-		this.ninja = ninja;
 		enemies.add(createEnemy(1));
 		wave = 0;
 		wait=0;
 		shurikencount = MAX_CHURIKEN;
-		heal= new Heal(ninja,4000,(int)Heal.getWidth() - 10, (int)Heal.getHeight() - 10, Heal);
-		speed= new Speed(ninja,1000,(int)Speed.getWidth() - 10, (int)Speed.getHeight() - 10, Speed);
+		heal= new Heal(ninja,4000);
+		speed= new Speed(ninja,1000);
 		
 		
 	}
@@ -121,7 +117,7 @@ public class ObjectsManager {
 		//int type =11;
 		if(type >4 && type <=7) {
 			gap+= rand.nextInt(20)*100;
-			return new Bird(ninja, gap);
+			return new FlyingObject(ninja, gap);
 		} else if (type <=4) {
 			return new Obstruct(ninja, gap);
 		}else {
@@ -189,7 +185,7 @@ public class ObjectsManager {
 	public void increaseWave() {
 		//System.out.println("wave = "+wave);
 		wave++;
-		if(wave>=15 && wave<25) ninja.increaseNormalSpeedX(1);
+		if(wave>=15 && wave<25 && wave%2 == 0) ninja.increaseNormalSpeedX(1);
 		//else if(wave>=20) ninja.increaseNormalSpeedX(2);
 		//else if (wave>=30)ninja.setSpeedX(30);
 	}
@@ -200,6 +196,7 @@ public class ObjectsManager {
 		increaseWave();
 		int j = wave+rand.nextInt(2);
 		if(wave>=7) j=5+rand.nextInt(10);
+		if (wave>=15) j=10+rand.nextInt(10);
 		for(int i =0 ;i<j;i++) {
 			enemies.add(createEnemy(i));
 		}

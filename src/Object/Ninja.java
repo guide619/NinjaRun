@@ -1,7 +1,5 @@
 package Object;
 
-import java.util.List;
-
 import Manager.Animation;
 import Manager.Keys;
 import SharedObject.RenderableHolder;
@@ -174,6 +172,7 @@ public class Ninja {
 				speedY=0;
 			}break;
 		case COOLDOWN_RUN:
+			setSpeedX(normalspeedX);
 			cooldownRunAnim.updateFrame();
 			warpcount=0;
 			jumpcount=0;
@@ -194,6 +193,7 @@ public class Ninja {
 			}
 			break;
 		case NORMAL_RUN:
+			setSpeedX(normalspeedX);
 			normalRunAnim.updateFrame();
 			warpcount=0;
 			jumpcount=0;
