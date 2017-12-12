@@ -13,8 +13,6 @@ import javafx.scene.media.AudioClip;
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 
-	private List<IRenderable> entities;
-	private Comparator<IRenderable> comparator;
 	public static Image Instruction;
 	public static Image logo;
 	public static Image bg1;
@@ -123,14 +121,7 @@ public class RenderableHolder {
 		loadResource();
 	}
 
-	public RenderableHolder() {
-		entities = new ArrayList<IRenderable>();
-		comparator = (IRenderable o1, IRenderable o2) -> {
-			if (o1.getZ() > o2.getZ())
-				return 1;
-			return -1;
-		};
-	}
+	
 
 	public static RenderableHolder getInstance() {
 		return instance;
@@ -351,21 +342,5 @@ public class RenderableHolder {
 		boomAnim.addFrame(RenderableHolder.Smoke4);
 	}
 
-	public void add(IRenderable entity) {
-		System.out.println("add");
-		entities.add(entity);
-		Collections.sort(entities, comparator);
-		
-	}
 
-	public void update() {
-		for (int i = entities.size() - 1; i >= 0; i--) {
-			if (entities.get(i).isDestroyed())
-				entities.remove(i);
-		}
-	}
-
-	public List<IRenderable> getEntities() {
-		return entities;
-	}
 }
