@@ -25,9 +25,8 @@ public class MenuState extends GameState {
 	boolean isKeyPressed;
 	static Image bg ;
 	private int currentOption = 0;
-	private String[] options = {"START","QUIT"};
 	
-	private static final Font TEXT_FONT = new Font("Fipps", 80);
+
 	public MenuState(GameStateManager gsm) {
 		super(gsm);
 	}
@@ -45,22 +44,22 @@ public class MenuState extends GameState {
 		GraphicsContext gc = g.getGraphicsContext2D();
 		gc.drawImage(RenderableHolder.bg1, 0, 0);
 		gc.drawImage(RenderableHolder.land1, 0, 300);
-		Ninja ninja = new Ninja();
-		Clouds cloud = new Clouds(1000,ninja);
-		BackgroundItem bgi = new BackgroundItem(1000,ninja);
+		//Ninja ninja = new Ninja();
+		//Clouds cloud = new Clouds(1000,ninja);
+		//BackgroundItem bgi = new BackgroundItem(1000,ninja);
 		
 		//Draw Pointer in front of options
 		if(currentOption == 0) {
-			cloud.draw(g);
-			bgi.draw(g);
-			ninja.draw(g);
+			//cloud.draw(g);
+			//bgi.draw(g);
+		//	ninja.draw(g);
 			gc.drawImage(RenderableHolder.bg1, 0, 0);
 			gc.drawImage(RenderableHolder.land1, 0, 300);
 		}
 		else if(currentOption == 1) {
-			cloud.draw(g);
-			bgi.draw(g);
-			ninja.draw(g);
+		//	cloud.draw(g);
+		//	bgi.draw(g);
+		//	ninja.draw(g);
 			gc.drawImage(RenderableHolder.bg2, 0, 0);
 			gc.drawImage(RenderableHolder.land1, 0, 300);
 		}
@@ -70,12 +69,12 @@ public class MenuState extends GameState {
 		if(Keys.isPressed(Keys.DOWN) ) {
 			RenderableHolder.collect.play();
 			currentOption++;
-			currentOption= currentOption%options.length;
+			currentOption= currentOption%2;
 		}
 		if(Keys.isPressed(Keys.UP)) {
 			RenderableHolder.collect.play();
 			currentOption--;
-			currentOption= (-1)*(currentOption%options.length);
+			currentOption= (-1)*(currentOption%2);
 		}
 		if(Keys.isPressed(Keys.ENTER) || Keys.isPressed(Keys.SPACE)) {
 			selectOption();
@@ -88,8 +87,7 @@ public class MenuState extends GameState {
 		// TODO Auto-generated method stub
 		if(currentOption == 0) {
 			gsm.setState(GameStateManager.PLAY);
-			RenderableHolder.gameplay.stop();
-			//System.out.println("play");
+
 		}
 		if(currentOption ==1) {
 			RenderableHolder.Select.play();

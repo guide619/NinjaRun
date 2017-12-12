@@ -11,10 +11,7 @@ import SharedObject.RenderableHolder;
 import application.GamePanel;
 
 public class PauseState extends GameState {
-	private static final Font TEXT_FONT = new Font("Fipps", 80);
-	
-	private int currentOption = 0;
-	private String[] options = {"RESTART","MENU"};
+	private int currentOption ;
 
 	public PauseState(GameStateManager gsm) {
 		// TODO Auto-generated constructor stub
@@ -59,13 +56,13 @@ public class PauseState extends GameState {
 		if(Keys.isPressed(Keys.DOWN) ) {
 			//JukeBox.play("menuoption");
 			currentOption++;
-			currentOption= currentOption%options.length;
+			currentOption= currentOption%2;
 			RenderableHolder.collect.play();
 		}
 		if(Keys.isPressed(Keys.UP)) {
 			//JukeBox.play("menuoption");
 			currentOption--;
-			currentOption= (-1)*(currentOption%options.length);
+			currentOption= (-1)*(currentOption%2);
 			RenderableHolder.collect.play();
 		}
 		if(Keys.isPressed(Keys.ENTER)) {

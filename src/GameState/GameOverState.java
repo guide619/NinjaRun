@@ -14,13 +14,8 @@ import javafx.scene.text.Font;
 public class GameOverState extends GameState {
 	private int score;
 	private static final Font TEXT_FONT = new Font("Fipps", 80);
-	private int i;
+	private int blink;
 
-	public GameOverState(GameStateManager gsm) {
-		// TODO Auto-generated constructor stub
-		super(gsm);
-		score = 0;
-	}
 	public GameOverState(GameStateManager gsm, int score) {
 		super(gsm);
 		this.score = score;
@@ -39,7 +34,7 @@ public class GameOverState extends GameState {
 		// TODO Auto-generated method stub
 		this.addKeyEventHandler();
 		//System.out.println("CHECK");
-		i++;
+		blink++;
 
 	}
 
@@ -47,7 +42,7 @@ public class GameOverState extends GameState {
 	public void draw(Canvas g) {
 		// TODO Auto-generated method stub
 		GraphicsContext gc = g.getGraphicsContext2D();
-		if(i%10<6) {
+		if(blink%10<6) {
 			gc.drawImage(RenderableHolder.Over, 0, 0);
 			gc.drawImage(RenderableHolder.Ghost, 450, 150);
 			gc.setFill(Color.WHITE);
@@ -56,7 +51,7 @@ public class GameOverState extends GameState {
 			gc.setStroke(Color.BLACK);
 			gc.strokeText(""+score, 500, 110);
 		}
-		if(i%10>6) {
+		if(blink%10>6) {
 			gc.drawImage(RenderableHolder.Over1, 0, 0);
 			gc.drawImage(RenderableHolder.Ghost, 450, 150);
 			gc.setFill(Color.WHITE);

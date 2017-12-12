@@ -17,7 +17,7 @@ public class Keys {
 	public static int SPACE = 4;
 	public static int ENTER = 5;
 	public static int ESCAPE = 6;
-	public static int F1 = 7;
+
 	
 	public static void keySet(KeyEvent k , boolean b) {
 		if(k.getCode().equals(KeyCode.UP)) keyState[UP] = b;
@@ -27,7 +27,7 @@ public class Keys {
 		else if(k.getCode().equals(KeyCode.SPACE)) keyState[SPACE] = b;
 		else if(k.getCode().equals(KeyCode.ENTER)) keyState[ENTER] = b;
 		else if(k.getCode().equals(KeyCode.ESCAPE)) keyState[ESCAPE] = b;
-		else if(k.getCode().equals(KeyCode.F1)) keyState[F1] = b;
+		
 	}
 	
 	public static void update() {
@@ -36,12 +36,12 @@ public class Keys {
 		}
 	}
 	
-	public static boolean isPressed(int i) {
-		return keyState[i] && !prevKeyState[i];
+	public static boolean isPressed(int key) {
+		return keyState[key] && !prevKeyState[key];
 	}
 	
-	public static boolean isDown(int i) {
-		return keyState[i];
+	public static boolean isDown(int key) {
+		return keyState[key];
 	}
 	
 	public static boolean anyKeyDown() {

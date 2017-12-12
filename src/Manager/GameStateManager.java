@@ -36,36 +36,33 @@ import javafx.scene.canvas.Canvas;
 			
 		}
 		
-		public void setState(int i) {
+		public void setState(int state) {
 			previousState = currentState;
 			unloadState(previousState);
-			currentState = i;
-			if(i == INTRO) {
-				gameStates[i] = new IntroState(this);
-				gameStates[i].init();
+			currentState = state;
+			if(state == INTRO) {
+				gameStates[state] = new IntroState(this);
+				gameStates[state].init();
 			}
-			else if(i == MENU) {
-				gameStates[i] = new MenuState(this);
-				gameStates[i].init();
+			else if(state == MENU) {
+				gameStates[state] = new MenuState(this);
+				gameStates[state].init();
 			}
-			else if(i == PLAY) {
-				gameStates[i] = new PlayState(this);
-				gameStates[i].init();
-			}else if (i== GAMEOVER) {
-				gameStates[i] = new GameOverState(this);
-				gameStates[i].init();
+			else if(state == PLAY) {
+				gameStates[state] = new PlayState(this);
+				gameStates[state].init();
 			}
 		}
-		public void setState(int i,int score) {
+		public void setState(int state,int score) {
 			previousState = currentState;
 			unloadState(previousState);
-			currentState = i;
-			gameStates[i] = new GameOverState(this,score);
-			gameStates[i].init();
+			currentState = state;
+			gameStates[state] = new GameOverState(this,score);
+			gameStates[state].init();
 		}
 		
-		public void unloadState(int i) {
-			gameStates[i] = null;
+		public void unloadState(int state) {
+			gameStates[state] = null;
 		}
 		
 		public void setPaused(boolean b) {
