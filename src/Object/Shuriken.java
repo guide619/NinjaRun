@@ -18,7 +18,6 @@ public class Shuriken extends Character {
 	private int width;
 	private int height;
 	private Rectangle rectBound;
-	private Image boom;
 	private Random rand;
 	
 	public Shuriken(int posX , int posY) {
@@ -31,7 +30,6 @@ public class Shuriken extends Character {
 			shuAnim.addFrame(RenderableHolder.Shuriken);
 			shuAnim.addFrame(RenderableHolder.Shuriken2);
 		}else shuAnim.addFrame(RenderableHolder.Kunai);
-		boom = RenderableHolder.Boom;
 		this.width =(int) shuAnim.getFrame().getWidth();
 		this.height = (int)shuAnim.getFrame().getHeight();
 		rectBound = new Rectangle();
@@ -48,10 +46,6 @@ public class Shuriken extends Character {
 		shuAnim.updateFrame();
 		posX+=20+currentSpeed;
 		
-	}
-	public void drawboom(Canvas game) {
-		GraphicsContext gc = game.getGraphicsContext2D();
-		gc.drawImage(boom, posX,posY);
 	}
 	@Override
 	public void draw(Canvas game) {

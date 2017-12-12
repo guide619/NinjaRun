@@ -42,7 +42,6 @@ public class Obstruct extends Character {
 	@Override
 	public Rectangle getBound() {
 		// TODO Auto-generated method stub
-		rectBound = new Rectangle();
 		rectBound.setX(posX+20);
 		rectBound.setY(Y_LAND - image.getHeight() +10);
 		rectBound.setWidth(image.getWidth()-10);

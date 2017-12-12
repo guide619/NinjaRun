@@ -119,6 +119,8 @@ public class RenderableHolder {
 	public static Image PressEnter;
 
 	public static Image pauseInstruct;
+
+	public static Animation tanAnim;
 	static {
 		loadResource();
 	}
@@ -349,6 +351,16 @@ public class RenderableHolder {
 		boomAnim.addFrame(RenderableHolder.Smoke2);
 		boomAnim.addFrame(RenderableHolder.Smoke3);
 		boomAnim.addFrame(RenderableHolder.Smoke4);
+		
+		/*Tan = new Image(tan);
+		tanAnim = new Animation (70);
+		tanAnim.addFrame(RenderableHolder.spite1);
+		tanAnim.addFrame(RenderableHolder.Smoke1);
+		tanAnim.addFrame(RenderableHolder.Smoke2);
+		tanAnim.addFrame(RenderableHolder.Smoke3);
+		tanAnim.addFrame(RenderableHolder.Smoke4);
+		tanAnim.addFrame(RenderableHolder.Smoke4);
+		tanAnim.addFrame(RenderableHolder.Tan);*/
 	}
 
 	public void add(IRenderable entity) {
