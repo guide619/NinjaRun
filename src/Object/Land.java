@@ -22,9 +22,8 @@ public class Land {
 	public Land(int width, Ninja ninja) {
 		land1 = RenderableHolder.land1;
 		this.ninja = ninja;
-		int numberOfImageLand = (int) (width / land1.getWidth() + 2);
 		listLand = new ArrayList<ImageLand>();
-		for(int i = 0; i < numberOfImageLand; i++) {
+		for(int i = 0; i < 3; i++) {
 			ImageLand imageLand = new ImageLand();
 			imageLand.posX = (float) (i * land1.getWidth());
 			setImageLand(imageLand);

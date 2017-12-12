@@ -3,7 +3,7 @@ package Object;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
+
 
 import SharedObject.RenderableHolder;
 import javafx.scene.canvas.Canvas;
@@ -16,9 +16,8 @@ public class BackgroundItem {
 	
 	private Ninja ninja;
 	private Image item2;
-	private Image item3;
-	private Image item4;
-	//int type = 0;
+
+	
 	
 	public BackgroundItem(int width, Ninja ninja) {
 		this.ninja = ninja;
@@ -47,7 +46,6 @@ public class BackgroundItem {
 		}
 		if(firstElement.posX < -firstElement.image.getWidth()) {
 			listitem.remove(firstElement);
-			//Random rand = new Random();
 			firstElement.posX = 1000;//+rand.nextInt(3000);
 			listitem.add(firstElement);
 		}

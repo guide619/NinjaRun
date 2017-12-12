@@ -10,14 +10,14 @@ import javafx.scene.shape.Rectangle;
 
 
 public class Ninja {
-	public static final int MAX_SPEED = 25;
-	public static final int LAND_POSY = 220;
-	public static final float GRAVITY = 0.98f;
-	public static final int MAX_HEALTH = 5;
-	public static final int HIT_COOL_DOWN = 20;
-	public static final int WARP_COOL_DOWN = 10;
-	public static final int WARP_TIME = 25;
-	public static final int ULTIMATE_TIME = 75;
+	private static final float MAX_SPEED = 25;
+	private static final int LAND_POSY = 220;
+	private static final float GRAVITY = 0.98f;
+	private static final int MAX_HEALTH = 5;
+	private static final int HIT_COOL_DOWN = 20;
+	private static final int WARP_COOL_DOWN = 10;
+	private static final int WARP_TIME = 25;
+	private static final int ULTIMATE_TIME = 75;
 
 	public static final int NORMAL_RUN = 0;
 	public static final int JUMPING = 1;
@@ -39,11 +39,13 @@ public class Ninja {
 	private float speedY;
 	private Rectangle rectBound;
 	private int jumpcount;
+	private int warpcount;
 	private int health;
 	private int currentstate;
 	private int powerobtain;
 	private int ultimateTime;
 	private int ghost;
+	private int count = 0;
 	
 	private Animation normalRunAnim;
 	private Animation cooldownRunAnim;
@@ -52,10 +54,8 @@ public class Ninja {
 	private Image jumping;
 
 	public int score = 0;
-	int count = 0;
 	
 	private int state = NORMAL_RUN;
-	private int warpcount;
 	
 	 public Ninja() {
 		 
@@ -83,7 +83,7 @@ public class Ninja {
 		 return speedX;
 	 }
 	 public void setSpeedX(float speedX) {
-		 if(speedX<=25)
+		 if(speedX<=MAX_SPEED)
 		 	this.normalspeedX = speedX;
 			this.speedX = speedX;
 		}
@@ -240,7 +240,6 @@ public class Ninja {
 
 	 
 	 public Rectangle getBound() {
-			rectBound = new Rectangle();
 			rectBound.setX((int) posX+5);
 			rectBound.setY((int) posY);
 			rectBound.setWidth((int) (normalRunAnim.getFrame().getWidth() - 10));
@@ -263,6 +262,9 @@ public class Ninja {
 	 
 	public void reset() {
 			posY = LAND_POSY;
+			isStart = false;
+			setState(NORMAL_RUN);
+			powerobtain=0;
 			resetHealth();
 		}
 	

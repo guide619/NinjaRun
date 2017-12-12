@@ -99,10 +99,7 @@ public class Clouds {
 		public void draw(Canvas game) {
 			GraphicsContext g = game.getGraphicsContext2D();
 			for(ImageCloud imgLand : listCloud) {
-
-				//System.out.println("11111111");
 				g.drawImage(cloud2, (int) imgLand.posX, imgLand.posY);
-				//System.out.println("11111111");
 				g.drawImage(imgLand.image, (int) imgLand.posX, imgLand.posY);
 
 			}
