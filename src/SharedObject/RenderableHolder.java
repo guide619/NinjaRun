@@ -131,85 +131,85 @@ public class RenderableHolder {
 
 	
 	public static void loadResource() {
-		String Logo = "file:Resources/Logo/GT.png";
-		String BGmenu = "file:Resources/bg/bgmenu.jpg";
+		System.out.println(ClassLoader.getSystemResource("Logo/GT.png").toString());
+		String Logo = ClassLoader.getSystemResource("Logo/GT.png").toString();
+		//String BGmenu = ClassLoader.getSystemResource("bg/bgmenu.jpg").toString();
 
-		String bgover = "file:Resources/bg/over.png";
-		String bgover1 = "file:Resources/bg/over1.png";
-		String press = "file:Resources/bg/press.png";
-		String pressen = "file:Resources/bg/pressEnter.png";
-		String BG = "file:Resources/Map/bgplaystart.jpg";
-		String BG1 = "file:Resources/Map/bgplay1.jpg";
+		String bgover = ClassLoader.getSystemResource("bg/over.png").toString();
+		String bgover1 = ClassLoader.getSystemResource("bg/over1.png").toString();
+		String press = ClassLoader.getSystemResource("bg/press.png").toString();
+		String pressen = ClassLoader.getSystemResource("bg/pressEnter.png").toString();
+		//String BG = ClassLoader.getSystemResource("Map/bgplaystart.jpg").toString();
+		//String BG1 = ClassLoader.getSystemResource("Map/bgplay1.jpg").toString();
 
 	
-		String background = "file:Resources/Map/bgplay.jpg";
-		String instruction = "file:Resources/Map/bgplaystart.png";
-		String scoreAndHealth = "file:Resources/Map/bgplay2.png";
+		String background = ClassLoader.getSystemResource("Map/bgplay.jpg").toString();
+		String instruction = ClassLoader.getSystemResource("Map/bgplaystart.png").toString();
+		String scoreAndHealth = ClassLoader.getSystemResource("Map/bgplay2.png").toString();
 
-		String scrollp1 =  "file:Resources/bg/puase1.png";
-		String scrollp2 =  "file:Resources/bg/puase2.png";
-		String pauseinstruct =  "file:Resources/bg/puaseinstruct.png";
+		String scrollp1 =  ClassLoader.getSystemResource("bg/puase1.png").toString();
+		String scrollp2 =   ClassLoader.getSystemResource("bg/puase2.png").toString();
+		String pauseinstruct =   ClassLoader.getSystemResource("bg/puaseinstruct.png").toString();
 
-		String deathbackground = "file:Resources/Map/bgdead.jpg";
+		String deathbackground = ClassLoader.getSystemResource("Map/bgdead.jpg").toString();
 
-		String Land = "file:Resources/bg/bg1.png";
-		String BGmenu1 = "file:Resources/bg/bgmenu1.jpg";
-		String BGmenu2 = "file:Resources/bg/bgmenu2.jpg";
-		String ultimate = "file:Resources/Ultimate.png";
-		String ultimateready = "file:Resources/UltimateReady.png";
+		String Land = ClassLoader.getSystemResource("bg/bg1.png").toString();
+		String BGmenu1 = ClassLoader.getSystemResource("bg/bgmenu1.jpg").toString();
+		String BGmenu2 = ClassLoader.getSystemResource("bg/bgmenu2.jpg").toString();
+		String ultimate = ClassLoader.getSystemResource("Ultimate.png").toString();
+		String ultimateready = ClassLoader.getSystemResource("UltimateReady.png").toString();
 		
 		
-		String sprite = "file:Resources/spite/sprite.png";
-		String sprite1 = "file:Resources/spite/sprite1.png";
-		String sprite2 = "file:Resources/spite/sprite2.png";
-		String sprite3 = "file:Resources/spite/sprite3.png";
-		String sprite4 = "file:Resources/spite/sprite4.png";
-		String sprite1_blink = "file:Resources/spite/sprite1_blink.png";
-		String sprite3_blink = "file:Resources/spite/sprite3_blink.png";
-		String sprite5_blink = "file:Resources/spite/sprite5_blink.png";
-		String spriteDead = "file:Resources/spite/spritedead.png";
-		String heal = "file:Resources/items/sushi.png";
-		String speed = "file:Resources/items/scroll.png";
+		String sprite =  ClassLoader.getSystemResource("spite/sprite.png").toString();
+		String sprite1 = ClassLoader.getSystemResource("spite/sprite1.png").toString();
+		String sprite2 = ClassLoader.getSystemResource("spite/sprite2.png").toString();
+		String sprite3 = ClassLoader.getSystemResource("spite/sprite3.png").toString();
+		String sprite4 = ClassLoader.getSystemResource("spite/sprite4.png").toString();
+		String sprite1_blink =ClassLoader.getSystemResource("spite/sprite1_blink.png").toString(); 
+		String sprite3_blink = ClassLoader.getSystemResource("spite/sprite3_blink.png").toString(); 
+		String sprite5_blink = ClassLoader.getSystemResource("spite/sprite5_blink.png").toString(); 
+		String spriteDead = ClassLoader.getSystemResource("spite/spritedead.png").toString(); 
+		String heal = ClassLoader.getSystemResource("items/sushi.png").toString(); 
+		String speed = ClassLoader.getSystemResource("items/scroll.png").toString(); 
 		
-		String enemy1 = "file:Resources/Enemy/enemy1.png";
-		String enemy2 = "file:Resources/Enemy/enemy2.png";
-		String enemy3 = "file:Resources/Enemy/enemy3.png";
-		String enemy4 = "file:Resources/Enemy/enemy4.png";
-		String enemy5 = "file:Resources/Enemy/enemy5.png";
-		String enemy6 = "file:Resources/Enemy/enemy6.png";
-		String badshuriken = "file:Resources/Enemy/badshuriken.png";
-		String badshuriken2 = "file:Resources/Enemy/badshuriken2.png";
-		String badshuriken3 = "file:Resources/Enemy/badshuriken3.png";
-		String badshuriken4 = "file:Resources/Enemy/badshuriken4.png";
+		String enemy1 = ClassLoader.getSystemResource("Enemy/enemy1.png").toString(); 
+		String enemy2 = ClassLoader.getSystemResource("Enemy/enemy2.png").toString(); 
+		String enemy3 = ClassLoader.getSystemResource("Enemy/enemy3.png").toString(); 
+		String enemy4 = ClassLoader.getSystemResource("Enemy/enemy4.png").toString(); 
+		String enemy5 = ClassLoader.getSystemResource("Enemy/enemy5.png").toString(); 
+		String enemy6 = ClassLoader.getSystemResource("Enemy/enemy6.png").toString(); 
+		String badshuriken = ClassLoader.getSystemResource("Enemy/badshuriken.png").toString(); 
+		String badshuriken2 = ClassLoader.getSystemResource("Enemy/badshuriken2.png").toString(); 
+		String badshuriken3 =  ClassLoader.getSystemResource("Enemy/badshuriken3.png").toString(); 
+		String badshuriken4 =  ClassLoader.getSystemResource("Enemy/badshuriken4.png").toString(); 
 		
-		String shuriken = "file:Resources/spite/shuriken.png";
-		String shuriken2 = "file:Resources/spite/shuriken2.png";
-		String kunai = "file:Resources/spite/kunai.png";
-		String ghost= "file:Resources/spite/ghost.png";
+		String shuriken =  ClassLoader.getSystemResource("spite/shuriken.png").toString(); 
+		String shuriken2 =  ClassLoader.getSystemResource("spite/shuriken2.png").toString();
+		String kunai =  ClassLoader.getSystemResource("spite/kunai.png").toString(); 
+		String ghost=  ClassLoader.getSystemResource("spite/ghost.png").toString(); 
 		
-		String cloud2 = "file:Resources/cloud/cloud2.png";
+		String cloud2 =  ClassLoader.getSystemResource("cloud/cloud2.png").toString(); 
 		
 		
-		String gamePlay = "file:Resources/sound/gameplay1.mp3";
-		String Collect = "file:Resources/sound/collect.wav";
-		String select = "file:Resources/sound/tilechange.wav";
-		String damage = "file:Resources/sound/damage.wav";
-		String warp = "file:Resources/sound/warp.mp3";
-		String healsound = "file:Resources/sound/heal.wav" ;
+	
+		String Collect =  ClassLoader.getSystemResource("sound/collect.wav").toString(); 
+		String select =  ClassLoader.getSystemResource("sound/tilechange.wav").toString(); 
+		String warp =  ClassLoader.getSystemResource("sound/Warp.mp3").toString();
+		String healsound =  ClassLoader.getSystemResource("sound/Heal.wav").toString(); 
 
-		String temple = "file:Resources/items/temple.png";
-		String house = "file:Resources/items/house.png";
+		String temple =  ClassLoader.getSystemResource("items/temple.png").toString();  
+		String house = ClassLoader.getSystemResource("items/house.png").toString();  
 
-		String mark = "file:Resources/spite/Mark.png";
-		String spike = "file:Resources/spite/Spike.png";
-		String tan = "file:Resources/spite/Tan.png";
-		String onfire = "file:Resources/spite/fire.png";
+		//String mark =  ClassLoader.getSystemResource("Enemy/badshuriken.png").toString(); "file:Resources/spite/Mark.png";
+		String spike = ClassLoader.getSystemResource("spite/Spike.png").toString();  
+		//String tan = ClassLoader.getSystemResource("Enemy/badshuriken.png").toString();  "file:Resources/spite/Tan.png";
+		String onfire =  ClassLoader.getSystemResource("spite/fire.png").toString(); 
 		
-		String smoke1 = "file:Resources/smoke/smoke1.png";
-		String smoke2 = "file:Resources/smoke/smoke2.png";
-		String smoke3 = "file:Resources/smoke/smoke3.png";
-		String smoke4 = "file:Resources/smoke/smoke4.png";
-		String boom = "file:Resources/smoke/boom.png";
+		String smoke1 = ClassLoader.getSystemResource("smoke/smoke1.png").toString();  
+		String smoke2 =  ClassLoader.getSystemResource("smoke/smoke2.png").toString();  
+		String smoke3 =  ClassLoader.getSystemResource("smoke/smoke3.png").toString();  
+		String smoke4 =  ClassLoader.getSystemResource("smoke/smoke4.png").toString();  
+		String boom =  ClassLoader.getSystemResource("smoke/boom.png").toString(); 
 		
 
 		Background = new Image(background);
@@ -272,25 +272,27 @@ public class RenderableHolder {
 		item1 = new Image(house);
 		item2 = new Image(temple);
 		
-		String ultimateSound = "file:Resources/sound/Ultimate.mp3" ;
+		String ultimateSound =  ClassLoader.getSystemResource("sound/Ultimate.mp3").toString(); 
 		UltimateSound = new AudioClip(ultimateSound);
-		String shurikenSound = "file:Resources/sound/shurikenThrow.mp3" ;
+		String shurikenSound =  ClassLoader.getSystemResource("sound/shurikenThrow.mp3").toString(); 
 		ShurikenSound = new AudioClip(shurikenSound);
-		String explode = "file:Resources/sound/Explosion.wav";
+		String explode =  ClassLoader.getSystemResource("sound/Explosion.wav").toString(); 
 		EnemyHitSound = new AudioClip(explode);
 		
-		gameplay = new AudioClip(gamePlay);
+		//gameplay = new AudioClip(gamePlay);
 		collect = new AudioClip(Collect);
 		Select = new AudioClip(select);
 		Damage = new AudioClip(select);
 		Healsound = new AudioClip(healsound );
-		String diesound = "file:Resources/sound/die.wav" ;
+		String diesound =  ClassLoader.getSystemResource("sound/die.wav" ).toString(); 
 		DieSound = new AudioClip(diesound);
-		String jumpsound = "file:Resources/sound/jump.wav" ;
+		String jumpsound =  ClassLoader.getSystemResource("sound/jump.wav" ).toString();  
 		jumpSound = new AudioClip(jumpsound);
-		String ninjasound = "file:Resources/sound/ninja.wav" ;
+		String ninjasound =  ClassLoader.getSystemResource("sound/ninja.wav" ).toString(); 
 		ninjaSound = new AudioClip(ninjasound);
-		String logo = "file:Resources/sound/logo.wav" ;
+		System.out.println(ClassLoader.getSystemResource("sound/logo.wav").toString());
+		String logo = ClassLoader.getSystemResource("sound/logo.wav").toString();
+		
 		Logosound = new AudioClip(logo);
 		warpSound = new AudioClip(warp);
 
@@ -343,15 +345,6 @@ public class RenderableHolder {
 		boomAnim.addFrame(RenderableHolder.Smoke3);
 		boomAnim.addFrame(RenderableHolder.Smoke4);
 		
-		/*Tan = new Image(tan);
-		tanAnim = new Animation (70);
-		tanAnim.addFrame(RenderableHolder.spite1);
-		tanAnim.addFrame(RenderableHolder.Smoke1);
-		tanAnim.addFrame(RenderableHolder.Smoke2);
-		tanAnim.addFrame(RenderableHolder.Smoke3);
-		tanAnim.addFrame(RenderableHolder.Smoke4);
-		tanAnim.addFrame(RenderableHolder.Smoke4);
-		tanAnim.addFrame(RenderableHolder.Tan);*/
 	}
 
 

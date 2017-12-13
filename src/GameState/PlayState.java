@@ -164,7 +164,7 @@ public class PlayState extends GameState{
 		case GAME_PLAYING_STATE:
 		if(Keys.isPressed(Keys.ESCAPE)) {
 			gsm.setPaused(true);
-			RenderableHolder.gameplay.stop();
+			//RenderableHolder.gameplay.stop();
 		}
 		if (Keys.isPressed(Keys.UP)) {
 			if(ninja.getState()!=ninja.ULTIMATE) ninja.jump();

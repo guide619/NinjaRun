@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -31,14 +32,19 @@ import javafx.stage.Stage;
 	private final int FADE_IN = 60;
 	private final int LENGTH = 60;
 	private final int FADE_OUT = 60;
+	AudioClip introsound;
+	Image intro ;
   
 	public IntroState(GameStateManager gsm) {
 		super(gsm);
+		intro = RenderableHolder.logo;
+		introsound = RenderableHolder.Logosound;
 	}
   
 	public void init() {
 		ticks=0;
-		RenderableHolder.Logosound.play();
+		System.out.println(ClassLoader.getSystemResource("sound/logo.wav").toString());
+		introsound.play();
 	}
   
 	public void update() {
@@ -62,7 +68,7 @@ import javafx.stage.Stage;
 		GraphicsContext g = game.getGraphicsContext2D();
 		g.setFill(Color.WHITE);
 		g.fillRect(0, 0, GamePanel.WIDTH,GamePanel.HEIGHT);
-		g.drawImage(RenderableHolder.logo,0,0);
+		g.drawImage(intro,0,0);
 		g.setFill((new Color(0, 0, 0, alpha)));
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		
